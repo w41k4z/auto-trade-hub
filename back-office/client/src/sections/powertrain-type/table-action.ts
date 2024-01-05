@@ -1,5 +1,5 @@
 import { TableActionType } from "../../components/datatable/GenericTable";
-import { addPowertrainType } from "./logic";
+import { addPowertrainType, updatePowertrainType, deletePowertrainType } from "./logic";
 
 export const tableAction = () => {
   const tableActionType: TableActionType = {
@@ -20,6 +20,27 @@ export const tableAction = () => {
         addPowertrainType(data);
       },
     },
+    updateAction: (data) => {
+      return {
+        title: "Modifier le type de transmission",
+        fields: [
+          {
+            name: "id",
+            type: "hidden",
+            defaultValue: data.id,
+            hidden: true,
+          },
+          {
+            name: "name",
+            type: "text",
+            label: "Nom",
+            defaultValue: data.name,
+          },
+        ],
+        onSubmit: updatePowertrainType,
+      };
+    },
+    deleteAction: deletePowertrainType,
     hasFeature: {
       hasExportPdf: true,
     },
