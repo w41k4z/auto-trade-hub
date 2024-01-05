@@ -50,7 +50,6 @@ public class PowertrainTypeController {
         PowertrainType oldPowertrainType = service.findById(powertrainType.getId());
         if (oldPowertrainType != null) {
             oldPowertrainType.setName(powertrainType.getName());
-            oldPowertrainType.setState(powertrainType.getState());
             service.save(oldPowertrainType);
             response.setStatus(200);
             response.setPayload(oldPowertrainType);
