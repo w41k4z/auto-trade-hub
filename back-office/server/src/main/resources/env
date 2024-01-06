@@ -1,0 +1,3 @@
+supabase.datasource.url=jdbc:postgresql://db.ccfvnnfqhptjeubazgcd.supabase.co:5432/postgres
+supabase.database.user=postgre
+supabase.database.password=auto_trade_password
