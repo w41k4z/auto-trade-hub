@@ -17,7 +17,7 @@ import proj.cloud.ath.response.RestApiResponse;
 
 @RestController
 @RequestMapping("/powertrain-types")
-@CrossOrigin(origins = { "http://localhost:3000" })
+@CrossOrigin(origins = { "https://auto-trade-back-office.netlify.app/" })
 public class PowertrainTypeController {
 
     @Autowired
