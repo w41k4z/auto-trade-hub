@@ -1,5 +1,9 @@
 import { TableActionType } from "../../components/datatable/GenericTable";
-import { addPowertrainType, updatePowertrainType, deletePowertrainType } from "./logic";
+import {
+  addPowertrainType,
+  updatePowertrainType,
+  deletePowertrainType,
+} from "./logic";
 
 export const tableAction = () => {
   const tableActionType: TableActionType = {
