@@ -38,6 +38,12 @@ export const navConfig: NavElement[] = [
         icon: <RxActivityLog />,
         onItemClick: () => {},
       },
+      {
+        title: "Modèle",
+        path: "/app/car-model",
+        icon: <RxActivityLog />,
+        onItemClick: () => {},
+      },
     ],
   },
 ];
