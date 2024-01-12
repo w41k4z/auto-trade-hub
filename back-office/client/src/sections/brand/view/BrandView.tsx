@@ -14,7 +14,7 @@ const BrandView = () => {
         <GenericTable
           hasAction={tableAction()}
           indexedRow
-          title="Les activités"
+          title="Les marques"
           columns={tableColumns}
           data={brands}
         />

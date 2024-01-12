@@ -14,7 +14,7 @@ const PowertrainTypeView = () => {
         <GenericTable
           hasAction={tableAction()}
           indexedRow
-          title="Les activités"
+          title="Les types d'energies"
           columns={tableColumns}
           data={powertrainTypes}
         />

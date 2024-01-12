@@ -14,7 +14,7 @@ const TransmissionTypeView = () => {
         <GenericTable
           hasAction={tableAction()}
           indexedRow
-          title="Les activités"
+          title="Les types de transmissions"
           columns={tableColumns}
           data={transmissionTypes}
         />

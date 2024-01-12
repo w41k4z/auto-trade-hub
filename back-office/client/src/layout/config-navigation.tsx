@@ -16,25 +16,25 @@ export const navConfig: NavElement[] = [
     elements: [
       {
         title: "Energie",
-        path: "/powertrain",
+        path: "/app/powertrain",
         icon: <RxActivityLog />,
         onItemClick: () => {},
       },
       {
         title: "Type de Transmission",
-        path: "/transmission",
+        path: "/app/transmission",
         icon: <RxActivityLog />,
         onItemClick: () => {},
       },
       {
         title: "Categorie",
-        path: "/category",
+        path: "/app/category",
         icon: <RxActivityLog />,
         onItemClick: () => {},
       },
       {
         title: "Marque",
-        path: "/brand",
+        path: "/app/brand",
         icon: <RxActivityLog />,
         onItemClick: () => {},
       },

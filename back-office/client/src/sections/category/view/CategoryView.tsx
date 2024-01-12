@@ -14,7 +14,7 @@ const CategoryView = () => {
         <GenericTable
           hasAction={tableAction()}
           indexedRow
-          title="Les activités"
+          title="Les categories"
           columns={tableColumns}
           data={categories}
         />

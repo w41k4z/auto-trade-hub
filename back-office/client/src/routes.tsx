@@ -12,7 +12,7 @@ export const BrandPage = lazy(() => import("./pages/Brand"));
 export default function Router() {
   const routes = useRoutes([
     {
-      path: "/",
+      path: "/app",
       element: (
         <Layout>
           <Suspense>
@@ -22,25 +22,25 @@ export default function Router() {
       ),
       children: [
         {
-          path: "powertrain",
+          path: "/app/powertrain",
           element: <PowertrainTypePage />,
         },
         {
-          path: "transmission",
+          path: "/app/transmission",
           element: <TransmissionTypePage />,
         },
         {
-          path: "category",
+          path: "/app/category",
           element: <CategoryPage />,
         },
         {
-          path: "brand",
+          path: "/app/brand",
           element: <BrandPage />,
         },
       ],
     },
     {
-      path: "404",
+      path: "/404",
       element: <Page404 />,
     },
     {
