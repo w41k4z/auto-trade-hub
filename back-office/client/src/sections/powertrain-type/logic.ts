@@ -25,7 +25,7 @@ export const addPowertrainType = async (data: any) => {
     .post(originEndPoint, data)
     .then((response) => {
       if (response.data.status === 201) {
-        alert("Type de transmission ajouté");
+        alert("Type d'energie ajouté");
       } else {
         alert(response.data.message);
       }
@@ -40,7 +40,7 @@ export const updatePowertrainType = async (data: FieldValues) => {
     .put(originEndPoint, data)
     .then((response) => {
       if (response.data.status === 200) {
-        alert("Type de transmission modifié");
+        alert("Type d'energie modifié");
       } else {
         alert(response.data.message);
       }
@@ -55,7 +55,7 @@ export const deletePowertrainType = async (data: any) => {
     .delete(`${originEndPoint}/${data.id}`)
     .then((response) => {
       if (response.data.status === 200) {
-        alert("Type de transmission supprimé");
+        alert("Type d'energie supprimé");
       } else {
         alert(response.data.message);
       }

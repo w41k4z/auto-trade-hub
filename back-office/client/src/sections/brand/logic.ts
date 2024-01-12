@@ -1,10 +1,10 @@
 import { FieldValues } from "react-hook-form";
 import axios from "../../axios";
-import { type Category } from "./type";
+import { type Brand } from "./type";
 
-const originEndPoint = "/api/v1/category";
+const originEndPoint = "/api/v1/brand";
 
-export const fetchData = async (callBack: (data: Category[]) => void) => {
+export const fetchData = async (callBack: (data: Brand[]) => void) => {
   await axios
     .get(originEndPoint)
     .then((response) => {
@@ -20,12 +20,12 @@ export const fetchData = async (callBack: (data: Category[]) => void) => {
     });
 };
 
-export const addCategory = async (data: any) => {
+export const addBrand = async (data: any) => {
   await axios
     .post(originEndPoint, data)
     .then((response) => {
       if (response.data.status === 201) {
-        alert("Categorie ajoutée");
+        alert("Marque ajoutée");
       } else {
         alert(response.data.message);
       }
@@ -35,12 +35,12 @@ export const addCategory = async (data: any) => {
     });
 };
 
-export const updateCategory = async (data: FieldValues) => {
+export const updateBrand = async (data: FieldValues) => {
   await axios
     .put(originEndPoint, data)
     .then((response) => {
       if (response.data.status === 200) {
-        alert("Categories modifiée");
+        alert("Marque modifiée");
       } else {
         alert(response.data.message);
       }
@@ -50,12 +50,12 @@ export const updateCategory = async (data: FieldValues) => {
     });
 };
 
-export const deleteCategory = async (data: any) => {
+export const deleteBrand = async (data: any) => {
   await axios
     .delete(`${originEndPoint}/${data.id}`)
     .then((response) => {
       if (response.data.status === 200) {
-        alert("Categorie supprimée");
+        alert("Marque supprimé");
       } else {
         alert(response.data.message);
       }

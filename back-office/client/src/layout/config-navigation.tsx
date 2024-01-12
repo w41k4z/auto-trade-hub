@@ -15,8 +15,26 @@ export const navConfig: NavElement[] = [
     title: "Table",
     elements: [
       {
-        title: "Type de transmission",
+        title: "Energie",
+        path: "/powertrain",
+        icon: <RxActivityLog />,
+        onItemClick: () => {},
+      },
+      {
+        title: "Type de Transmission",
         path: "/transmission",
+        icon: <RxActivityLog />,
+        onItemClick: () => {},
+      },
+      {
+        title: "Categorie",
+        path: "/category",
+        icon: <RxActivityLog />,
+        onItemClick: () => {},
+      },
+      {
+        title: "Marque",
+        path: "/brand",
         icon: <RxActivityLog />,
         onItemClick: () => {},
       },

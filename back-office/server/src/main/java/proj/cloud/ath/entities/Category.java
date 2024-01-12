@@ -1,4 +1,4 @@
-package proj.cloud.ath.model;
+package proj.cloud.ath.entities;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

@@ -1,4 +1,4 @@
-package proj.cloud.ath.service;
+package proj.cloud.ath.services;
 
 import java.util.List;
 
@@ -6,27 +6,27 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
 
-import proj.cloud.ath.model.TransmissionType;
-import proj.cloud.ath.repository.TransmissionTypeRepository;
+import proj.cloud.ath.entities.TransmissionType;
+import proj.cloud.ath.repositories.TransmissionTypeRepository;
 
 @Service
 public class TransmissionTypeService {
 
     @Autowired
-    private TransmissionTypeRepository repository;
+    private TransmissionTypeRepository repositories;
 
     public TransmissionType findById(Long id) {
-        return repository.findById(id).orElse(null);
+        return repositories.findById(id).orElse(null);
     }
 
     public List<TransmissionType> findAll() {
         TransmissionType transmissionType = new TransmissionType();
         transmissionType.setState(0);
-        return repository.findAll(Example.of(transmissionType));
+        return repositories.findAll(Example.of(transmissionType));
     }
 
     public TransmissionType save(TransmissionType transmissionType) {
-        return repository.save(transmissionType);
+        return repositories.save(transmissionType);
     }
 
     public void delete(Long id) {

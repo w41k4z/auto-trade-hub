@@ -1,4 +1,4 @@
-package proj.cloud.ath.controller;
+package proj.cloud.ath.controllers.api.v1;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -11,12 +11,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import proj.cloud.ath.service.CategoryService;
-import proj.cloud.ath.model.Category;
+import proj.cloud.ath.services.CategoryService;
+import proj.cloud.ath.entities.Category;
 import proj.cloud.ath.response.RestApiResponse;
 
 @RestController
-@RequestMapping("/api/v1/powertrain-types")
+@RequestMapping("/api/v1/category")
 @CrossOrigin(origins = { "http://localhost:3000" })
 public class CategoryController {
 
@@ -47,12 +47,12 @@ public class CategoryController {
     public RestApiResponse update(@RequestBody Category category) {
         RestApiResponse response = new RestApiResponse();
         response.setStatus(400);
-        Category oldPowertrainType = service.findById(category.getId());
-        if (oldPowertrainType != null) {
-            oldPowertrainType.setName(category.getName());
-            service.save(oldPowertrainType);
+        Category oldCategory = service.findById(category.getId());
+        if (oldCategory != null) {
+            oldCategory.setName(category.getName());
+            service.save(oldCategory);
             response.setStatus(200);
-            response.setPayload(oldPowertrainType);
+            response.setPayload(oldCategory);
         }
         return response;
     }

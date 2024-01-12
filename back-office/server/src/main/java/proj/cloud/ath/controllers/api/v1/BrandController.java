@@ -11,17 +11,15 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import proj.cloud.ath.services.TransmissionTypeService;
-import proj.cloud.ath.entities.TransmissionType;
+import proj.cloud.ath.entities.Brand;
 import proj.cloud.ath.response.RestApiResponse;
-
+import proj.cloud.ath.services.BrandService;
 @RestController
-@RequestMapping("/api/v1/transmission-types")
+@RequestMapping("/api/v1/brand")
 @CrossOrigin(origins = { "http://localhost:3000" })
-public class TransmissionTypeController {
-
+public class BrandController {
     @Autowired
-    private TransmissionTypeService service;
+    private BrandService service;
 
     @GetMapping
     public RestApiResponse findAll() {
@@ -34,25 +32,25 @@ public class TransmissionTypeController {
     }
 
     @PostMapping
-    public RestApiResponse create(@RequestBody TransmissionType transmissionType) {
+    public RestApiResponse create(@RequestBody Brand brand) {
         RestApiResponse response = new RestApiResponse();
-        transmissionType.setState(0);
-        service.save(transmissionType);
-        response.setPayload(transmissionType);
+        brand.setState(0);
+        service.save(brand);
+        response.setPayload(brand);
         response.setStatus(201);
         return response;
     }
 
     @PutMapping
-    public RestApiResponse update(@RequestBody TransmissionType transmissionType) {
+    public RestApiResponse update(@RequestBody Brand brand) {
         RestApiResponse response = new RestApiResponse();
         response.setStatus(400);
-        TransmissionType oldTransmissionType = service.findById(transmissionType.getId());
-        if (oldTransmissionType != null) {
-            oldTransmissionType.setName(transmissionType.getName());
-            service.save(oldTransmissionType);
+        Brand oldBrand = service.findById(brand.getId());
+        if (oldBrand != null) {
+            oldBrand.setName(brand.getName());
+            service.save(oldBrand);
             response.setStatus(200);
-            response.setPayload(oldTransmissionType);
+            response.setPayload(oldBrand);
         }
         return response;
     }
@@ -63,5 +61,5 @@ public class TransmissionTypeController {
         service.delete(id);
         response.setStatus(200);
         return response;
-    }
+    }    
 }
