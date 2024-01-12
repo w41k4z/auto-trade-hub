@@ -37,6 +37,10 @@ export default function Router() {
           path: "/app/brand",
           element: <BrandPage />,
         },
+        {
+          path: "/app/login",
+          element: <LoginPage />,
+        },
       ],
     },
     {
