@@ -11,17 +11,17 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import proj.cloud.ath.service.PowertrainTypeService;
-import proj.cloud.ath.model.PowertrainType;
+import proj.cloud.ath.service.TransmissionTypeService;
+import proj.cloud.ath.model.TransmissionType;
 import proj.cloud.ath.response.RestApiResponse;
 
 @RestController
-@RequestMapping("/api/v1/powertrain-types")
+@RequestMapping("/api/v1/transmission-types")
 @CrossOrigin(origins = { "http://localhost:3000" })
-public class PowertrainTypeController {
+public class TransmissionTypeController {
 
     @Autowired
-    private PowertrainTypeService service;
+    private TransmissionTypeService service;
 
     @GetMapping
     public RestApiResponse findAll() {
@@ -34,25 +34,25 @@ public class PowertrainTypeController {
     }
 
     @PostMapping
-    public RestApiResponse create(@RequestBody PowertrainType powertrainType) {
+    public RestApiResponse create(@RequestBody TransmissionType transmissionType) {
         RestApiResponse response = new RestApiResponse();
-        powertrainType.setState(0);
-        service.save(powertrainType);
-        response.setPayload(powertrainType);
+        transmissionType.setState(0);
+        service.save(transmissionType);
+        response.setPayload(transmissionType);
         response.setStatus(201);
         return response;
     }
 
     @PutMapping
-    public RestApiResponse update(@RequestBody PowertrainType powertrainType) {
+    public RestApiResponse update(@RequestBody TransmissionType transmissionType) {
         RestApiResponse response = new RestApiResponse();
         response.setStatus(400);
-        PowertrainType oldPowertrainType = service.findById(powertrainType.getId());
-        if (oldPowertrainType != null) {
-            oldPowertrainType.setName(powertrainType.getName());
-            service.save(oldPowertrainType);
+        TransmissionType oldTransmissionType = service.findById(transmissionType.getId());
+        if (oldTransmissionType != null) {
+            oldTransmissionType.setName(transmissionType.getName());
+            service.save(oldTransmissionType);
             response.setStatus(200);
-            response.setPayload(oldPowertrainType);
+            response.setPayload(oldTransmissionType);
         }
         return response;
     }

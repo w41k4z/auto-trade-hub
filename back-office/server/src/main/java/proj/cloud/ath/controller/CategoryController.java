@@ -11,17 +11,17 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import proj.cloud.ath.service.PowertrainTypeService;
-import proj.cloud.ath.model.PowertrainType;
+import proj.cloud.ath.service.CategoryService;
+import proj.cloud.ath.model.Category;
 import proj.cloud.ath.response.RestApiResponse;
 
 @RestController
 @RequestMapping("/api/v1/powertrain-types")
 @CrossOrigin(origins = { "http://localhost:3000" })
-public class PowertrainTypeController {
+public class CategoryController {
 
     @Autowired
-    private PowertrainTypeService service;
+    private CategoryService service;
 
     @GetMapping
     public RestApiResponse findAll() {
@@ -34,22 +34,22 @@ public class PowertrainTypeController {
     }
 
     @PostMapping
-    public RestApiResponse create(@RequestBody PowertrainType powertrainType) {
+    public RestApiResponse create(@RequestBody Category category) {
         RestApiResponse response = new RestApiResponse();
-        powertrainType.setState(0);
-        service.save(powertrainType);
-        response.setPayload(powertrainType);
+        category.setState(0);
+        service.save(category);
+        response.setPayload(category);
         response.setStatus(201);
         return response;
     }
 
     @PutMapping
-    public RestApiResponse update(@RequestBody PowertrainType powertrainType) {
+    public RestApiResponse update(@RequestBody Category category) {
         RestApiResponse response = new RestApiResponse();
         response.setStatus(400);
-        PowertrainType oldPowertrainType = service.findById(powertrainType.getId());
+        Category oldPowertrainType = service.findById(category.getId());
         if (oldPowertrainType != null) {
-            oldPowertrainType.setName(powertrainType.getName());
+            oldPowertrainType.setName(category.getName());
             service.save(oldPowertrainType);
             response.setStatus(200);
             response.setPayload(oldPowertrainType);
