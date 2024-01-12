@@ -1,14 +1,10 @@
 import { TableActionType } from "../../components/datatable/GenericTable";
-import {
-  addPowertrainType,
-  updatePowertrainType,
-  deletePowertrainType,
-} from "./logic";
+import { addTransmissionType, updateTransmissionType, deleteTransmissionType } from "./logic";
 
 export const tableAction = () => {
   const tableActionType: TableActionType = {
     addAction: {
-      formTitle: "Ajouter un nouveau type d'energie",
+      formTitle: "Ajouter un nouveau type de transmission",
       fields: [
         {
           name: "name",
@@ -16,17 +12,17 @@ export const tableAction = () => {
           label: "Nom",
           options: {
             required:
-              "Le nom d'un nouveau type d'energie est obligatoire",
+              "Le nom d'un nouveau type de transmission est obligatoire",
           },
         },
       ],
       onSubmit: async (data) => {
-        addPowertrainType(data);
+        addTransmissionType(data);
       },
     },
     updateAction: (data) => {
       return {
-        title: "Modifier le type d'energie",
+        title: "Modifier le type de transmission",
         fields: [
           {
             name: "id",
@@ -41,10 +37,10 @@ export const tableAction = () => {
             defaultValue: data.name,
           },
         ],
-        onSubmit: updatePowertrainType,
+        onSubmit: updateTransmissionType,
       };
     },
-    deleteAction: deletePowertrainType,
+    deleteAction: deleteTransmissionType,
     hasFeature: {
       hasExportPdf: true,
     },

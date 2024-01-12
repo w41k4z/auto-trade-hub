@@ -4,11 +4,15 @@ import Layout from "./layout/Layout";
 
 export const Page404 = lazy(() => import("./pages/Page404"));
 export const PowertrainTypePage = lazy(() => import("./pages/PowertrainType"));
+export const TransmissionTypePage = lazy(() => import("./pages/TransmissionType"));
+export const CategoryPage = lazy(() => import("./pages/Category"));
+export const BrandPage = lazy(() => import("./pages/Brand"));
+
 
 export default function Router() {
   const routes = useRoutes([
     {
-      path: "/",
+      path: "/app",
       element: (
         <Layout>
           <Suspense>
@@ -18,13 +22,25 @@ export default function Router() {
       ),
       children: [
         {
-          path: "transmission",
+          path: "/app/powertrain",
           element: <PowertrainTypePage />,
+        },
+        {
+          path: "/app/transmission",
+          element: <TransmissionTypePage />,
+        },
+        {
+          path: "/app/category",
+          element: <CategoryPage />,
+        },
+        {
+          path: "/app/brand",
+          element: <BrandPage />,
         },
       ],
     },
     {
-      path: "404",
+      path: "/404",
       element: <Page404 />,
     },
     {

@@ -1,10 +1,10 @@
 import GenericTable from "../../../components/datatable/GenericTable";
 import { tableAction } from "../table-action";
 import { tableColumns } from "../table-column";
-import usePowertrainType from "../usePowertrainType";
+import useCategory from "../useCategory";
 
-const PowertrainTypeView = () => {
-  const { powertrainTypes, loading } = usePowertrainType();
+const CategoryView = () => {
+  const { categories, loading } = useCategory();
 
   return (
     <>
@@ -14,13 +14,13 @@ const PowertrainTypeView = () => {
         <GenericTable
           hasAction={tableAction()}
           indexedRow
-          title="Les types d'energies"
+          title="Les categories"
           columns={tableColumns}
-          data={powertrainTypes}
+          data={categories}
         />
       )}
     </>
   );
 };
 
-export default PowertrainTypeView;
+export default CategoryView;
