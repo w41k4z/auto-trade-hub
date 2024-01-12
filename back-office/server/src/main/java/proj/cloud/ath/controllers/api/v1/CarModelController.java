@@ -6,21 +6,21 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import proj.cloud.ath.entities.Brand;
+import proj.cloud.ath.entities.CarModel;
 import proj.cloud.ath.response.RestApiResponse;
-import proj.cloud.ath.services.BrandService;
+import proj.cloud.ath.services.CarModelService;
 
 @RestController
-@RequestMapping("/api/v1/brand")
+@RequestMapping("/api/v1/car-models")
 @CrossOrigin(origins = { "http://localhost:3000" })
-public class BrandController {
+public class CarModelController {
+
     @Autowired
-    private BrandService service;
+    private CarModelService service;
 
     @GetMapping
     public RestApiResponse findAll() {
@@ -33,26 +33,12 @@ public class BrandController {
     }
 
     @PostMapping
-    public RestApiResponse create(@RequestBody Brand brand) {
+    public RestApiResponse create(@RequestBody CarModel carModel) {
         RestApiResponse response = new RestApiResponse();
-        brand.setState(0);
-        service.save(brand);
-        response.setPayload(brand);
+        carModel.setState(0);
+        service.save(carModel);
+        response.setPayload(carModel);
         response.setStatus(201);
-        return response;
-    }
-
-    @PutMapping
-    public RestApiResponse update(@RequestBody Brand brand) {
-        RestApiResponse response = new RestApiResponse();
-        response.setStatus(400);
-        Brand oldBrand = service.findById(brand.getId());
-        if (oldBrand != null) {
-            oldBrand.setName(brand.getName());
-            service.save(oldBrand);
-            response.setStatus(200);
-            response.setPayload(oldBrand);
-        }
         return response;
     }
 
