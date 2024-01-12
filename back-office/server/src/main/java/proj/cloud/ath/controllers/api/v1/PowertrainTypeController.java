@@ -1,4 +1,4 @@
-package proj.cloud.ath.controller;
+package proj.cloud.ath.controllers.api.v1;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -11,9 +11,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import proj.cloud.ath.service.PowertrainTypeService;
-import proj.cloud.ath.model.PowertrainType;
+import proj.cloud.ath.entities.PowertrainType;
 import proj.cloud.ath.response.RestApiResponse;
+import proj.cloud.ath.services.PowertrainTypeService;
 
 @RestController
 @RequestMapping("/api/v1/powertrain-types")

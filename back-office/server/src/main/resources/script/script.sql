@@ -38,3 +38,14 @@ CREATE TABLE car_model (
     category_id INTEGER NOT NULL REFERENCES category(id),
     state INTEGER DEFAULT 0
 );
+
+CREATE TABLE admin (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(50) NOT NULL,
+    first_name VARCHAR(50),
+    birth_date DATE NOT NULL,
+    genre INTEGER NOT NULL,
+    phone_number VARCHAR(18) NOT NULL,
+    email VARCHAR(50) NOT NULL UNIQUE,
+    password TEXT NOT NULL UNIQUE -- encrypted password using bcrypt
+)
