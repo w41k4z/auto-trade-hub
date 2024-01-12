@@ -1,10 +1,10 @@
 import { FieldValues } from "react-hook-form";
 import axios from "../../axios";
-import { type PowertrainType } from "./type";
+import { type Category } from "./type";
 
-const originEndPoint = "/api/v1/powertrain-types";
+const originEndPoint = "/api/v1/category";
 
-export const fetchData = async (callBack: (data: PowertrainType[]) => void) => {
+export const fetchData = async (callBack: (data: Category[]) => void) => {
   await axios
     .get(originEndPoint)
     .then((response) => {
@@ -20,12 +20,12 @@ export const fetchData = async (callBack: (data: PowertrainType[]) => void) => {
     });
 };
 
-export const addPowertrainType = async (data: any) => {
+export const addCategory = async (data: any) => {
   await axios
     .post(originEndPoint, data)
     .then((response) => {
       if (response.data.status === 201) {
-        alert("Type d'energie ajouté");
+        alert("Categorie ajoutée");
       } else {
         alert(response.data.message);
       }
@@ -35,12 +35,12 @@ export const addPowertrainType = async (data: any) => {
     });
 };
 
-export const updatePowertrainType = async (data: FieldValues) => {
+export const updateCategory = async (data: FieldValues) => {
   await axios
     .put(originEndPoint, data)
     .then((response) => {
       if (response.data.status === 200) {
-        alert("Type d'energie modifié");
+        alert("Categories modifiée");
       } else {
         alert(response.data.message);
       }
@@ -50,12 +50,12 @@ export const updatePowertrainType = async (data: FieldValues) => {
     });
 };
 
-export const deletePowertrainType = async (data: any) => {
+export const deleteCategory = async (data: any) => {
   await axios
     .delete(`${originEndPoint}/${data.id}`)
     .then((response) => {
       if (response.data.status === 200) {
-        alert("Type d'energie supprimé");
+        alert("Categorie supprimée");
       } else {
         alert(response.data.message);
       }

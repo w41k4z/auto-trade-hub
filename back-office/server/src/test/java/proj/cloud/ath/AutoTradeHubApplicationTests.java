@@ -8,6 +8,6 @@ class AutoTradeHubApplicationTests {
 
 	@Test
 	void contextLoads() {
-	}
 
+	}
 }

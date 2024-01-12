@@ -1,10 +1,10 @@
 import { FieldValues } from "react-hook-form";
 import axios from "../../axios";
-import { type PowertrainType } from "./type";
+import { type TransmissionType } from "./type";
 
-const originEndPoint = "/api/v1/powertrain-types";
+const originEndPoint = "/api/v1/transmission-types";
 
-export const fetchData = async (callBack: (data: PowertrainType[]) => void) => {
+export const fetchData = async (callBack: (data: TransmissionType[]) => void) => {
   await axios
     .get(originEndPoint)
     .then((response) => {
@@ -20,12 +20,12 @@ export const fetchData = async (callBack: (data: PowertrainType[]) => void) => {
     });
 };
 
-export const addPowertrainType = async (data: any) => {
+export const addTransmissionType = async (data: any) => {
   await axios
     .post(originEndPoint, data)
     .then((response) => {
       if (response.data.status === 201) {
-        alert("Type d'energie ajouté");
+        alert("Type de transmission ajouté");
       } else {
         alert(response.data.message);
       }
@@ -35,12 +35,12 @@ export const addPowertrainType = async (data: any) => {
     });
 };
 
-export const updatePowertrainType = async (data: FieldValues) => {
+export const updateTransmissionType = async (data: FieldValues) => {
   await axios
     .put(originEndPoint, data)
     .then((response) => {
       if (response.data.status === 200) {
-        alert("Type d'energie modifié");
+        alert("Type de transmission modifié");
       } else {
         alert(response.data.message);
       }
@@ -50,12 +50,12 @@ export const updatePowertrainType = async (data: FieldValues) => {
     });
 };
 
-export const deletePowertrainType = async (data: any) => {
+export const deleteTransmissionType = async (data: any) => {
   await axios
     .delete(`${originEndPoint}/${data.id}`)
     .then((response) => {
       if (response.data.status === 200) {
-        alert("Type d'energie supprimé");
+        alert("Type de transmission supprimé");
       } else {
         alert(response.data.message);
       }

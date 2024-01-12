@@ -1,14 +1,14 @@
 import { TableActionType } from "../../components/datatable/GenericTable";
 import {
-  addPowertrainType,
-  updatePowertrainType,
-  deletePowertrainType,
+  addBrand,
+  updateBrand,
+  deleteBrand,
 } from "./logic";
 
 export const tableAction = () => {
   const tableActionType: TableActionType = {
     addAction: {
-      formTitle: "Ajouter un nouveau type d'energie",
+      formTitle: "Ajouter une nouvelle marque",
       fields: [
         {
           name: "name",
@@ -16,17 +16,17 @@ export const tableAction = () => {
           label: "Nom",
           options: {
             required:
-              "Le nom d'un nouveau type d'energie est obligatoire",
+              "Le nom d'un nouvelle marque est obligatoire",
           },
         },
       ],
       onSubmit: async (data) => {
-        addPowertrainType(data);
+        addBrand(data);
       },
     },
     updateAction: (data) => {
       return {
-        title: "Modifier le type d'energie",
+        title: "Modifier la marque",
         fields: [
           {
             name: "id",
@@ -41,10 +41,10 @@ export const tableAction = () => {
             defaultValue: data.name,
           },
         ],
-        onSubmit: updatePowertrainType,
+        onSubmit: updateBrand,
       };
     },
-    deleteAction: deletePowertrainType,
+    deleteAction: deleteBrand,
     hasFeature: {
       hasExportPdf: true,
     },
