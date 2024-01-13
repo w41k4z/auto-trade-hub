@@ -44,6 +44,12 @@ export const navConfig: NavElement[] = [
         icon: <RxActivityLog />,
         onItemClick: () => {},
       },
+      {
+        title: "Login",
+        path: "/app/login",
+        icon: <RxActivityLog />,
+        onItemClick: () => {},
+      },
     ],
   },
 ];

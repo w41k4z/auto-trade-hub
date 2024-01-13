@@ -43,6 +43,10 @@ export default function Router() {
           path: "/app/car-model",
           element: <CarModelPage />,
         },
+        {
+          path: "/app/login",
+          element: <LoginPage />,
+        },
       ],
     },
     {
