@@ -1,11 +1,7 @@
 import { TableActionType } from "../../components/datatable/GenericTable";
-import {
-  addBrand,
-  updateBrand,
-  deleteBrand,
-} from "./logic";
+import { addBrand, updateBrand, deleteBrand } from "./logic";
 
-export const tableAction = () => {
+export const tableAction = (token: string) => {
   const tableActionType: TableActionType = {
     addAction: {
       formTitle: "Ajouter une nouvelle marque",
@@ -15,13 +11,12 @@ export const tableAction = () => {
           type: "text",
           label: "Nom",
           options: {
-            required:
-              "Le nom d'un nouvelle marque est obligatoire",
+            required: "Le nom d'un nouvelle marque est obligatoire",
           },
         },
       ],
       onSubmit: async (data) => {
-        addBrand(data);
+        addBrand(data, token);
       },
     },
     updateAction: (data) => {
@@ -41,10 +36,10 @@ export const tableAction = () => {
             defaultValue: data.name,
           },
         ],
-        onSubmit: updateBrand,
+        onSubmit: (data) => updateBrand(data, token),
       };
     },
-    deleteAction: deleteBrand,
+    deleteAction: (data) => deleteBrand(data, token),
     hasFeature: {
       hasExportPdf: true,
     },

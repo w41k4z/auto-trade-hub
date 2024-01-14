@@ -4,14 +4,16 @@ import { Dispatch, UnknownAction } from "redux";
 import { setUser, setLoading } from "../../redux/features/User/action";
 import { ThunkDispatch } from "@reduxjs/toolkit";
 import { UserState } from "../../redux/features/User/type";
+import { NavigateFunction } from "react-router";
 
 const originEndPoint = "/auth/v1";
 
 export const authenticate = async (
+  navigate: NavigateFunction,
   toRemember: boolean,
   data: FieldValues,
   setError: UseFormSetError<FieldValues>,
-  callback: () => void,
+  resetCallback: () => void,
   reduxDispatch: ThunkDispatch<
     {
       user: UserState;
@@ -23,23 +25,28 @@ export const authenticate = async (
 ) => {
   reduxDispatch(setLoading(true));
   await axios
-    .post(`${originEndPoint}/login`, data)
+    .post(originEndPoint, data)
     .then((res) => {
       const response = res.data;
       if (response.status === 200) {
         if (toRemember) {
-          localStorage.setItem("token", response.payload.token);
+          localStorage.setItem("token", response.payload.accessToken);
         }
-        callback();
+        resetCallback();
         reduxDispatch(
           setUser({
-            accessToken: response.payload.token,
+            accessToken: response.payload.accessToken,
             role: response.payload.role,
           })
         );
         reduxDispatch(setLoading(false));
+        navigate("/app/brand");
       } else {
-        setError("global", response.message);
+        console.log(response.message);
+        setError("global", {
+          type: "manual",
+          message: response.message,
+        });
         reduxDispatch(setLoading(false));
         return;
       }

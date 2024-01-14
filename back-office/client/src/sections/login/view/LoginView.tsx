@@ -1,10 +1,12 @@
-import "../my-login.css";
 import logo from "../../../assets/images/logo.jpg";
 import useLogin from "../useLogin";
 import { authenticate } from "../logic";
 
+import "../my-login.css";
+
 const LoginView = () => {
   const {
+    navigate,
     isRemembered,
     setIsRemembered,
     register,
@@ -31,6 +33,7 @@ const LoginView = () => {
                   <form
                     onSubmit={handleSubmit((data) => {
                       authenticate(
+                        navigate,
                         isRemembered,
                         data,
                         setError,
@@ -44,15 +47,22 @@ const LoginView = () => {
                       <label htmlFor="email">E-Mail Address</label>
                       <input
                         id="email"
-                        type="email"
+                        type="text"
                         className="form-control"
                         {...register("email", {
                           required: "Email is required",
+                          pattern: {
+                            value: /\S+@\S+\.\S+/,
+                            message:
+                              "Entered value does not match email format",
+                          },
                         })}
                       />
-                      <p className="alert alert-danger mt-2" role="alert">
-                        {errors.email?.message?.toString()}
-                      </p>
+                      {errors?.email && (
+                        <p className="alert alert-danger mt-2" role="alert">
+                          {errors.email?.message?.toString()}
+                        </p>
+                      )}
                     </div>
 
                     <div className="form-group col-12">
@@ -65,6 +75,11 @@ const LoginView = () => {
                           required: "Password is required",
                         })}
                       />
+                      {errors?.password && (
+                        <p className="alert alert-danger mt-2" role="alert">
+                          {errors.password?.message?.toString()}
+                        </p>
+                      )}
                     </div>
 
                     <div className="form-group col-12 my-2">
@@ -89,9 +104,11 @@ const LoginView = () => {
                     >
                       Login
                     </button>
-                    <p className="alert alert-danger mt-2" role="alert">
-                      {errors.global?.message?.toString()}
-                    </p>
+                    {errors?.global && (
+                      <p className="alert alert-danger mt-2" role="alert">
+                        {errors.global?.message?.toString()}
+                      </p>
+                    )}
                   </form>
                 </div>
               </div>
