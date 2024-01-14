@@ -1,1 +1,1 @@
-export { default as BrandView } from "./Login";
+export { default as LoginView } from "./LoginView";

@@ -33,7 +33,8 @@ public class AuthenticationController {
         try {
             Admin admin = adminService.authenticate(jsonData.get("email").toString(),
                     jsonData.get("password").toString());
-            payload.put("token", jwtUtil.generateToken(admin));
+            payload.put("role", "ADMIN");
+            payload.put("accessToken", jwtUtil.generateToken(admin));
             restApiResponse.setStatus(200);
             restApiResponse.setPayload(payload);
         } catch (IllegalArgumentException e) {
