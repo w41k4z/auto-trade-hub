@@ -47,5 +47,5 @@ CREATE TABLE admin (
     genre INTEGER NOT NULL,
     phone_number VARCHAR(18) NOT NULL,
     email VARCHAR(50) NOT NULL UNIQUE,
-    password TEXT NOT NULL UNIQUE -- encrypted password using bcrypt
-)
+    password TEXT NOT NULL UNIQUE -- encrypted password
+);

@@ -4,7 +4,7 @@ import { tableColumns } from "../table-column";
 import useBrand from "../useBrand";
 
 const BrandView = () => {
-  const { brands, loading } = useBrand();
+  const { token, brands, loading } = useBrand();
 
   return (
     <>
@@ -12,7 +12,7 @@ const BrandView = () => {
         <div>Loading...</div>
       ) : (
         <GenericTable
-          hasAction={tableAction()}
+          hasAction={tableAction(token)}
           indexedRow
           title="Les marques"
           columns={tableColumns}

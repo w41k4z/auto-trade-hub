@@ -4,9 +4,17 @@ import { type Brand } from "./type";
 
 const originEndPoint = "/api/v1/brand";
 
-export const fetchData = async (callBack: (data: Brand[]) => void) => {
+export const fetchData = async (
+  callBack: (data: Brand[]) => void,
+  token: string
+) => {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
   await axios
-    .get(originEndPoint)
+    .get(originEndPoint, config)
     .then((response) => {
       const resp = response.data;
       if (resp.status === 200) {
@@ -20,9 +28,14 @@ export const fetchData = async (callBack: (data: Brand[]) => void) => {
     });
 };
 
-export const addBrand = async (data: any) => {
+export const addBrand = async (data: any, token: string) => {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
   await axios
-    .post(originEndPoint, data)
+    .post(originEndPoint, data, config)
     .then((response) => {
       if (response.data.status === 201) {
         alert("Marque ajoutée");
@@ -35,9 +48,14 @@ export const addBrand = async (data: any) => {
     });
 };
 
-export const updateBrand = async (data: FieldValues) => {
+export const updateBrand = async (data: FieldValues, token: string) => {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
   await axios
-    .put(originEndPoint, data)
+    .put(originEndPoint, data, config)
     .then((response) => {
       if (response.data.status === 200) {
         alert("Marque modifiée");
@@ -50,9 +68,14 @@ export const updateBrand = async (data: FieldValues) => {
     });
 };
 
-export const deleteBrand = async (data: any) => {
+export const deleteBrand = async (data: any, token: string) => {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
   await axios
-    .delete(`${originEndPoint}/${data.id}`)
+    .delete(`${originEndPoint}/${data.id}`, config)
     .then((response) => {
       if (response.data.status === 200) {
         alert("Marque supprimé");

@@ -1,12 +1,12 @@
 package proj.cloud.ath.entities;
 
-import java.sql.Date;
-
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -15,7 +15,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class Admin {
+@Table(name = "car_model")
+public class CarModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,18 +24,13 @@ public class Admin {
 
     private String name;
 
-    @Column(name = "first_name")
-    private String firstName;
+    @OneToOne
+    @JoinColumn(name = "brand_id", referencedColumnName = "id")
+    private Brand brand;
 
-    @Column(name = "birth_date")
-    private Date birthDate;
+    @OneToOne
+    @JoinColumn(name = "category_id", referencedColumnName = "id")
+    private Category category;
 
-    private String email;
-
-    private String password;
-
-    @Column(name = "phone_number")
-    private String phoneNumber;
-    
-    private Integer genre;
+    private Integer state;
 }

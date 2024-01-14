@@ -4,13 +4,20 @@ import Layout from "./layout/Layout";
 
 export const Page404 = lazy(() => import("./pages/Page404"));
 export const PowertrainTypePage = lazy(() => import("./pages/PowertrainType"));
-export const TransmissionTypePage = lazy(() => import("./pages/TransmissionType"));
+export const TransmissionTypePage = lazy(
+  () => import("./pages/TransmissionType")
+);
 export const CategoryPage = lazy(() => import("./pages/Category"));
 export const BrandPage = lazy(() => import("./pages/Brand"));
-
+export const CarModelPage = lazy(() => import("./pages/CarModel"));
+export const LoginPage = lazy(() => import("./pages/Login"));
 
 export default function Router() {
   const routes = useRoutes([
+    {
+      path: "/",
+      element: <Navigate to="/login" replace />,
+    },
     {
       path: "/app",
       element: (
@@ -37,7 +44,15 @@ export default function Router() {
           path: "/app/brand",
           element: <BrandPage />,
         },
+        {
+          path: "/app/car-model",
+          element: <CarModelPage />,
+        },
       ],
+    },
+    {
+      path: "/login",
+      element: <LoginPage />,
     },
     {
       path: "/404",
