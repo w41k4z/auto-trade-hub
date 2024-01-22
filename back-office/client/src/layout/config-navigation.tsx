@@ -44,6 +44,12 @@ export const navConfig: NavElement[] = [
         icon: <RxActivityLog />,
         onItemClick: () => {},
       },
+      {
+        title: "Province",
+        path: "/app/province",
+        icon: <RxActivityLog />,
+        onItemClick: () => {},
+      },
     ],
   },
 ];
