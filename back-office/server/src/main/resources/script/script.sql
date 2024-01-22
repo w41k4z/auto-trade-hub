@@ -49,3 +49,22 @@ CREATE TABLE admin (
     email VARCHAR(50) NOT NULL UNIQUE,
     password TEXT NOT NULL UNIQUE -- encrypted password
 );
+
+CREATE TABLE province (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(50) NOT NULL,
+    state INTEGER DEFAULT 0
+);
+
+CREATE TABLE users (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(50) NOT NULL,
+    first_name VARCHAR(50),
+    birth_date DATE NOT NULL,
+    email VARCHAR(50) NOT NULL UNIQUE,
+    password TEXT NOT NULL, -- encrypted password
+    phone_number VARCHAR(18),
+    genre INTEGER NOT NULL,
+    province_id INTEGER REFERENCES province(id),
+    state INTEGER DEFAULT 0
+);

@@ -10,8 +10,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import proj.cloud.ath.entities.Admin;
+import proj.cloud.ath.entities.User;
 import proj.cloud.ath.response.RestApiResponse;
 import proj.cloud.ath.services.AdminService;
+import proj.cloud.ath.services.UserService;
 import proj.cloud.ath.utils.JwtUtil;
 
 @RestController
@@ -24,18 +26,41 @@ public class AuthenticationController {
     @Autowired
     private AdminService adminService;
 
-    @PostMapping
-    public RestApiResponse authenticate(@RequestBody Map<String, Object> jsonData) {
+    @Autowired
+    private UserService userService;
+
+    @PostMapping("/back-office")
+    public RestApiResponse authenticateAdmin(@RequestBody Map<String, Object> jsonData) {
         RestApiResponse restApiResponse = new RestApiResponse();
         HashMap<String, Object> payload = new HashMap<>();
         try {
             Admin admin = adminService.authenticate(jsonData.get("email").toString(),
                     jsonData.get("password").toString());
-            payload.put("role", "ADMIN");
             payload.put("accessToken", jwtUtil.generateToken(admin));
             restApiResponse.setStatus(200);
             restApiResponse.setPayload(payload);
-        } catch (IllegalArgumentException e) {
+        } catch (Exception e) {
+            restApiResponse.setStatus(401);
+            restApiResponse.setMessage(e.getMessage());
+        }
+        return restApiResponse;
+    }
+
+    @PostMapping("/front-office")
+    public RestApiResponse authenticateUser(@RequestBody Map<String, Object> jsonData) {
+        RestApiResponse restApiResponse = new RestApiResponse();
+        HashMap<String, Object> payload = new HashMap<>();
+        try {
+            User user = userService.authenticate(jsonData.get("email").toString(),
+                    jsonData.get("password").toString());
+            HashMap<String, Object> claims = new HashMap<>();
+            claims.put("role", "USER");
+            String token = jwtUtil.generateToken(claims, user.getEmail());
+
+            payload.put("accessToken", token);
+            restApiResponse.setStatus(200);
+            restApiResponse.setPayload(payload);
+        } catch (Exception e) {
             restApiResponse.setStatus(401);
             restApiResponse.setMessage(e.getMessage());
         }
