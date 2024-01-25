@@ -21,6 +21,4 @@ public class Province {
     private Long id;
 
     private String name;
-
-    private Integer state;
 }

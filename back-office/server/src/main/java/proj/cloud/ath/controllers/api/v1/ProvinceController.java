@@ -58,7 +58,6 @@ public class ProvinceController {
         String token = bearerToken.substring(7);
         RestApiResponse response = new RestApiResponse();
         if (jwtUtil.isValidToken(token)) {
-            province.setState(0);
             service.save(province);
             response.setPayload(province);
             response.setStatus(201);

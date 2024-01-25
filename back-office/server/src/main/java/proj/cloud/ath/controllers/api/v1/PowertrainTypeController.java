@@ -34,7 +34,6 @@ public class PowertrainTypeController {
     @PostMapping
     public RestApiResponse create(@RequestBody PowertrainType powertrainType) {
         RestApiResponse response = new RestApiResponse();
-        powertrainType.setState(0);
         service.save(powertrainType);
         response.setPayload(powertrainType);
         response.setStatus(201);

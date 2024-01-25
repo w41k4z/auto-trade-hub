@@ -3,7 +3,6 @@ package proj.cloud.ath.services;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
 
 import proj.cloud.ath.entities.Province;
@@ -20,9 +19,7 @@ public class ProvinceService {
     }
 
     public List<Province> findAll() {
-        Province province = new Province();
-        province.setState(0);
-        return repository.findAll(Example.of(province));
+        return repository.findAll();
     }
 
     public Province save(Province province) {
@@ -34,7 +31,6 @@ public class ProvinceService {
         if (province == null) {
             return;
         }
-        province.setState(-1);
-        this.save(province);
+        repository.delete(province);
     }
 }

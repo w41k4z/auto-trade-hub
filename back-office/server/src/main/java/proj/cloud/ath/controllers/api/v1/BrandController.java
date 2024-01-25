@@ -58,7 +58,6 @@ public class BrandController {
         String token = bearerToken.substring(7);
         RestApiResponse response = new RestApiResponse();
         if (jwtUtil.isValidToken(token)) {
-            brand.setState(0);
             service.save(brand);
             response.setPayload(brand);
             response.setStatus(201);

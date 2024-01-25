@@ -34,7 +34,6 @@ public class CategoryController {
     @PostMapping
     public RestApiResponse create(@RequestBody Category category) {
         RestApiResponse response = new RestApiResponse();
-        category.setState(0);
         service.save(category);
         response.setPayload(category);
         response.setStatus(201);

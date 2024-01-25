@@ -40,7 +40,6 @@ public class UserController {
     @PostMapping
     public RestApiResponse create(@RequestBody User user) {
         RestApiResponse response = new RestApiResponse();
-        user.setState(0);
         user.setPassword(BCrypt.hashpw(user.getPassword(), BCrypt.gensalt()));
         service.save(user);
         response.setPayload(user);

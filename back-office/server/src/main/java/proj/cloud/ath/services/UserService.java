@@ -5,7 +5,6 @@ import java.util.Optional;
 
 import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
 
 import proj.cloud.ath.entities.User;
@@ -36,9 +35,7 @@ public class UserService {
     }
 
     public List<User> findAll() {
-        User user = new User();
-        user.setState(0);
-        return repository.findAll(Example.of(user));
+        return repository.findAll();
     }
 
     public User save(User user) {
@@ -50,7 +47,6 @@ public class UserService {
         if (user == null) {
             return;
         }
-        user.setState(-1);
-        this.save(user);
+        repository.delete(user);
     }
 }

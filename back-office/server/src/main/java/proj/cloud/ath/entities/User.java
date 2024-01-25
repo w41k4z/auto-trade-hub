@@ -45,6 +45,4 @@ public class User {
     @OneToOne
     @JoinColumn(name = "province_id", referencedColumnName = "id")
     private Province province;
-
-    private Integer state;
 }
