@@ -1,9 +1,6 @@
 package proj.cloud.ath.controllers.api.v1;
 
-import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,7 +20,7 @@ import proj.cloud.ath.entities.Announcement;
 import proj.cloud.ath.response.RestApiResponse;
 import proj.cloud.ath.services.AnnouncementService;
 import proj.cloud.ath.services.Announcement_pictureService;
-import com.google.firebase.storage.FirebaseStorage;
+import proj.cloud.ath.services.FileService;
 
 @RestController
 @RequestMapping("/api/v1/announcement")
@@ -36,7 +33,7 @@ public class AnnouncementController {
     private Announcement_pictureService announcement_pictureservice;
 
     @Autowired
-    private FirebaseStorage storage;
+    private FileService fileService;
 
     @GetMapping
     public RestApiResponse findAll() {
@@ -48,46 +45,18 @@ public class AnnouncementController {
         return new RestApiResponse(service.findById(id), 200);
     }
 
-    private File convertToFile(MultipartFile multipartFile) throws IOException {
-        File file = new File(multipartFile.getOriginalFilename());
-        multipartFile.transferTo(file);
-        return file;
-    }
-
-
-    public List<String> uploadFiles(MultipartFile[] multipartFiles) throws IOException {
-        List<String> downloadUrls = new ArrayList()<>();
+    public List<String> uploadFiles(MultipartFile[] multipartFiles) {
+        List<String> downloadUrls = new ArrayList<>();
         for (MultipartFile multipartFile : multipartFiles) {
-            File file = convertToFile(multipartFile);
-            String downloadUrl = uploadFile(storage, file, multipartFile.getOriginalFilename());
-            downloadUrls.add(downloadUrl);
+            downloadUrls.add(fileService.upload(multipartFile));
         }
         return downloadUrls;
     }
 
-    public void getConnection() throws IOException{
-        FileInputStream serviceAccount = new FileInputStream("path/to/serviceAccountKey.json");
-        FirebaseOptions options = new FirebaseOptions.Builder().setCredentials(GoogleCredentials.fromStream(serviceAccount)).setDatabaseUrl("https://yourproject.firebaseio.com").build();
-        FirebaseApp.initializeApp(options);
-    }
-
-        private String uploadFile(FirebaseStorage storage, File file, String fileName) throws IOException {
-            String path = "/" + fileName;
-            StorageReference storageRef = storage.getReference().child(path);
-            uploadTask uploadTask = storageRef.putFile(Uri.fromFile(file));
-            Uri downloadUrl = null;
-            try {
-                Tasks.await(uploadTask);
-                downloadUrl = storageRef.getDownloadUrl();
-            } catch (Exception e) {
-                throw new IOException("Failed to upload file", e);
-            }
-            return downloadUrl.toString();
-        }
-
     @Transactional
     @PostMapping
-    public RestApiResponse create(@RequestBody Announcement announcement,@RequestParam("files") MultipartFile[] multipartFiles)throws IOException {
+    public RestApiResponse create(@RequestBody Announcement announcement,
+            @RequestParam("files") MultipartFile[] multipartFiles) throws IOException {
         RestApiResponse response = new RestApiResponse();
         service.save(announcement);
         response.setPayload(announcement);
