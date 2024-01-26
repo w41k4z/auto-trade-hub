@@ -1,7 +1,10 @@
 package proj.cloud.ath.entities.commission;
 
+import java.sql.Timestamp;
+
 import org.hibernate.annotations.Immutable;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
@@ -20,7 +23,7 @@ import proj.cloud.ath.entities.CarModel;
 @Entity
 @Table(name = "latest_commission")
 @Immutable
-public class CommissionView extends AbstractCommission {
+public class CommissionView {
 
     @Id
     private Long id;
@@ -28,6 +31,11 @@ public class CommissionView extends AbstractCommission {
     @OneToOne
     @JoinColumn(name = "car_model_id", referencedColumnName = "id")
     private CarModel carModel;
+
+    @Column(name = "from_date")
+    private Timestamp fromDate;
+
+    private Double percentage;
 
     public Commission toCommission() {
         Commission commission = new Commission();

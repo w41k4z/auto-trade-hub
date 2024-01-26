@@ -12,6 +12,17 @@ export type NavElement = {
 
 export const navConfig: NavElement[] = [
   {
+    title: "Paramétrage",
+    elements: [
+      {
+        title: "Commission",
+        path: "/app/commission",
+        icon: <RxActivityLog />,
+        onItemClick: () => {},
+      },
+    ],
+  },
+  {
     title: "Table",
     elements: [
       {

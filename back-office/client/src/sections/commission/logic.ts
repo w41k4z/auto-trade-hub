@@ -1,8 +1,8 @@
-import { FieldValues } from "react-hook-form";
 import axios from "../../axios";
+import { CarModel } from "../car-model/type";
 import { type Commission } from "./type";
 
-const originEndPoint = "/api/v1/category";
+const originEndPoint = "/api/v1/commissions";
 
 export const fetchData = async (callBack: (data: Commission[]) => void) => {
   await axios
@@ -10,7 +10,13 @@ export const fetchData = async (callBack: (data: Commission[]) => void) => {
     .then((response) => {
       const resp = response.data;
       if (resp.status === 200) {
-        callBack(resp.payload);
+        const data = resp.payload;
+        data.forEach((element: Commission) => {
+          element.carModelName = element.carModel.name;
+          element.carModelCategory = element.carModel.category.name;
+          element.carModelBrand = element.carModel.brand.name;
+        });
+        callBack(data);
       } else {
         alert(resp.message);
       }
@@ -20,12 +26,25 @@ export const fetchData = async (callBack: (data: Commission[]) => void) => {
     });
 };
 
-export const addCategory = async (data: any) => {
+export const addCommission = async (data: any) => {
+  const carModel: CarModel = {
+    id: data.carModelId,
+    name: "",
+    brand: {
+      id: -1,
+      name: "",
+    },
+    category: {
+      id: -1,
+      name: "",
+    },
+  };
+  data.carModel = carModel;
   await axios
     .post(originEndPoint, data)
     .then((response) => {
       if (response.data.status === 201) {
-        alert("Categorie ajoutée");
+        alert("Commission parametrée");
       } else {
         alert(response.data.message);
       }
@@ -35,27 +54,12 @@ export const addCategory = async (data: any) => {
     });
 };
 
-export const updateCategory = async (data: FieldValues) => {
+export const addGlobalCommission = async (data: any) => {
   await axios
-    .put(originEndPoint, data)
+    .post(originEndPoint + "/global", data)
     .then((response) => {
-      if (response.data.status === 200) {
-        alert("Categories modifiée");
-      } else {
-        alert(response.data.message);
-      }
-    })
-    .catch((error) => {
-      alert(error);
-    });
-};
-
-export const deleteCategory = async (data: any) => {
-  await axios
-    .delete(`${originEndPoint}/${data.id}`)
-    .then((response) => {
-      if (response.data.status === 200) {
-        alert("Categorie supprimée");
+      if (response.data.status === 201) {
+        alert("Commission globale parametrée");
       } else {
         alert(response.data.message);
       }

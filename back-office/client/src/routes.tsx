@@ -12,6 +12,7 @@ export const BrandPage = lazy(() => import("./pages/Brand"));
 export const CarModelPage = lazy(() => import("./pages/CarModel"));
 export const ProvincePage = lazy(() => import("./pages/Province"));
 export const LoginPage = lazy(() => import("./pages/Login"));
+export const CommissionPage = lazy(() => import("./pages/Commission"));
 
 export default function Router() {
   const routes = useRoutes([
@@ -52,6 +53,10 @@ export default function Router() {
         {
           path: "/app/province",
           element: <ProvincePage />,
+        },
+        {
+          path: "/app/commission",
+          element: <CommissionPage />,
         },
       ],
     },

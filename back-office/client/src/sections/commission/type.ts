@@ -5,6 +5,7 @@ export type Commission = {
   fromDate: Date;
   percentage: number;
   carModel: CarModel;
+  carModelName: string;
   carModelCategory: string;
   carModelBrand: string;
 };
