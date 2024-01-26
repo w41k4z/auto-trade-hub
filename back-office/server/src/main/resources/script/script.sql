@@ -119,7 +119,14 @@ CREATE TABLE users_history (
     old_province_id INTEGER NOT NULL REFERENCES province(id)
 );
 
-CREATE TABLE commision (
+CREATE TABLE commission (
+    id SERIAL PRIMARY KEY,
+    car_model_id INTEGER REFERENCES car_model(id) NOT NULL,
+    from_date TIMESTAMP NOT NULL,
+    percentage DOUBLE PRECISION NOT NULL
+);
+
+CREATE TABLE global_commission (
     id SERIAL PRIMARY KEY,
     from_date TIMESTAMP NOT NULL,
     percentage DOUBLE PRECISION NOT NULL
@@ -137,7 +144,7 @@ CREATE TABLE announcement (
     car_model_id INTEGER NOT NULL REFERENCES car_model(id),
     powertrain_type_id INTEGER NOT NULL REFERENCES powertrain_type(id),
     transmission_type_id INTEGER NOT NULL REFERENCES transmission_type(id),
-    commission_id INTEGER REFERENCES commision(id) NOT NULL,
+    commission DOUBLE PRECISION NOT NULL,
     users_id INTEGER NOT NULL REFERENCES users(id)
 );
 
