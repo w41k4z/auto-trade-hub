@@ -20,5 +20,4 @@ public class PowertrainType {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    private Integer state;
 }

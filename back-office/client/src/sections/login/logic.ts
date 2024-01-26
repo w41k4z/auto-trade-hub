@@ -6,7 +6,7 @@ import { ThunkDispatch } from "@reduxjs/toolkit";
 import { UserState } from "../../redux/features/User/type";
 import { NavigateFunction } from "react-router";
 
-const originEndPoint = "/auth/v1";
+const originEndPoint = "/auth/v1/back-office";
 
 export const authenticate = async (
   navigate: NavigateFunction,

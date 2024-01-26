@@ -3,7 +3,6 @@ package proj.cloud.ath.services;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
 
 import proj.cloud.ath.entities.Brand;
@@ -11,6 +10,7 @@ import proj.cloud.ath.repositories.BrandRepository;
 
 @Service
 public class BrandService {
+
     @Autowired
     private BrandRepository repository;
 
@@ -19,9 +19,7 @@ public class BrandService {
     }
 
     public List<Brand> findAll() {
-        Brand brand = new Brand();
-        brand.setState(0);
-        return repository.findAll(Example.of(brand));
+        return repository.findAll();
     }
 
     public Brand save(Brand brand) {
@@ -33,7 +31,6 @@ public class BrandService {
         if (brand == null) {
             return;
         }
-        brand.setState(-1);
-        this.save(brand);
+        repository.delete(brand);
     }
 }

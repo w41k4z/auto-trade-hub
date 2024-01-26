@@ -3,7 +3,6 @@ package proj.cloud.ath.services;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
 
 import proj.cloud.ath.entities.PowertrainType;
@@ -20,9 +19,7 @@ public class PowertrainTypeService {
     }
 
     public List<PowertrainType> findAll() {
-        PowertrainType powertrainType = new PowertrainType();
-        powertrainType.setState(0);
-        return repository.findAll(Example.of(powertrainType));
+        return repository.findAll();
     }
 
     public PowertrainType save(PowertrainType powertrainType) {
@@ -34,7 +31,6 @@ public class PowertrainTypeService {
         if (powertrainType == null) {
             return;
         }
-        powertrainType.setState(-1);
-        this.save(powertrainType);
+        repository.delete(powertrainType);
     }
 }

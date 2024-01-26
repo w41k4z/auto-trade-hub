@@ -34,7 +34,6 @@ public class TransmissionTypeController {
     @PostMapping
     public RestApiResponse create(@RequestBody TransmissionType transmissionType) {
         RestApiResponse response = new RestApiResponse();
-        transmissionType.setState(0);
         service.save(transmissionType);
         response.setPayload(transmissionType);
         response.setStatus(201);

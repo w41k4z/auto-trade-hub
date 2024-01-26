@@ -3,7 +3,6 @@ package proj.cloud.ath.services;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
 
 import proj.cloud.ath.entities.Category;
@@ -19,9 +18,7 @@ public class CategoryService {
     }
 
     public List<Category> findAll() {
-        Category category = new Category();
-        category.setState(0);
-        return repository.findAll(Example.of(category));
+        return repository.findAll();
     }
 
     public Category save(Category category) {
@@ -33,7 +30,6 @@ public class CategoryService {
         if (category == null) {
             return;
         }
-        category.setState(-1);
-        this.save(category);
-    }    
+        repository.delete(category);
+    }
 }

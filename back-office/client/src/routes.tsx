@@ -10,6 +10,7 @@ export const TransmissionTypePage = lazy(
 export const CategoryPage = lazy(() => import("./pages/Category"));
 export const BrandPage = lazy(() => import("./pages/Brand"));
 export const CarModelPage = lazy(() => import("./pages/CarModel"));
+export const ProvincePage = lazy(() => import("./pages/Province"));
 export const LoginPage = lazy(() => import("./pages/Login"));
 
 export default function Router() {
@@ -47,6 +48,10 @@ export default function Router() {
         {
           path: "/app/car-model",
           element: <CarModelPage />,
+        },
+        {
+          path: "/app/province",
+          element: <ProvincePage />,
         },
       ],
     },

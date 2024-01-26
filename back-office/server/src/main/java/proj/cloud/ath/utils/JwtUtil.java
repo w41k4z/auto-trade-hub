@@ -1,6 +1,7 @@
 package proj.cloud.ath.utils;
 
 import java.util.Date;
+import java.util.Map;
 import java.util.function.Function;
 
 import javax.crypto.SecretKey;
@@ -18,7 +19,7 @@ public class JwtUtil {
 
     public static final long JWT_TOKEN_VALIDITY = 5 * 60 * 60;
 
-    public String getUsernameFromToken(String token) {
+    public String getSubjectFromToken(String token) {
         return getClaimFromToken(token, Claims::getSubject);
     }
 
@@ -49,6 +50,10 @@ public class JwtUtil {
         return Jwts.builder().claim("role", "ADMIN").subject(admin.getEmail()).signWith(key).compact();
     }
 
+    public String generateToken(Map<String, Object> claims, String subject) {
+        return Jwts.builder().claims(claims).subject(subject).signWith(key).compact();
+    }
+
     public Boolean isValidToken(String token) {
         try {
             Jwts.parser()
@@ -57,7 +62,6 @@ public class JwtUtil {
                     .parseSignedClaims(token);
             return true;
         } catch (Exception e) {
-            System.out.println(e);
             return false;
         }
     }

@@ -11,17 +11,17 @@ import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import proj.cloud.ath.entities.Brand;
+import proj.cloud.ath.entities.Province;
 import proj.cloud.ath.response.RestApiResponse;
-import proj.cloud.ath.services.BrandService;
+import proj.cloud.ath.services.ProvinceService;
 import proj.cloud.ath.utils.JwtUtil;
 
 @RestController
-@RequestMapping("/api/v1/brand")
-public class BrandController {
+@RequestMapping("/api/v1/provinces")
+public class ProvinceController {
 
     @Autowired
-    private BrandService service;
+    private ProvinceService service;
 
     @Autowired
     private JwtUtil jwtUtil;
@@ -54,12 +54,12 @@ public class BrandController {
 
     @PostMapping
     public RestApiResponse create(
-            @RequestHeader(value = "Authorization") String bearerToken, @RequestBody Brand brand) {
+            @RequestHeader(value = "Authorization") String bearerToken, @RequestBody Province province) {
         String token = bearerToken.substring(7);
         RestApiResponse response = new RestApiResponse();
         if (jwtUtil.isValidToken(token)) {
-            service.save(brand);
-            response.setPayload(brand);
+            service.save(province);
+            response.setPayload(province);
             response.setStatus(201);
         } else {
             response.setMessage("Invalid token");
@@ -70,17 +70,17 @@ public class BrandController {
 
     @PutMapping
     public RestApiResponse update(@RequestHeader(value = "Authorization") String bearerToken,
-            @RequestBody Brand brand) {
+            @RequestBody Province province) {
         String token = bearerToken.substring(7);
         RestApiResponse response = new RestApiResponse();
         if (jwtUtil.isValidToken(token)) {
             response.setStatus(400);
-            Brand oldBrand = service.findById(brand.getId());
-            if (oldBrand != null) {
-                oldBrand.setName(brand.getName());
-                service.save(oldBrand);
+            Province oldProvince = service.findById(province.getId());
+            if (oldProvince != null) {
+                oldProvince.setName(province.getName());
+                service.save(oldProvince);
                 response.setStatus(200);
-                response.setPayload(oldBrand);
+                response.setPayload(oldProvince);
             }
         } else {
             response.setMessage("Invalid token");
