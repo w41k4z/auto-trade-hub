@@ -21,14 +21,14 @@ public class CommissionService {
     private VCommissionRepository _repository;
 
     public Commission findById(Long id) {
-        return _repository.findById(id).orElse(null).toCommission();
+        return _repository.findById(id).orElse(null);
     }
 
     public List<Commission> findAll() {
         List<VCommission> vcommissions = _repository.findAll();
         List<Commission> commissions = new ArrayList<>();
-        for (VCommission vcommission : vcommissions) {
-            commissions.add(vcommission.toCommission());
+        for (VCommission commission : vcommissions) {
+            commissions.add(commission);
         }
         return commissions;
     }

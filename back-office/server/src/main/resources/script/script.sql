@@ -12,7 +12,7 @@ CREATE TABLE brand (
 CREATE TABLE brand_history(
     brand_id INTEGER NOT NULL REFERENCES brand (id),
     old_name VARCHAR(50) NOT NULL,
-    new_name VARCHAR(50) NOT NULL,
+    new_name VARCHAR(50) NOT NULL
 );
 
 -- Sedan, Coupe, Hatchback, SUV, Crossover, Minivan, Pickup, Convertible, Wagon...
@@ -25,7 +25,7 @@ CREATE TABLE category (
 CREATE TABLE category_history(
     category_id INTEGER NOT NULL REFERENCES category (id),
     old_name VARCHAR(50) NOT NULL,
-    new_name VARCHAR(50) NOT NULL,
+    new_name VARCHAR(50) NOT NULL
 );
 
 -- automatic, manual, semi-automatic, CVT, DCT, DSG...
@@ -38,7 +38,7 @@ CREATE TABLE transmission_type (
 CREATE TABLE transmission_type_history(
     transmission_type_id INTEGER NOT NULL REFERENCES transmission_type (id),
     old_name VARCHAR(50) NOT NULL,
-    new_name VARCHAR(50) NOT NULL,
+    new_name VARCHAR(50) NOT NULL
 );
 
 -- Gasoline, Diesel, Electric, Hybrid, Hydrogen...
@@ -51,7 +51,7 @@ CREATE TABLE powertrain_type (
 CREATE TABLE powertrain_type_history(
     powertrain_type_id INTEGER NOT NULL REFERENCES powertrain_type (id),
     old_name VARCHAR(50) NOT NULL,
-    new_name VARCHAR(50) NOT NULL,
+    new_name VARCHAR(50) NOT NULL
 );
 
 -- L200, L300, L400, Lancer, Pajero, Outlander, Mirage, Montero...
@@ -83,7 +83,7 @@ CREATE TABLE province (
 CREATE TABLE province_history(
     powertrain_id INTEGER NOT NULL REFERENCES province (id),
     old_name VARCHAR(50) NOT NULL,
-    new_name VARCHAR(50) NOT NULL,
+    new_name VARCHAR(50) NOT NULL
 );
 
 CREATE TABLE users (
@@ -95,8 +95,7 @@ CREATE TABLE users (
     phone_number VARCHAR(18) NOT NULL,
     email VARCHAR(50) NOT NULL UNIQUE,
     password TEXT NOT NULL UNIQUE, -- encrypted password
-    province_id INTEGER NOT NULL REFERENCES province(id),
-    state INTEGER DEFAULT 0
+    province_id INTEGER NOT NULL REFERENCES province(id)
 );
 
 CREATE TABLE users_history (
