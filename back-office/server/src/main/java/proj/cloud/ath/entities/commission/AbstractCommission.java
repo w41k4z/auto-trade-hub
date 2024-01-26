@@ -1,4 +1,4 @@
-package proj.cloud.ath.entities;
+package proj.cloud.ath.entities.commission;
 
 import java.sql.Timestamp;
 

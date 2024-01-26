@@ -6,10 +6,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import proj.cloud.ath.entities.Commission;
-import proj.cloud.ath.entities.VCommission;
+import proj.cloud.ath.entities.commission.Commission;
+import proj.cloud.ath.entities.commission.CommissionView;
 import proj.cloud.ath.repositories.CommissionRepository;
-import proj.cloud.ath.repositories.VCommissionRepository;
+import proj.cloud.ath.repositories.CommissionViewRepository;
 
 @Service
 public class CommissionService {
@@ -18,16 +18,16 @@ public class CommissionService {
     private CommissionRepository repository;
 
     @Autowired
-    private VCommissionRepository _repository;
+    private CommissionViewRepository _repository;
 
     public Commission findById(Long id) {
         return _repository.findById(id).orElse(null).toCommission();
     }
 
     public List<Commission> findAll() {
-        List<VCommission> vcommissions = _repository.findAll();
+        List<CommissionView> vcommissions = _repository.findAll();
         List<Commission> commissions = new ArrayList<>();
-        for (VCommission vcommission : vcommissions) {
+        for (CommissionView vcommission : vcommissions) {
             commissions.add(vcommission.toCommission());
         }
         return commissions;

@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import proj.cloud.ath.entities.Commission;
+import proj.cloud.ath.entities.commission.Commission;
 import proj.cloud.ath.response.RestApiResponse;
 import proj.cloud.ath.services.CommissionService;
 

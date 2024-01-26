@@ -1,5 +1,7 @@
 package proj.cloud.ath.controllers.api.v1;
 
+import java.util.HashMap;
+
 import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -42,8 +44,15 @@ public class UserController {
         RestApiResponse response = new RestApiResponse();
         user.setPassword(BCrypt.hashpw(user.getPassword(), BCrypt.gensalt()));
         service.save(user);
-        response.setPayload(user);
+
+        HashMap<String, Object> payload = new HashMap<>();
+        HashMap<String, Object> claims = new HashMap<>();
+        claims.put("role", "USER");
+        String token = jwtUtil.generateToken(claims, user.getEmail());
+        payload.put("accessToken", token);
+
         response.setStatus(201);
+        response.setPayload(payload);
         return response;
     }
 
