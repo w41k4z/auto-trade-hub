@@ -6,6 +6,7 @@ import org.hibernate.annotations.Immutable;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+<<<<<<< HEAD:back-office/server/src/main/java/proj/cloud/ath/entities/commission/CommissionView.java
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
@@ -45,4 +46,13 @@ public class CommissionView {
         commission.setPercentage(this.getPercentage());
         return commission;
     }
+=======
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "latest_commission")
+@Immutable
+public class VCommission extends Commission {
+
+>>>>>>> Last_version:back-office/server/src/main/java/proj/cloud/ath/entities/VCommission.java
 }
