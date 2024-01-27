@@ -67,3 +67,17 @@ CROSS JOIN (
     LIMIT 1 -- This view is supposed to return a single row, this is for a security reason
 ) AS global_commission
 ;
+
+CREATE VIEW pending_annoucement AS
+SELECT 
+    *
+FROM announcement
+WHERE state = 0
+ORDER BY 
+    announcement_date ASC
+;
+
+-- CREATE VIEW sold_car AS
+-- SELECT
+
+-- FROM announcement

@@ -137,13 +137,14 @@ CREATE TABLE announcement (
     mileage DOUBLE PRECISION NOT NULL,
     price DOUBLE PRECISION NOT NULL,
     announcement_date DATE DEFAULT NOW(),
-    description VARCHAR(255),
-    years INTEGER NOT NULL,
-    phone_number VARCHAR(18) NOT NULL,
-    status INTEGER DEFAULT 0, --is sell
     car_model_id INTEGER NOT NULL REFERENCES car_model(id),
     powertrain_type_id INTEGER NOT NULL REFERENCES powertrain_type(id),
     transmission_type_id INTEGER NOT NULL REFERENCES transmission_type(id),
+    description VARCHAR(255),
+    years INTEGER NOT NULL,
+    phone_number VARCHAR(18) NOT NULL,
+    status INTEGER DEFAULT 0, -- is sold | validated | deleted
+    sale_date DATE,
     commission DOUBLE PRECISION NOT NULL,
     users_id INTEGER NOT NULL REFERENCES users(id)
 );
