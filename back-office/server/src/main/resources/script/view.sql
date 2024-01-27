@@ -2,13 +2,13 @@ CREATE VIEW latest_commission AS
 SELECT
     c.*,
     commission.percentage
-FROM commision
+FROM commission
 JOIN (
     SELECT
         id,
         MAX(from_date) AS from_date
-    FROM commision
+    FROM commission
 ) AS c
-    ON c.id = commision.id
-    AND c.from_date = commision.from_date
+    ON c.id = commission.id
+    AND c.from_date = commission.from_date
 ;

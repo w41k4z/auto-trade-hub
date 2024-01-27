@@ -8,6 +8,8 @@ CREATE TABLE brand (
     name VARCHAR(50) NOT NULL
 );
 
+insert into brand values (default,'Toyota');
+
 --history table
 CREATE TABLE brand_history(
     brand_id INTEGER NOT NULL REFERENCES brand (id),
@@ -20,6 +22,8 @@ CREATE TABLE category (
     id SERIAL PRIMARY KEY,
     name VARCHAR(50) NOT NULL
 );
+
+insert into category values (default,'Sedan');
 
 -- history table
 CREATE TABLE category_history(
@@ -34,6 +38,9 @@ CREATE TABLE transmission_type (
     name VARCHAR(50) NOT NULL
 );
 
+insert into transmission_type values (default,'automatic');
+
+
 -- history table
 CREATE TABLE transmission_type_history(
     transmission_type_id INTEGER NOT NULL REFERENCES transmission_type (id),
@@ -46,6 +53,8 @@ CREATE TABLE powertrain_type (
     id SERIAL PRIMARY KEY,
     name VARCHAR(50) NOT NULL
 );
+
+insert into powertrain_type values (default,'Gasoline');
 
 -- history table
 CREATE TABLE powertrain_type_history(
@@ -63,6 +72,9 @@ CREATE TABLE car_model (
     state INTEGER DEFAULT 0
 );
 
+insert into car_model values (default,'L200',1,1,default);
+
+
 CREATE TABLE admin (
     id SERIAL PRIMARY KEY,
     name VARCHAR(50) NOT NULL,
@@ -78,6 +90,8 @@ CREATE TABLE province (
     id SERIAL PRIMARY KEY,
     name VARCHAR(50) NOT NULL
 );
+
+insert into province values (default,'TANA');
 
 -- history table
 CREATE TABLE province_history(
@@ -97,6 +111,9 @@ CREATE TABLE users (
     password TEXT NOT NULL UNIQUE, -- encrypted password
     province_id INTEGER NOT NULL REFERENCES province(id)
 );
+
+INSERT INTO users (name, first_name, birth_date, genre, phone_number, email, password, province_id)
+VALUES ('Doe', 'John', '1990-01-01', 1, '123456789', 'john.doe@example.com', 'hashed_password_1', 1);
 
 CREATE TABLE users_history (
     users_id INTEGER NOT NULL REFERENCES users (id),
@@ -118,11 +135,14 @@ CREATE TABLE users_history (
     old_province_id INTEGER NOT NULL REFERENCES province(id)
 );
 
-CREATE TABLE commision (
+CREATE TABLE commission (
     id SERIAL PRIMARY KEY,
     from_date TIMESTAMP NOT NULL,
     percentage DOUBLE PRECISION NOT NULL
 );
+
+drop table announcement_picture cascade;
+insert into commision values (default,now(),10);
 
 CREATE TABLE announcement (
     id SERIAL PRIMARY KEY,
@@ -136,7 +156,7 @@ CREATE TABLE announcement (
     car_model_id INTEGER NOT NULL REFERENCES car_model(id),
     powertrain_type_id INTEGER NOT NULL REFERENCES powertrain_type(id),
     transmission_type_id INTEGER NOT NULL REFERENCES transmission_type(id),
-    commission_id INTEGER REFERENCES commision(id) NOT NULL,
+    commission_id INTEGER REFERENCES commission(id) NOT NULL,
     users_id INTEGER NOT NULL REFERENCES users(id)
 );
 
