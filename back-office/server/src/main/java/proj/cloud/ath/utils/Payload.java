@@ -1,8 +1,5 @@
 package proj.cloud.ath.utils;
 
-import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.support.MultipartFilter;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
@@ -10,7 +7,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import proj.cloud.ath.entities.Announcement;
 import proj.cloud.ath.entities.CarModel;
-import proj.cloud.ath.entities.Commission;
 import proj.cloud.ath.entities.PowertrainType;
 import proj.cloud.ath.entities.TransmissionType;
 import proj.cloud.ath.entities.User;
@@ -21,7 +17,7 @@ import proj.cloud.ath.entities.User;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Payload {
-    //  MultipartFile[] files;
+    // MultipartFile[] files;
     private Double mileage;
     private Double price;
     private Integer years;
@@ -30,19 +26,18 @@ public class Payload {
     private Long car_model_id;
     private Long powertrain_type_id;
     private Long transmission_type_id;
-    private Long commission_id;
+    private Double commission;
     private Long users_id;
 
     // public void setFiles(MultipartFile[] files){
-    //     this.files = files;
+    // this.files = files;
     // }
 
     // public MultipartFile[] getFiles(){
-    //     return this.files;
+    // return this.files;
     // }
 
-
-    public Announcement getAnnouncement(){
+    public Announcement getAnnouncement() {
         Announcement announcement = new Announcement();
         announcement.setMileage(this.mileage);
         announcement.setPhone_number(this.phone_number);
@@ -58,10 +53,7 @@ public class Payload {
         TransmissionType transmissionType = new TransmissionType();
         transmissionType.setId(this.transmission_type_id);
         announcement.setTransmission_type(transmissionType);
-        Commission commission = new Commission();
-        commission.setId(this.commission_id);
         announcement.setCommission(commission);
-        System.out.println(commission.getId());
         User user = new User();
         user.setId(this.users_id);
         announcement.setUsers(user);
@@ -69,94 +61,94 @@ public class Payload {
     }
 
     // /**
-    //  * @return String return the description
-    //  */
+    // * @return String return the description
+    // */
     // public String getDescription() {
-    //     return description;
+    // return description;
     // }
 
     // /**
-    //  * @param description the description to set
-    //  */
+    // * @param description the description to set
+    // */
     // public void setDescription(String description) {
-    //     this.description = description;
+    // this.description = description;
     // }
 
     // /**
-    //  * @return Integer return the years
-    //  */
+    // * @return Integer return the years
+    // */
     // public Integer getYears() {
-    //     return years;
+    // return years;
     // }
 
     // /**
-    //  * @return Integer return the status
-    //  */
+    // * @return Integer return the status
+    // */
     // public Integer getStatus() {
-    //     return status;
+    // return status;
     // }
 
     // /**
-    //  * @param car_model_id the car_model_id to set
-    //  */
+    // * @param car_model_id the car_model_id to set
+    // */
     // public void setCar_model_id(Long car_model_id) {
-    //     this.car_model_id = car_model_id;
+    // this.car_model_id = car_model_id;
     // }
 
     // /**
-    //  * @return Long return the powertrain_type_id
-    //  */
+    // * @return Long return the powertrain_type_id
+    // */
     // public Long getPowertrain_type_id() {
-    //     return powertrain_type_id;
+    // return powertrain_type_id;
     // }
 
     // /**
-    //  * @param powertrain_type_id the powertrain_type_id to set
-    //  */
+    // * @param powertrain_type_id the powertrain_type_id to set
+    // */
     // public void setPowertrain_type_id(Long powertrain_type_id) {
-    //     this.powertrain_type_id = powertrain_type_id;
+    // this.powertrain_type_id = powertrain_type_id;
     // }
 
     // /**
-    //  * @return Long return the transmission_type_id
-    //  */
+    // * @return Long return the transmission_type_id
+    // */
     // public Long getTransmission_type_id() {
-    //     return transmission_type_id;
+    // return transmission_type_id;
     // }
 
     // /**
-    //  * @param transmission_type_id the transmission_type_id to set
-    //  */
+    // * @param transmission_type_id the transmission_type_id to set
+    // */
     // public void setTransmission_type_id(Long transmission_type_id) {
-    //     this.transmission_type_id = transmission_type_id;
+    // this.transmission_type_id = transmission_type_id;
     // }
 
     // /**
-    //  * @return Long return the commission_id
-    //  */
+    // * @return Long return the commission_id
+    // */
     // public Long getCommission_id() {
-    //     return commission_id;
+    // return commission_id;
     // }
 
     // /**
-    //  * @param commission_id the commission_id to set
-    //  */
+    // * @param commission_id the commission_id to set
+    // */
     // public void setCommission_id(Long commission_id) {
-    //     this.commission_id = commission_id;
+    // this.commission_id = commission_id;
     // }
 
     // /**
-    //  * @return Long return the users_id
-    //  */
+    // * @return Long return the users_id
+    // */
     // public Long getUsers_id() {
-    //     return users_id;
+    // return users_id;
     // }
 
     // /**
-    //  * @param users_id the users_id to set
-    //  */
+    // * @param users_id the users_id to set
+    // */
     // public void setUsers_id(Long users_id) {
-    //     this.users_id = users_id;
+    // this.users_id = users_id;
     // }
 
 }

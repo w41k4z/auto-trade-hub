@@ -21,7 +21,11 @@ public class CommissionService {
     private CommissionViewRepository _repository;
 
     public Commission findById(Long id) {
-        return _repository.findById(id).orElse(null);
+        return _repository.findById(id).orElse(null).toCommission();
+    }
+
+    public Commission getCommissionByCarModelId(Long id) {
+        return _repository.findByCarModelId(id).toCommission();
     }
 
     public List<Commission> findAll() {

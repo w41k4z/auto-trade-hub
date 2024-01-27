@@ -5,7 +5,6 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
@@ -46,9 +45,7 @@ public class Announcement {
     @JoinColumn(name = "transmission_type_id", referencedColumnName = "id")
     private TransmissionType transmission_type;
 
-    @OneToOne
-    @JoinColumn(name = "commission_id", referencedColumnName = "id")
-    private Commission commission;
+    private Double commission;
 
     @OneToOne
     @JoinColumn(name = "users_id", referencedColumnName = "id")
