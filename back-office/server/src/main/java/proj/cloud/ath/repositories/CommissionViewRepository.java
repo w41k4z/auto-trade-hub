@@ -6,4 +6,5 @@ import proj.cloud.ath.entities.commission.CommissionView;
 
 public interface CommissionViewRepository extends JpaRepository<CommissionView, Long> {
 
+    public CommissionView findByCarModelId(Long id);
 }

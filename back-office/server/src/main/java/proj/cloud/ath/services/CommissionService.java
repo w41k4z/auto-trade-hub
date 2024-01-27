@@ -24,6 +24,10 @@ public class CommissionService {
         return _repository.findById(id).orElse(null).toCommission();
     }
 
+    public Commission getCommissionByCarModelId(Long id) {
+        return _repository.findByCarModelId(id).toCommission();
+    }
+
     public List<Commission> findAll() {
         List<CommissionView> vcommissions = _repository.findAll();
         List<Commission> commissions = new ArrayList<>();
