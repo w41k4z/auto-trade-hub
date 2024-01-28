@@ -23,6 +23,17 @@ export const navConfig: NavElement[] = [
     ],
   },
   {
+    title: "Validation",
+    elements: [
+      {
+        title: "Annonce",
+        path: "/app/announcement",
+        icon: <RxActivityLog />,
+        onItemClick: () => {},
+      },
+    ],
+  },
+  {
     title: "Table",
     elements: [
       {

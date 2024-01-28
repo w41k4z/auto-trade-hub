@@ -1,0 +1,3 @@
+const usePendingAnnouncement = () => {
+  return {};
+};
