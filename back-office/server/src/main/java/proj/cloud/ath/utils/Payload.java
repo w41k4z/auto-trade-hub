@@ -10,6 +10,8 @@ import proj.cloud.ath.entities.CarModel;
 import proj.cloud.ath.entities.PowertrainType;
 import proj.cloud.ath.entities.TransmissionType;
 import proj.cloud.ath.entities.User;
+import proj.cloud.ath.entities.commission.Commission;
+import proj.cloud.ath.services.CommissionService;
 
 @Data
 @Setter
@@ -17,7 +19,6 @@ import proj.cloud.ath.entities.User;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Payload {
-    // MultipartFile[] files;
     private Double mileage;
     private Double price;
     private Integer years;
@@ -26,18 +27,11 @@ public class Payload {
     private Long car_model_id;
     private Long powertrain_type_id;
     private Long transmission_type_id;
-    private Double commission;
     private Long users_id;
 
-    // public void setFiles(MultipartFile[] files){
-    // this.files = files;
-    // }
-
-    // public MultipartFile[] getFiles(){
-    // return this.files;
-    // }
 
     public Announcement getAnnouncement() {
+        CommissionService commissionService = new CommissionService();
         Announcement announcement = new Announcement();
         announcement.setMileage(this.mileage);
         announcement.setPhone_number(this.phone_number);
@@ -47,13 +41,14 @@ public class Payload {
         CarModel carModel = new CarModel();
         carModel.setId(this.car_model_id);
         announcement.setCar_model(carModel);
+        Double com = commissionService.getCommissionByCarModelId(car_model_id).getPercentage();
         PowertrainType powertrainType = new PowertrainType();
         powertrainType.setId(this.powertrain_type_id);
         announcement.setPowertrain_type(powertrainType);
         TransmissionType transmissionType = new TransmissionType();
         transmissionType.setId(this.transmission_type_id);
         announcement.setTransmission_type(transmissionType);
-        announcement.setCommission(commission);
+        announcement.setCommission(com);
         User user = new User();
         user.setId(this.users_id);
         announcement.setUsers(user);
