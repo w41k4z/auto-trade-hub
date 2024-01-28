@@ -40,7 +40,7 @@ export const authenticate = async (
           })
         );
         reduxDispatch(setLoading(false));
-        navigate("/app/brand");
+        navigate("/app/dashboard");
       } else {
         console.log(response.message);
         setError("global", {
