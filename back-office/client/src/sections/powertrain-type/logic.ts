@@ -2,9 +2,20 @@ import { FieldValues } from "react-hook-form";
 import axios from "../../axios";
 import { type PowertrainType } from "./type";
 
-export const fetchData = async (callBack: (data: PowertrainType[]) => void) => {
+const originEndPoint = "/api/v1/powertrain-types";
+
+export const fetchData = async (
+  callBack: (data: PowertrainType[]) => void,
+  token: string
+) => {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+
   await axios
-    .get("/powertrain-types")
+    .get(originEndPoint, config)
     .then((response) => {
       const resp = response.data;
       if (resp.status === 200) {
@@ -18,12 +29,18 @@ export const fetchData = async (callBack: (data: PowertrainType[]) => void) => {
     });
 };
 
-export const addPowertrainType = async (data: any) => {
+export const addPowertrainType = async (data: any, token: string) => {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+
   await axios
-    .post("/powertrain-types", data)
+    .post(originEndPoint, data, config)
     .then((response) => {
       if (response.data.status === 201) {
-        alert("Type de transmission ajouté");
+        alert("Type d'energie ajouté");
       } else {
         alert(response.data.message);
       }
@@ -33,12 +50,21 @@ export const addPowertrainType = async (data: any) => {
     });
 };
 
-export const updatePowertrainType = async (data: FieldValues) => {
+export const updatePowertrainType = async (
+  data: FieldValues,
+  token: string
+) => {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+
   await axios
-    .put("/powertrain-types", data)
+    .put(originEndPoint, data, config)
     .then((response) => {
       if (response.data.status === 200) {
-        alert("Type de transmission modifié");
+        alert("Type d'energie modifié");
       } else {
         alert(response.data.message);
       }
@@ -48,12 +74,18 @@ export const updatePowertrainType = async (data: FieldValues) => {
     });
 };
 
-export const deletePowertrainType = async (data: any) => {
+export const deletePowertrainType = async (data: any, token: string) => {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+
   await axios
-    .delete(`/powertrain-types/${data.id}`)
+    .delete(`${originEndPoint}/${data.id}`, config)
     .then((response) => {
       if (response.data.status === 200) {
-        alert("Type de transmission supprimé");
+        alert("Type d'energie supprimé");
       } else {
         alert(response.data.message);
       }

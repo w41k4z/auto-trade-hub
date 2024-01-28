@@ -31,3 +31,6 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### env ###
+src/main/resources/auto-trade-hub-img-storage-firebase-adminsdk-lribp-3ea3b9bad6.json
