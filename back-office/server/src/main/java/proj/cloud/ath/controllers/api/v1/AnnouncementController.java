@@ -8,12 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
@@ -59,17 +56,17 @@ public class AnnouncementController {
         return downloadUrls;
     }
 
-
     @Transactional
-    @PostMapping(consumes={MediaType.MULTIPART_FORM_DATA_VALUE,MediaType.APPLICATION_OCTET_STREAM_VALUE})
-    public RestApiResponse create(@RequestPart Payload py ,@RequestPart MultipartFile[] files) throws IOException {
+    @PostMapping(consumes = { MediaType.MULTIPART_FORM_DATA_VALUE, MediaType.APPLICATION_OCTET_STREAM_VALUE })
+    public RestApiResponse create(@RequestPart Payload py, @RequestPart MultipartFile[] files) throws IOException {
         RestApiResponse response = new RestApiResponse();
         Announcement announcement = py.getAnnouncement();
         service.save(announcement);
         response.setPayload(announcement);
-        List<String> downloadUrls = this.uploadFiles( files );
+        List<String> downloadUrls = this.uploadFiles(files);
         for (int i = 0; i < downloadUrls.size(); i++) {
-            Announcement_picture pic = new Announcement_picture(null, downloadUrls.get(i), (Announcement) response.getPayload(), null);
+            Announcement_picture pic = new Announcement_picture(null, downloadUrls.get(i),
+                    (Announcement) response.getPayload(), null);
             announcement_pictureservice.save(pic);
         }
         response.setStatus(201);
