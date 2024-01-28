@@ -1,0 +1,39 @@
+.text-c-blue {
+    color: #01a9ac;
+}
+
+.text-c-pink {
+    color: #fe5d70;
+}
+
+.text-c-green {
+    color: #0ac282;
+}
+
+.text-c-yellow {
+    color: #fe9365;
+}
+
+.f-w-600 {
+    font-weight: 600;
+}
+
+.bg-c-blue {
+    background: -webkit-gradient(linear,left top,right top,from(#01a9ac),to(#01dbdf));
+    background: linear-gradient(to right,#01a9ac,#01dbdf);
+}
+
+.bg-c-pink {
+    background: -webkit-gradient(linear,left top,right top,from(#fe5d70),to(#fe909d));
+    background: linear-gradient(to right,#fe5d70,#fe909d);
+}
+
+.bg-c-green {
+    background: -webkit-gradient(linear,left top,right top,from(#0ac282),to(#0df3a3));
+    background: linear-gradient(to right,#0ac282,#0df3a3);
+}
+
+.bg-c-yellow {
+    background: -webkit-gradient(linear,left top,right top,from(#fe9365),to(#feb798));
+    background: linear-gradient(to right,#fe9365,#feb798);
+}

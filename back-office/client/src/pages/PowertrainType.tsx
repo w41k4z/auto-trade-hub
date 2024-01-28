@@ -5,7 +5,7 @@ const PowertrainType = () => {
   return (
     <>
       <Helmet>
-        <title>Type de transmission</title>
+        <title>Type d'energie</title>
       </Helmet>
       <PowertrainTypeView />
     </>

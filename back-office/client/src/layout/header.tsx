@@ -1,12 +1,24 @@
 import { BsSearch } from "react-icons/bs";
 import { FiLogOut } from "react-icons/fi";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { AppDispatch } from "../redux/store";
+import { setUser, setLoading } from "../redux/features/User/action";
 
 const Header = () => {
+  const useAppDispatch = () => useDispatch<AppDispatch>();
+  const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
   const logout = () => {
-    localStorage.removeItem("user");
+    dispatch(
+      setUser({
+        accessToken: "",
+        role: "",
+      })
+    );
+    dispatch(setLoading(false));
+    localStorage.removeItem("token");
     navigate("/");
   };
 
