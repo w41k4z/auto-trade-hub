@@ -12,11 +12,33 @@ export type NavElement = {
 
 export const navConfig: NavElement[] = [
   {
+    title: "Menu",
+    elements: [
+      {
+        title: "Dashboard",
+        path: "/app/dashboard",
+        icon: <RxActivityLog />,
+        onItemClick: () => {},
+      },
+    ],
+  },
+  {
     title: "Paramétrage",
     elements: [
       {
         title: "Commission",
         path: "/app/commission",
+        icon: <RxActivityLog />,
+        onItemClick: () => {},
+      },
+    ],
+  },
+  {
+    title: "Validation",
+    elements: [
+      {
+        title: "Annonce",
+        path: "/app/announcement",
         icon: <RxActivityLog />,
         onItemClick: () => {},
       },

@@ -5,7 +5,7 @@ import useBrand from "../brand/useBrand";
 import useCategory from "../category/useCategory";
 
 const useCarModel = () => {
-  const { brands } = useBrand();
+  const { brands, token } = useBrand();
   const { categories } = useCategory();
   const [carModels, setCarModels] = useState<CarModel[]>([]);
   const [loading, setLoading] = useState(false);
@@ -14,10 +14,11 @@ const useCarModel = () => {
     fetchData((data: CarModel[]) => {
       setCarModels(data);
       setLoading(false);
-    });
+    }, token);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  return { loading, carModels, brands, categories };
+  return { loading, carModels, brands, categories, token };
 };
 
 export default useCarModel;

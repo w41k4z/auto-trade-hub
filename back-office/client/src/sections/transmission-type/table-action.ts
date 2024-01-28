@@ -1,7 +1,11 @@
 import { TableActionType } from "../../components/datatable/GenericTable";
-import { addTransmissionType, updateTransmissionType, deleteTransmissionType } from "./logic";
+import {
+  addTransmissionType,
+  updateTransmissionType,
+  deleteTransmissionType,
+} from "./logic";
 
-export const tableAction = () => {
+export const tableAction = (token: string) => {
   const tableActionType: TableActionType = {
     addAction: {
       formTitle: "Ajouter un nouveau type de transmission",
@@ -17,7 +21,7 @@ export const tableAction = () => {
         },
       ],
       onSubmit: async (data) => {
-        addTransmissionType(data);
+        addTransmissionType(data, token);
       },
     },
     updateAction: (data) => {
@@ -37,10 +41,10 @@ export const tableAction = () => {
             defaultValue: data.name,
           },
         ],
-        onSubmit: updateTransmissionType,
+        onSubmit: (data) => updateTransmissionType(data, token),
       };
     },
-    deleteAction: deleteTransmissionType,
+    deleteAction: (data) => deleteTransmissionType(data, token),
     hasFeature: {
       hasExportPdf: true,
     },

@@ -13,6 +13,10 @@ export const CarModelPage = lazy(() => import("./pages/CarModel"));
 export const ProvincePage = lazy(() => import("./pages/Province"));
 export const LoginPage = lazy(() => import("./pages/Login"));
 export const CommissionPage = lazy(() => import("./pages/Commission"));
+export const AnnoucementPage = lazy(
+  () => import("./pages/PendingAnnouncement")
+);
+export const DashboardPage = lazy(() => import("./pages/Dashboard"));
 
 export default function Router() {
   const routes = useRoutes([
@@ -57,6 +61,14 @@ export default function Router() {
         {
           path: "/app/commission",
           element: <CommissionPage />,
+        },
+        {
+          path: "/app/announcement",
+          element: <AnnoucementPage />,
+        },
+        {
+          path: "/app/dashboard",
+          element: <DashboardPage />,
         },
       ],
     },

@@ -4,9 +4,15 @@ import { type Category } from "./type";
 
 const originEndPoint = "/api/v1/category";
 
-export const fetchData = async (callBack: (data: Category[]) => void) => {
+export const fetchData = async (callBack: (data: Category[]) => void, token: string) => {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+
   await axios
-    .get(originEndPoint)
+    .get(originEndPoint, config)
     .then((response) => {
       const resp = response.data;
       if (resp.status === 200) {
@@ -20,9 +26,15 @@ export const fetchData = async (callBack: (data: Category[]) => void) => {
     });
 };
 
-export const addCategory = async (data: any) => {
+export const addCategory = async (data: any, token: string) => {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+  
   await axios
-    .post(originEndPoint, data)
+    .post(originEndPoint, data, config)
     .then((response) => {
       if (response.data.status === 201) {
         alert("Categorie ajoutée");
@@ -35,9 +47,15 @@ export const addCategory = async (data: any) => {
     });
 };
 
-export const updateCategory = async (data: FieldValues) => {
+export const updateCategory = async (data: FieldValues, token: string) => {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+  
   await axios
-    .put(originEndPoint, data)
+    .put(originEndPoint, data, config)
     .then((response) => {
       if (response.data.status === 200) {
         alert("Categories modifiée");
@@ -50,9 +68,15 @@ export const updateCategory = async (data: FieldValues) => {
     });
 };
 
-export const deleteCategory = async (data: any) => {
+export const deleteCategory = async (data: any, token: string) => {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+
   await axios
-    .delete(`${originEndPoint}/${data.id}`)
+    .delete(`${originEndPoint}/${data.id}`, config)
     .then((response) => {
       if (response.data.status === 200) {
         alert("Categorie supprimée");

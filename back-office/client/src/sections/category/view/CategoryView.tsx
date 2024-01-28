@@ -4,7 +4,7 @@ import { tableColumns } from "../table-column";
 import useCategory from "../useCategory";
 
 const CategoryView = () => {
-  const { categories, loading } = useCategory();
+  const { categories, loading, token } = useCategory();
 
   return (
     <>
@@ -12,7 +12,7 @@ const CategoryView = () => {
         <div>Loading...</div>
       ) : (
         <GenericTable
-          hasAction={tableAction()}
+          hasAction={tableAction(token)}
           indexedRow
           title="Les categories"
           columns={tableColumns}

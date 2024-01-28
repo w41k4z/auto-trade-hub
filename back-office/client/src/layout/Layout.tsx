@@ -7,7 +7,7 @@ type LayoutProps = {
   children: React.ReactNode;
 };
 
-const header = <h4>Start Bootstrap</h4>;
+const header = <h4>Auto-Trade Hub</h4>;
 
 const Layout = ({ children }: LayoutProps) => {
   return (
