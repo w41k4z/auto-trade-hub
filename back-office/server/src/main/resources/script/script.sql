@@ -8,8 +8,6 @@ CREATE TABLE brand (
     name VARCHAR(50) NOT NULL
 );
 
-insert into brand values (default,'Toyota');
-
 --history table
 CREATE TABLE brand_history(
     brand_id INTEGER NOT NULL REFERENCES brand (id),
@@ -22,8 +20,6 @@ CREATE TABLE category (
     id SERIAL PRIMARY KEY,
     name VARCHAR(50) NOT NULL
 );
-
-insert into category values (default,'Sedan');
 
 -- history table
 CREATE TABLE category_history(
@@ -38,8 +34,6 @@ CREATE TABLE transmission_type (
     name VARCHAR(50) NOT NULL
 );
 
-insert into transmission_type values (default,'automatic');
-
 
 -- history table
 CREATE TABLE transmission_type_history(
@@ -53,8 +47,6 @@ CREATE TABLE powertrain_type (
     id SERIAL PRIMARY KEY,
     name VARCHAR(50) NOT NULL
 );
-
-insert into powertrain_type values (default,'Gasoline');
 
 -- history table
 CREATE TABLE powertrain_type_history(
@@ -71,8 +63,6 @@ CREATE TABLE car_model (
     category_id INTEGER NOT NULL REFERENCES category(id),
     state INTEGER DEFAULT 0
 );
-
-insert into car_model values (default,'L200',1,1,default);
 
 
 CREATE TABLE admin (
@@ -91,7 +81,6 @@ CREATE TABLE province (
     name VARCHAR(50) NOT NULL
 );
 
-insert into province values (default,'TANA');
 
 -- history table
 CREATE TABLE province_history(
@@ -112,8 +101,7 @@ CREATE TABLE users (
     province_id INTEGER NOT NULL REFERENCES province(id)
 );
 
-INSERT INTO users (name, first_name, birth_date, genre, phone_number, email, password, province_id)
-VALUES ('Doe', 'John', '1990-01-01', 1, '123456789', 'john.doe@example.com', 'hashed_password_1', 1);
+
 
 CREATE TABLE users_history (
     users_id INTEGER NOT NULL REFERENCES users (id),
@@ -148,8 +136,6 @@ CREATE TABLE global_commission (
     percentage DOUBLE PRECISION NOT NULL
 );
 
-drop table announcement_picture cascade;
-insert into commision values (default,now(),10);
 
 CREATE TABLE announcement (
     id SERIAL PRIMARY KEY,

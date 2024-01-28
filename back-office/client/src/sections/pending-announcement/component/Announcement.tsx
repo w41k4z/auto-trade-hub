@@ -1,37 +1,42 @@
 import Carousel from "react-bootstrap/Carousel";
+import { Announcement as AnnouncementType } from "../type";
+import { formatNumberToCurrency } from "../../../helpers/NumberHelper";
 
-const Announcement = () => {
+type AnnouncementProps = {
+  announcement: AnnouncementType;
+};
+
+const Announcement = ({ announcement }: AnnouncementProps) => {
   return (
     <article className="row">
       <header className="col-12 d-flex justify-content-between align-items-center mb-4">
-        <h2>Acura RDX 2007</h2>
-        <button className="btn btn-dark rounded">30 000 000 Ar</button>
+        <h2>
+          `${announcement.carModel.category.name} $
+          {announcement.carModel.brand.name} ${announcement.carModel.name} $
+          {announcement.years}`
+        </h2>
+        <button className="btn btn-dark rounded">
+          {formatNumberToCurrency(announcement.price)} Ar
+        </button>
       </header>
       <section className="col-md-8">
         <Carousel>
-          <Carousel.Item>
+          {announcement.announcement_picture.length === 0 && (
             <img
-              src="https://milavam.com/wp-content/uploads/2023/08/IMG-20230802-WA0002.jpg"
-              // style={{ height: "100%", width: "100%" }}
-              // className="img-fluid"
-              width={750}
-              height={325}
+              src="https://t4.ftcdn.net/jpg/04/70/29/97/360_F_470299797_UD0eoVMMSUbHCcNJCdv2t8B2g1GVqYgs.jpg"
               alt="..."
             />
-          </Carousel.Item>
-          <Carousel.Item>
-            <img
-              src="https://milavam.com/wp-content/uploads/2023/08/IMG-20230802-WA0000.jpg"
-              width={750}
-              height={325}
-              alt="..."
-            />
-          </Carousel.Item>
+          )}
+          {announcement.announcement_picture.map((picture) => (
+            <Carousel.Item>
+              <img src={picture.path} width={750} height={325} alt="..." />
+            </Carousel.Item>
+          ))}
         </Carousel>
         <h4 className="mt-4">Description: </h4>
-        <p>Appelez directement pour ceux qui sont intéressés.</p>
+        <p>{announcement.description}</p>
         <span className="mt-2">
-          <b>Contact:</b> 0331145021
+          <b>Contact:</b> {announcement.phone_number}
         </span>
       </section>
       <section className="col-md-4">
@@ -39,35 +44,35 @@ const Announcement = () => {
           <tbody>
             <tr>
               <td>Catégorie</td>
-              <td>Pick-up</td>
+              <td>{announcement.carModel.category.name}</td>
             </tr>
             <tr>
               <td>Marque</td>
-              <td>Mitsubishi</td>
+              <td>{announcement.carModel.brand.name}</td>
             </tr>
             <tr>
-              <td>Modele</td>
-              <td>L200</td>
+              <td>Modèle</td>
+              <td>{announcement.carModel.name}</td>
             </tr>
             <tr>
               <td>Carburant</td>
-              <td>Essence</td>
+              <td>{announcement.powertrain_type.name}</td>
             </tr>
             <tr>
               <td>Boites de vitesse</td>
-              <td>Automatique</td>
+              <td>{announcement.transmission_type.name}</td>
             </tr>
             <tr>
               <td>Année</td>
-              <td>2009</td>
+              <td>{announcement.years}</td>
             </tr>
             <tr>
               <td>Kilometre</td>
-              <td>5489</td>
+              <td>{announcement.mileage}</td>
             </tr>
           </tbody>
         </table>
-        <h3>Mamy Niaina Cypre Randremaharison</h3>
+        <h3>{`${announcement.users.firstName} ${announcement.users.name}`}</h3>
       </section>
     </article>
   );

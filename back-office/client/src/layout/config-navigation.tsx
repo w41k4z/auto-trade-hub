@@ -12,6 +12,17 @@ export type NavElement = {
 
 export const navConfig: NavElement[] = [
   {
+    title: "Menu",
+    elements: [
+      {
+        title: "Dashboard",
+        path: "/app/dashboard",
+        icon: <RxActivityLog />,
+        onItemClick: () => {},
+      },
+    ],
+  },
+  {
     title: "Paramétrage",
     elements: [
       {
