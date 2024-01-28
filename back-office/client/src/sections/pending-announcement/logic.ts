@@ -1,7 +1,7 @@
 import axios from "../../axios";
 import { Announcement } from "./type";
 
-const originEndPoint = "/api/v1/provinces";
+const originEndPoint = "/api/v1/announcement";
 
 export const fetchData = async (
   callBack: (data: Announcement[]) => void,
