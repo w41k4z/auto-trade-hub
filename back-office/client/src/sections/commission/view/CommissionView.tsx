@@ -6,12 +6,12 @@ import { tableColumns } from "../table-column";
 import useCommission from "../useCommission";
 
 const CommissionView = () => {
-  const { commissions, loading } = useCommission();
+  const { commissions, loading, token } = useCommission();
 
   return (
     <div className="row">
-      <Commission className="col-md-6 px-3" />
-      <GlobalCommission className="col-md-6 px-3" />
+      <Commission className="col-md-6 px-3" token={token} />
+      <GlobalCommission className="col-md-6 px-3" token={token} />
       <hr className="my-5" />
       {loading ? (
         <div>Loading...</div>
