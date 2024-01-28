@@ -3,7 +3,8 @@ import { addCarModel, deleteCarModel } from "./logic";
 
 export const tableAction = (
   brandOptions: [string, string][],
-  categoryOptions: [string, string][]
+  categoryOptions: [string, string][],
+  token: string
 ) => {
   const tableActionType: TableActionType = {
     addAction: {
@@ -31,10 +32,10 @@ export const tableAction = (
         },
       ],
       onSubmit: async (data) => {
-        addCarModel(data);
+        addCarModel(data, token);
       },
     },
-    deleteAction: deleteCarModel,
+    deleteAction: (data) => deleteCarModel(data, token),
     hasFeature: {
       hasExportPdf: true,
     },

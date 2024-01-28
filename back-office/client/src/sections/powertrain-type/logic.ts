@@ -4,9 +4,18 @@ import { type PowertrainType } from "./type";
 
 const originEndPoint = "/api/v1/powertrain-types";
 
-export const fetchData = async (callBack: (data: PowertrainType[]) => void) => {
+export const fetchData = async (
+  callBack: (data: PowertrainType[]) => void,
+  token: string
+) => {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+
   await axios
-    .get(originEndPoint)
+    .get(originEndPoint, config)
     .then((response) => {
       const resp = response.data;
       if (resp.status === 200) {
@@ -20,9 +29,15 @@ export const fetchData = async (callBack: (data: PowertrainType[]) => void) => {
     });
 };
 
-export const addPowertrainType = async (data: any) => {
+export const addPowertrainType = async (data: any, token: string) => {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+
   await axios
-    .post(originEndPoint, data)
+    .post(originEndPoint, data, config)
     .then((response) => {
       if (response.data.status === 201) {
         alert("Type d'energie ajouté");
@@ -35,9 +50,18 @@ export const addPowertrainType = async (data: any) => {
     });
 };
 
-export const updatePowertrainType = async (data: FieldValues) => {
+export const updatePowertrainType = async (
+  data: FieldValues,
+  token: string
+) => {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+
   await axios
-    .put(originEndPoint, data)
+    .put(originEndPoint, data, config)
     .then((response) => {
       if (response.data.status === 200) {
         alert("Type d'energie modifié");
@@ -50,9 +74,15 @@ export const updatePowertrainType = async (data: FieldValues) => {
     });
 };
 
-export const deletePowertrainType = async (data: any) => {
+export const deletePowertrainType = async (data: any, token: string) => {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+
   await axios
-    .delete(`${originEndPoint}/${data.id}`)
+    .delete(`${originEndPoint}/${data.id}`, config)
     .then((response) => {
       if (response.data.status === 200) {
         alert("Type d'energie supprimé");

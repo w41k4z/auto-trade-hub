@@ -4,7 +4,7 @@ import { tableColumns } from "../table-column";
 import usePowertrainType from "../usePowertrainType";
 
 const PowertrainTypeView = () => {
-  const { powertrainTypes, loading } = usePowertrainType();
+  const { powertrainTypes, loading, token } = usePowertrainType();
 
   return (
     <>
@@ -12,7 +12,7 @@ const PowertrainTypeView = () => {
         <div>Loading...</div>
       ) : (
         <GenericTable
-          hasAction={tableAction()}
+          hasAction={tableAction(token)}
           indexedRow
           title="Les types d'energies"
           columns={tableColumns}

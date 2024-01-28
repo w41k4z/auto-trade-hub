@@ -26,7 +26,13 @@ export const fetchData = async (callBack: (data: Commission[]) => void) => {
     });
 };
 
-export const addCommission = async (data: any) => {
+export const addCommission = async (data: any, token: string) => {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+
   const carModel: CarModel = {
     id: data.carModelId,
     name: "",
@@ -41,7 +47,7 @@ export const addCommission = async (data: any) => {
   };
   data.carModel = carModel;
   await axios
-    .post(originEndPoint, data)
+    .post(originEndPoint, data, config)
     .then((response) => {
       if (response.data.status === 201) {
         alert("Commission parametrée");
@@ -54,9 +60,15 @@ export const addCommission = async (data: any) => {
     });
 };
 
-export const addGlobalCommission = async (data: any) => {
+export const addGlobalCommission = async (data: any, token: string) => {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+
   await axios
-    .post(originEndPoint + "/global", data)
+    .post(originEndPoint + "/global", data, config)
     .then((response) => {
       if (response.data.status === 201) {
         alert("Commission globale parametrée");

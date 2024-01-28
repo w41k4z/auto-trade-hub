@@ -3,9 +3,18 @@ import { type CarModel } from "./type";
 
 const originEndPoint = "/api/v1/car-models";
 
-export const fetchData = async (callBack: (data: CarModel[]) => void) => {
+export const fetchData = async (
+  callBack: (data: CarModel[]) => void,
+  token: string
+) => {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+
   await axios
-    .get(originEndPoint)
+    .get(originEndPoint, config)
     .then((response) => {
       const resp = response.data;
       if (resp.status === 200) {
@@ -23,14 +32,20 @@ export const fetchData = async (callBack: (data: CarModel[]) => void) => {
     });
 };
 
-export const addCarModel = async (data: any) => {
+export const addCarModel = async (data: any, token: string) => {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+
   let carModel = {
     name: data.name,
-    brand: {id: data.brandId},
-    category: {id: data.categoryId},
+    brand: { id: data.brandId },
+    category: { id: data.categoryId },
   };
   await axios
-    .post(originEndPoint, carModel)
+    .post(originEndPoint, carModel, config)
     .then((response) => {
       if (response.data.status === 201) {
         alert("Car model added");
@@ -43,9 +58,15 @@ export const addCarModel = async (data: any) => {
     });
 };
 
-export const deleteCarModel = async (data: any) => {
+export const deleteCarModel = async (data: any, token: string) => {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+
   await axios
-    .delete(`${originEndPoint}/${data.id}`)
+    .delete(`${originEndPoint}/${data.id}`, config)
     .then((response) => {
       if (response.data.status === 200) {
         alert("Car model deleted");

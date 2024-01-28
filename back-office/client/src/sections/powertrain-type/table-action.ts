@@ -5,7 +5,7 @@ import {
   deletePowertrainType,
 } from "./logic";
 
-export const tableAction = () => {
+export const tableAction = (token: string) => {
   const tableActionType: TableActionType = {
     addAction: {
       formTitle: "Ajouter un nouveau type d'energie",
@@ -15,13 +15,12 @@ export const tableAction = () => {
           type: "text",
           label: "Nom",
           options: {
-            required:
-              "Le nom d'un nouveau type d'energie est obligatoire",
+            required: "Le nom d'un nouveau type d'energie est obligatoire",
           },
         },
       ],
       onSubmit: async (data) => {
-        addPowertrainType(data);
+        addPowertrainType(data, token);
       },
     },
     updateAction: (data) => {
@@ -41,10 +40,10 @@ export const tableAction = () => {
             defaultValue: data.name,
           },
         ],
-        onSubmit: updatePowertrainType,
+        onSubmit: (data) => updatePowertrainType(data, token),
       };
     },
-    deleteAction: deletePowertrainType,
+    deleteAction: (data) => deletePowertrainType(data, token),
     hasFeature: {
       hasExportPdf: true,
     },

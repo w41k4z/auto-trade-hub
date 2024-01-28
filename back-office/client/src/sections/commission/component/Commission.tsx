@@ -1,9 +1,15 @@
-import useEntryMovement from "./useCommissionSetting";
+import useCommissionSetting from "./useCommissionSetting";
 import { addCommission } from "../logic";
 
-const Commission = ({ className = "" }: { className?: string }) => {
+const Commission = ({
+  className = "",
+  token,
+}: {
+  className?: string;
+  token: string;
+}) => {
   const { register, handleSubmit, reset, carModels, isSubmitting } =
-    useEntryMovement();
+    useCommissionSetting();
 
   let carModelOptions: [string, string][] = [];
   // eslint-disable-next-line array-callback-return
@@ -18,7 +24,7 @@ const Commission = ({ className = "" }: { className?: string }) => {
     <form
       className={className}
       onSubmit={handleSubmit((data) => {
-        addCommission(data);
+        addCommission(data, token);
         reset();
       })}
     >

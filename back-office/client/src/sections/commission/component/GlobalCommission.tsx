@@ -1,14 +1,20 @@
 import { addGlobalCommission } from "../logic";
 import useGlobalCommissionSetting from "./useGlobalCommissionSetting";
 
-const GlobalCommission = ({ className = "" }: { className?: string }) => {
+const GlobalCommission = ({
+  className = "",
+  token,
+}: {
+  className?: string;
+  token: string;
+}) => {
   const { handleSubmit, register, reset } = useGlobalCommissionSetting();
 
   return (
     <form
       className={className}
       onSubmit={handleSubmit((data) => {
-        addGlobalCommission(data);
+        addGlobalCommission(data, token);
         reset();
       })}
     >

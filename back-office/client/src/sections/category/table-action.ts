@@ -1,7 +1,7 @@
 import { TableActionType } from "../../components/datatable/GenericTable";
 import { addCategory, updateCategory, deleteCategory } from "./logic";
 
-export const tableAction = () => {
+export const tableAction = (token: string) => {
   const tableActionType: TableActionType = {
     addAction: {
       formTitle: "Ajouter une nouvelle categorie",
@@ -11,13 +11,12 @@ export const tableAction = () => {
           type: "text",
           label: "Nom",
           options: {
-            required:
-              "Le nom d'une nouvelle categorie est obligatoire",
+            required: "Le nom d'une nouvelle categorie est obligatoire",
           },
         },
       ],
       onSubmit: async (data) => {
-        addCategory(data);
+        addCategory(data, token);
       },
     },
     updateAction: (data) => {
@@ -37,10 +36,10 @@ export const tableAction = () => {
             defaultValue: data.name,
           },
         ],
-        onSubmit: updateCategory,
+        onSubmit: (data) => updateCategory(data, token),
       };
     },
-    deleteAction: deleteCategory,
+    deleteAction: (data) => deleteCategory(data, token),
     hasFeature: {
       hasExportPdf: true,
     },

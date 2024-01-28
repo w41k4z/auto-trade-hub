@@ -4,7 +4,7 @@ import { tableColumns } from "../table-column";
 import useBrand from "../useCarModel";
 
 const CarModelView = () => {
-  const { carModels, brands, categories, loading } = useBrand();
+  const { carModels, brands, categories, loading, token } = useBrand();
 
   let brandOptions: [string, string][] = [["-1", "Choose"]];
   brands.map((brand) => brandOptions.push([brand.id.toString(), brand.name]));
@@ -20,7 +20,7 @@ const CarModelView = () => {
         <div>Loading...</div>
       ) : (
         <GenericTable
-          hasAction={tableAction(brandOptions, categoryOptions)}
+          hasAction={tableAction(brandOptions, categoryOptions, token)}
           indexedRow
           title="Les modèles"
           columns={tableColumns}
