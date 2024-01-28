@@ -13,7 +13,7 @@ const useLogin = () => {
   const user = useSelector((state: RootState) => selectUser(state));
   useEffect(() => {
     if (user?.accessToken) {
-      navigate("/app/brand");
+      navigate("/app/dashboard");
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
