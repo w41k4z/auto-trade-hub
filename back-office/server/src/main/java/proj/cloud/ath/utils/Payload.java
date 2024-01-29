@@ -46,7 +46,9 @@ public class Payload {
         transmissionType.setId(this.transmission_type_id);
         announcement.setTransmission_type(transmissionType);
         announcement.setCommission(com);
-        announcement.setUsers_id(this.users_id);
+        User user = new User();
+        user.setId(this.users_id);
+        announcement.setUsers(user);
         return announcement;
     }
 

@@ -15,9 +15,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import proj.cloud.ath.entities.User;
+import proj.cloud.ath.entities.UsersFavorite;
 import proj.cloud.ath.entities.Announcement;
 import proj.cloud.ath.response.RestApiResponse;
 import proj.cloud.ath.services.UserService;
+import proj.cloud.ath.services.UsersFavoriteService;
 import proj.cloud.ath.services.AnnouncementService;
 import proj.cloud.ath.utils.JwtUtil;
 
@@ -27,6 +29,9 @@ public class UserController {
 
     @Autowired
     private UserService service;
+
+    @Autowired
+    private UsersFavoriteService usersFavoriteservice;
 
 
     @Autowired
@@ -39,12 +44,12 @@ public class UserController {
 
     @GetMapping("/{id}/Announcements")
     public RestApiResponse findAllAnnouncements(Long id) {
-        return new RestApiResponse(service.findById(id).getAnnouncement(), 200);
+        return new RestApiResponse(usersFavoriteservice.findById(id).getAnnouncement(), 200);
     }
 
     @GetMapping("/{id}/Announcements_Favorite")
     public RestApiResponse findAllAnnouncementFavorite(Long id) {
-        return new RestApiResponse(service.findById(id).getAnnouncementFavorite(), 200);
+        return new RestApiResponse(usersFavoriteservice.findById(id).getAnnouncementFavorite(), 200);
     }
 
     @GetMapping("/{id}")
