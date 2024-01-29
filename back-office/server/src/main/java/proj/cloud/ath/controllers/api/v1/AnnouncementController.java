@@ -70,7 +70,7 @@ public class AnnouncementController {
         List<String> downloadUrls = this.uploadFiles(files);
         for (int i = 0; i < downloadUrls.size(); i++) {
             Announcement_picture pic = new Announcement_picture(null, downloadUrls.get(i),
-                    (Announcement) response.getPayload(), null);
+                    0, announcement.getId());
             announcement_pictureservice.save(pic);
         }
         response.setStatus(201);
