@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import proj.cloud.ath.entities.Favorite;
@@ -12,6 +13,7 @@ import proj.cloud.ath.services.FavoriteService;
 import proj.cloud.ath.utils.JwtUtil;
 
 @RestController
+@RequestMapping("/api/v1/Favorite")
 public class FavoriteController {
 
     @Autowired
