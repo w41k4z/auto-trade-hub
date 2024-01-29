@@ -48,6 +48,7 @@ const LoginView = () => {
                       <input
                         id="email"
                         type="text"
+                        defaultValue="admin@gmail.com"
                         className="form-control"
                         {...register("email", {
                           required: "Email is required",
@@ -70,6 +71,7 @@ const LoginView = () => {
                       <input
                         id="password"
                         type="password"
+                        defaultValue="admin"
                         className="form-control mt-1"
                         {...register("password", {
                           required: "Password is required",
