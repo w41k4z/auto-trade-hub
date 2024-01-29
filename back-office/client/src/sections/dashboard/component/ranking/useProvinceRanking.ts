@@ -11,7 +11,7 @@ const useProvinceRanking = (token: string, month: number, year: number) => {
       setLoading(false)
     );
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [month, year]);
 
   return { provinceRanking, loading };
 };
