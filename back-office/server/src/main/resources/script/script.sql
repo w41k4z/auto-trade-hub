@@ -157,7 +157,8 @@ CREATE TABLE announcement (
     status INTEGER DEFAULT 0, -- is sold | validated | deleted
     sale_date DATE,
     commission DOUBLE PRECISION NOT NULL,
-    users_id INTEGER NOT NULL REFERENCES users(id)
+    users_id INTEGER NOT NULL REFERENCES users(id),
+    province_id INTEGER NOT NULL REFERENCES province(id)
 );
 
 CREATE TABLE announcement_picture(

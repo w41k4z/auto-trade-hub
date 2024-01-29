@@ -47,6 +47,11 @@ public class AnnouncementController {
         return new RestApiResponse(service.findAll(), 200);
     }
 
+    @GetMapping("/pending")
+    public RestApiResponse findAllPendingAnnouncement() {
+        return new RestApiResponse(service.findAllPendingAnnouncements(), 200);
+    }
+
     @GetMapping("/{id}")
     public RestApiResponse findById(@PathVariable Long id) {
         return new RestApiResponse(service.findById(id), 200);
@@ -69,8 +74,7 @@ public class AnnouncementController {
         response.setPayload(announcement);
         List<String> downloadUrls = this.uploadFiles(files);
         for (int i = 0; i < downloadUrls.size(); i++) {
-            Announcement_picture pic = new Announcement_picture(null, downloadUrls.get(i),
-                    0, announcement.getId());
+            Announcement_picture pic = new Announcement_picture(null, downloadUrls.get(i), 0, announcement.getId());
             announcement_pictureservice.save(pic);
         }
         response.setStatus(201);
