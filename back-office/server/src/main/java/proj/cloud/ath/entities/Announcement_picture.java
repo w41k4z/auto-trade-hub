@@ -1,10 +1,9 @@
 package proj.cloud.ath.entities;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -23,10 +22,7 @@ public class Announcement_picture {
 
     private String path;
 
-    @OneToOne
-    @JoinColumn(name = "announcement_id", referencedColumnName = "id")
-    private Announcement announcement;
-
     private Integer state;
 
+    private Long announcement_id;
 }
