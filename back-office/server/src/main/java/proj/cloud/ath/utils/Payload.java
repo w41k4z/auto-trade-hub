@@ -10,7 +10,6 @@ import proj.cloud.ath.entities.CarModel;
 import proj.cloud.ath.entities.PowertrainType;
 import proj.cloud.ath.entities.TransmissionType;
 import proj.cloud.ath.entities.User;
-import proj.cloud.ath.entities.commission.Commission;
 import proj.cloud.ath.services.CommissionService;
 
 @Data
@@ -29,9 +28,7 @@ public class Payload {
     private Long transmission_type_id;
     private Long users_id;
 
-
-    public Announcement getAnnouncement() {
-        CommissionService commissionService = new CommissionService();
+    public Announcement getAnnouncement(CommissionService commissionService) {
         Announcement announcement = new Announcement();
         announcement.setMileage(this.mileage);
         announcement.setPhone_number(this.phone_number);
