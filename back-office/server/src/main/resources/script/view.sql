@@ -68,16 +68,142 @@ CROSS JOIN (
 ) AS global_commission
 ;
 
-CREATE VIEW pending_annoucement AS
-SELECT 
+CREATE VIEW sold_announcements AS
+SELECT
     *
 FROM announcement
-WHERE state = 0
+WHERE status >= 20;
+
+CREATE VIEW province_ranking AS
+SELECT
+    province.id AS province_id,
+    province.name AS province_name,
+    COALESCE(sold_announcement_count, 0) AS sold_announcement_count,
+    COALESCE(total_sales, 0) AS total_sales,
+    COALESCE(total_commissions, 0) AS total_commissions,
+    ranking.month,
+    ranking.year
+FROM province
+LEFT JOIN (
+    SELECT
+        province_id,
+        COUNT(id) AS sold_announcement_count,
+        SUM(price) AS total_sales,
+        SUM(price * commission / 100) AS total_commissions,
+        EXTRACT(MONTH FROM sale_date) AS month,
+        EXTRACT(YEAR FROM sale_date) AS year
+    FROM sold_announcements
+    GROUP BY 
+        year,
+        month,
+        province_id
+) AS ranking
+    ON province.id = ranking.province_id
 ORDER BY 
-    announcement_date ASC
+    year DESC NULLS LAST,
+    month DESC NULLS LAST,
+    sold_announcement_count DESC
 ;
 
--- CREATE VIEW sold_car AS
--- SELECT
+CREATE VIEW brand_ranking AS
+SELECT
+    brand.id AS brand_id,
+    brand.name AS brand_name,
+    COALESCE(sold_count, 0) AS sold_count,
+    COALESCE(total_sales, 0) AS total_sales,
+    COALESCE(total_commissions, 0) AS total_commissions,
+    ranking.month,
+    ranking.year
+FROM brand
+LEFT JOIN (
+    SELECT
+        brand.id AS brand_id,
+        COUNT(sold_announcements.id) AS sold_count,
+        SUM(price) AS total_sales,
+        SUM(price * commission / 100) AS total_commissions,
+        EXTRACT(MONTH FROM sale_date) AS month,
+        EXTRACT(YEAR FROM sale_date) AS year
+    FROM sold_announcements
+    JOIN car_model
+        ON car_model.id = sold_announcements.car_model_id
+    JOIN brand
+        ON brand.id = car_model.brand_id
+    GROUP BY 
+        year,
+        month,
+        brand.id 
+) AS ranking
+    ON brand.id = ranking.brand_id
+ORDER BY 
+    ranking.year DESC NULLS LAST,
+    ranking.month DESC NULLS LAST,
+    ranking.sold_count DESC
+;
 
--- FROM announcement
+CREATE VIEW months AS
+SELECT 
+    DISTINCT EXTRACT(MONTH FROM DATE_TRUNC('month', d)) AS month
+FROM generate_series (
+    DATE_TRUNC('year', CURRENT_DATE),
+    DATE_TRUNC('year', CURRENT_DATE) + INTERVAL '1 year - 1 day',
+    '1 month'::interval
+) AS d
+ORDER BY month ASC
+;
+
+CREATE VIEW monthly_sales AS
+SELECT
+    months.month,
+    COALESCE(total_sales, 0) AS total_sales,
+    COALESCE(total_commissions, 0) AS total_commissions,
+    COALESCE(year, EXTRACT(YEAR FROM NOW())) AS year
+FROM months
+LEFT JOIN (
+    SELECT
+        SUM(price) AS total_sales,
+        SUM(price * commission / 100) AS total_commissions,
+        EXTRACT(MONTH FROM sale_date) AS month,
+        EXTRACT(YEAR FROM sale_date) AS year
+    FROM sold_announcements
+    WHERE EXTRACT(YEAR FROM sale_date) = EXTRACT(YEAR FROM NOW())
+    GROUP BY
+        year,
+        month
+    ORDER BY 
+        month ASC
+) AS monthly_sales
+    ON months.month = monthly_sales.month
+;
+
+CREATE VIEW annual_sales AS
+SELECT
+    SUM(price) AS total_sales,
+    SUM(price * commission / 100) AS total_commissions,
+    EXTRACT(YEAR FROM sale_date) AS year
+FROM sold_announcements
+WHERE EXTRACT(YEAR FROM sale_date) = EXTRACT(YEAR FROM NOW())
+GROUP BY
+    year
+ORDER BY 
+    year ASC
+;
+
+CREATE VIEW global_stat AS
+SELECT
+    COALESCE(total_sales, 0) AS total_sales,
+    COALESCE(total_commissions, 0) AS total_commissions,
+    users_count.count AS users_count,
+    pending_announcement_count.count AS pending_announcement_count
+FROM (
+    SELECT
+        SUM(price) AS total_sales,
+        SUM(price * commission / 100) AS total_commissions
+    FROM sold_announcements   
+) AS gs
+CROSS JOIN (
+    SELECT COUNT(id) AS count FROM users
+) AS users_count
+CROSS JOIN (
+    SELECT COUNT(id) AS count FROM announcement WHERE status = 0
+) AS pending_announcement_count
+;

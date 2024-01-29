@@ -18,7 +18,7 @@ const Activity = ({
       <div className="card-block">
         <div className="row align-items-center p-2">
           <div className="col-8">
-            <h4 className={`${textColor} f-w-600`}>{content}</h4>
+            <h5 className={`${textColor} f-w-600`}>{content}</h5>
             <h6 className="text-muted m-b-0">{title}</h6>
           </div>
           <div className="col-4 text-right">

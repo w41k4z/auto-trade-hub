@@ -2,7 +2,7 @@ package proj.cloud.ath.entities.commission;
 
 import java.sql.Timestamp;
 
-import org.hibernate.annotations.Immutable;
+import org.springframework.data.annotation.Immutable;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

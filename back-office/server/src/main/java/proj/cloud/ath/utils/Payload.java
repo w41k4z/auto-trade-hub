@@ -8,6 +8,7 @@ import lombok.Setter;
 import proj.cloud.ath.entities.Announcement;
 import proj.cloud.ath.entities.CarModel;
 import proj.cloud.ath.entities.PowertrainType;
+import proj.cloud.ath.entities.Province;
 import proj.cloud.ath.entities.TransmissionType;
 import proj.cloud.ath.entities.User;
 import proj.cloud.ath.services.CommissionService;
@@ -27,6 +28,7 @@ public class Payload {
     private Long powertrain_type_id;
     private Long transmission_type_id;
     private Long users_id;
+    private Long province_id;
 
     public Announcement getAnnouncement(CommissionService commissionService) {
         Announcement announcement = new Announcement();
@@ -49,6 +51,9 @@ public class Payload {
         User user = new User();
         user.setId(this.users_id);
         announcement.setUsers(user);
+        Province province = new Province();
+        province.setId(this.province_id);
+        announcement.setProvince(province);
         return announcement;
     }
 
