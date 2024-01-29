@@ -8,11 +8,16 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
 import jakarta.persistence.OneToOne;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -45,4 +50,14 @@ public class User {
     @OneToOne
     @JoinColumn(name = "province_id", referencedColumnName = "id")
     private Province province;
+
+
+    @ManyToMany
+    @JoinTable(name = "favorite",joinColumns = @JoinColumn(name = "users_id"),inverseJoinColumns = @JoinColumn(name = "announcement_id"))
+    List<Announcement> announcementFavorite;
+
+    @OneToMany
+    @JoinColumn(name = "announcement_id")
+    List<Announcement> announcement;
+
 }

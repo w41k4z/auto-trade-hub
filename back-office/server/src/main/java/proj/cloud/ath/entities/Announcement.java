@@ -47,9 +47,11 @@ public class Announcement {
 
     private Double commission;
 
-    @OneToOne
-    @JoinColumn(name = "users_id", referencedColumnName = "id")
-    private User users;
+    // @OneToOne
+    // @JoinColumn(name = "users_id", referencedColumnName = "id")
+    // private User users;
+
+    private Long users_id;
 
     @OneToMany()
     @JoinColumn(name = "announcement_id")

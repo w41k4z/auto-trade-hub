@@ -11,8 +11,10 @@ CREATE TABLE brand (
 --history table
 CREATE TABLE brand_history(
     brand_id INTEGER NOT NULL REFERENCES brand (id),
+    action VARCHAR(50),
     old_name VARCHAR(50) NOT NULL,
-    new_name VARCHAR(50) NOT NULL
+    new_name VARCHAR(50) NOT NULL,
+    timestamp timestamp
 );
 
 -- Sedan, Coupe, Hatchback, SUV, Crossover, Minivan, Pickup, Convertible, Wagon...
@@ -24,8 +26,10 @@ CREATE TABLE category (
 -- history table
 CREATE TABLE category_history(
     category_id INTEGER NOT NULL REFERENCES category (id),
+    action VARCHAR(50),
     old_name VARCHAR(50) NOT NULL,
-    new_name VARCHAR(50) NOT NULL
+    new_name VARCHAR(50) NOT NULL,
+    timestamp timestamp
 );
 
 -- automatic, manual, semi-automatic, CVT, DCT, DSG...
@@ -38,8 +42,10 @@ CREATE TABLE transmission_type (
 -- history table
 CREATE TABLE transmission_type_history(
     transmission_type_id INTEGER NOT NULL REFERENCES transmission_type (id),
+    action VARCHAR(50),
     old_name VARCHAR(50) NOT NULL,
-    new_name VARCHAR(50) NOT NULL
+    new_name VARCHAR(50) NOT NULL,
+    timestamp timestamp
 );
 
 -- Gasoline, Diesel, Electric, Hybrid, Hydrogen...
@@ -51,8 +57,10 @@ CREATE TABLE powertrain_type (
 -- history table
 CREATE TABLE powertrain_type_history(
     powertrain_type_id INTEGER NOT NULL REFERENCES powertrain_type (id),
+    action VARCHAR(50),
     old_name VARCHAR(50) NOT NULL,
-    new_name VARCHAR(50) NOT NULL
+    new_name VARCHAR(50) NOT NULL,
+    timestamp timestamp
 );
 
 -- L200, L300, L400, Lancer, Pajero, Outlander, Mirage, Montero...
@@ -85,8 +93,10 @@ CREATE TABLE province (
 -- history table
 CREATE TABLE province_history(
     powertrain_id INTEGER NOT NULL REFERENCES province (id),
+    action VARCHAR(50),
     old_name VARCHAR(50) NOT NULL,
-    new_name VARCHAR(50) NOT NULL
+    new_name VARCHAR(50) NOT NULL,
+    timestamp timestamp
 );
 
 CREATE TABLE users (
@@ -105,6 +115,7 @@ CREATE TABLE users (
 
 CREATE TABLE users_history (
     users_id INTEGER NOT NULL REFERENCES users (id),
+    action VARCHAR(50),
     new_name VARCHAR(50) NOT NULL,
     old_name VARCHAR(50) NOT NULL,
     new_first_name VARCHAR(50),
@@ -120,7 +131,8 @@ CREATE TABLE users_history (
     new_password TEXT NOT NULL UNIQUE, -- encrypted password
     old_password TEXT NOT NULL UNIQUE, -- encrypted password
     new_province_id INTEGER NOT NULL REFERENCES province(id),
-    old_province_id INTEGER NOT NULL REFERENCES province(id)
+    old_province_id INTEGER NOT NULL REFERENCES province(id),
+    timestamp timestamp
 );
 
 CREATE TABLE commission (
@@ -159,4 +171,12 @@ CREATE TABLE announcement_picture(
     announcement_id INTEGER NOT NULL REFERENCES announcement (id),
     path TEXT NOT NULL,
     state INTEGER DEFAULT 0 --if delete
+);
+
+CREATE TABLE favorite(
+    id SERIAL PRIMARY KEY,
+    users_id INTEGER NOT NULL REFERENCES users(id),
+    announcement_id INTEGER NOT NULL REFERENCES announcement (id),
+    favorite_date DATE NOT NULL DEFAULT NOW(),
+    state INTEGER DEFAULT 0
 );
