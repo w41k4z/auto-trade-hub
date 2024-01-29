@@ -28,7 +28,7 @@ const GlobalStat = ({ token }: { token: string }) => {
           </section>
           <section className="col-xl-3 col-md-6">
             <Activity
-              title="Totales ventes"
+              title="Totales des ventes"
               content={`${formatNumberToCurrency(
                 globalStat?.totalSales ? globalStat?.totalSales : 0
               )}+`}
