@@ -8,6 +8,7 @@ import {
   Legend,
 } from "chart.js";
 import { Bar } from "react-chartjs-2";
+import useMonthlySales from "./useMonthlySales";
 
 ChartJS.register(
   CategoryScale,
@@ -18,7 +19,7 @@ ChartJS.register(
   Legend
 );
 
-export const options = {
+const options = {
   responsive: true,
   plugins: {
     legend: {
@@ -31,26 +32,55 @@ export const options = {
   },
 };
 
-const labels = ["January", "February", "March", "April", "May", "June", "July"];
+const months = [
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "Novembre",
+  "December",
+];
 
-export const data = {
-  labels,
-  datasets: [
-    {
-      label: "Vente",
-      data: [2000000, 1500000, 2800000, 2500000, 3000000, 6500000, 4500000],
-      backgroundColor: "rgba(255, 99, 132, 0.5)",
-    },
-    {
-      label: "Revenue",
-      data: [800000, 650000, 1200000, 1000000, 1500000, 3250000, 2250000],
-      backgroundColor: "rgba(53, 162, 235, 0.5)",
-    },
-  ],
-};
+const MonthlySales = ({
+  className = "",
+  token,
+}: {
+  className?: string;
+  token: string;
+}) => {
+  const { monthlySales, loading } = useMonthlySales(token);
 
-const MonthlySales = ({ className = "" }: { className?: string }) => {
-  return <Bar options={options} data={data} className={className} />;
+  const data = {
+    months,
+    datasets: [
+      {
+        label: "Vente",
+        data: monthlySales?.map((sale) => sale.totalSales) || [],
+        backgroundColor: "rgba(255, 99, 132, 0.5)",
+      },
+      {
+        label: "Revenue",
+        data: monthlySales?.map((sale) => sale.totalCommissions) || [],
+        backgroundColor: "rgba(53, 162, 235, 0.5)",
+      },
+    ],
+  };
+
+  return (
+    <>
+      {loading ? (
+        <div className="text-center">Loading...</div>
+      ) : (
+        <Bar options={options} data={data} className={className} />
+      )}
+    </>
+  );
 };
 
 export default MonthlySales;

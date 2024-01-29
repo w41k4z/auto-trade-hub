@@ -47,6 +47,11 @@ public class AnnouncementController {
         return new RestApiResponse(service.findAll(), 200);
     }
 
+    @GetMapping("/pending")
+    public RestApiResponse findAllPendingAnnouncement() {
+        return new RestApiResponse(service.findAllPendingAnnouncements(), 200);
+    }
+
     @GetMapping("/{id}")
     public RestApiResponse findById(@PathVariable Long id) {
         return new RestApiResponse(service.findById(id), 200);

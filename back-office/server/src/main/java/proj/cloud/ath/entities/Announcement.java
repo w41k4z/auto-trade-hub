@@ -28,6 +28,7 @@ public class Announcement {
     private Double mileage;
     private Double price;
     private Date announcement_date;
+    private Date sale_date;
     private String description;
     private Integer years;
     private String phone_number;
@@ -50,6 +51,10 @@ public class Announcement {
     @OneToOne
     @JoinColumn(name = "users_id", referencedColumnName = "id")
     private User users;
+
+    @OneToOne
+    @JoinColumn(name = "province_id", referencedColumnName = "id")
+    private Province province;
 
     @OneToMany()
     @JoinColumn(name = "announcement_id")

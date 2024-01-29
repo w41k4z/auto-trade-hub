@@ -1,11 +1,11 @@
 import AnnualSales from "./AnnualSales";
 import MonthlySales from "./MonthlySales";
 
-const Sales = () => {
+const Sales = ({ token }: { token: string }) => {
   return (
     <>
-      <MonthlySales />
-      <AnnualSales className="mt-5" />
+      <MonthlySales token={token} />
+      <AnnualSales token={token} className="mt-5" />
     </>
   );
 };
