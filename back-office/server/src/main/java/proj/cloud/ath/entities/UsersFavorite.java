@@ -24,7 +24,7 @@ import java.util.List;
 @NoArgsConstructor
 @Entity
 @Table(name = "users")
-public class User {
+public class UsersFavorite {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -50,5 +50,14 @@ public class User {
     @OneToOne
     @JoinColumn(name = "province_id", referencedColumnName = "id")
     private Province province;
+
+
+    @ManyToMany
+    @JoinTable(name = "favorite",joinColumns = @JoinColumn(name = "users_id"),inverseJoinColumns = @JoinColumn(name = "announcement_id"))
+    List<Announcement> announcementFavorite;
+
+    @OneToMany
+    @JoinColumn(name = "users_id")
+    List<Announcement> announcement;
 
 }
