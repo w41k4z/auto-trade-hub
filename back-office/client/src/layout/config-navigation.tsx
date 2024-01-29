@@ -1,4 +1,12 @@
-import { RxActivityLog } from "react-icons/rx";
+import { AiTwotoneDashboard } from "react-icons/ai";
+import { TfiMoney } from "react-icons/tfi";
+import { GrAnnounce } from "react-icons/gr";
+import { MdOutlineEnergySavingsLeaf } from "react-icons/md";
+import { TbCategoryMinus } from "react-icons/tb";
+import { MdOutlineCategory } from "react-icons/md";
+import { SiBrandfolder } from "react-icons/si";
+import { IoLogoModelS } from "react-icons/io";
+import { GiModernCity } from "react-icons/gi";
 
 export type NavElement = {
   title: string;
@@ -17,7 +25,7 @@ export const navConfig: NavElement[] = [
       {
         title: "Dashboard",
         path: "/app/dashboard",
-        icon: <RxActivityLog />,
+        icon: <AiTwotoneDashboard />,
         onItemClick: () => {},
       },
     ],
@@ -28,7 +36,7 @@ export const navConfig: NavElement[] = [
       {
         title: "Commission",
         path: "/app/commission",
-        icon: <RxActivityLog />,
+        icon: <TfiMoney />,
         onItemClick: () => {},
       },
     ],
@@ -39,7 +47,7 @@ export const navConfig: NavElement[] = [
       {
         title: "Annonce",
         path: "/app/announcement",
-        icon: <RxActivityLog />,
+        icon: <GrAnnounce />,
         onItemClick: () => {},
       },
     ],
@@ -50,37 +58,37 @@ export const navConfig: NavElement[] = [
       {
         title: "Energie",
         path: "/app/powertrain",
-        icon: <RxActivityLog />,
+        icon: <MdOutlineEnergySavingsLeaf />,
         onItemClick: () => {},
       },
       {
         title: "Type de Transmission",
         path: "/app/transmission",
-        icon: <RxActivityLog />,
+        icon: <TbCategoryMinus />,
         onItemClick: () => {},
       },
       {
         title: "Categorie",
         path: "/app/category",
-        icon: <RxActivityLog />,
+        icon: <MdOutlineCategory />,
         onItemClick: () => {},
       },
       {
         title: "Marque",
         path: "/app/brand",
-        icon: <RxActivityLog />,
+        icon: <SiBrandfolder />,
         onItemClick: () => {},
       },
       {
         title: "Modèle",
         path: "/app/car-model",
-        icon: <RxActivityLog />,
+        icon: <IoLogoModelS />,
         onItemClick: () => {},
       },
       {
         title: "Province",
         path: "/app/province",
-        icon: <RxActivityLog />,
+        icon: <GiModernCity />,
         onItemClick: () => {},
       },
     ],
