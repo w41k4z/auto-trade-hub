@@ -1,8 +1,5 @@
 package proj.cloud.ath.utils;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
@@ -15,7 +12,6 @@ import proj.cloud.ath.entities.TransmissionType;
 import proj.cloud.ath.entities.User;
 import proj.cloud.ath.services.CommissionService;
 
-@Component
 @Data
 @Setter
 @Getter
@@ -23,8 +19,6 @@ import proj.cloud.ath.services.CommissionService;
 @NoArgsConstructor
 public class Payload {
 
-    @Autowired
-    private CommissionService commissionService;
     private Double mileage;
     private Double price;
     private Integer years;
@@ -35,7 +29,7 @@ public class Payload {
     private Long transmission_type_id;
     private Long users_id;
 
-    public Announcement getAnnouncement() {
+    public Announcement getAnnouncement(CommissionService commissionService) {
         Announcement announcement = new Announcement();
         announcement.setMileage(this.mileage);
         announcement.setPhone_number(this.phone_number);

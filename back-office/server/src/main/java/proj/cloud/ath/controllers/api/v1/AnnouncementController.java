@@ -23,11 +23,15 @@ import proj.cloud.ath.entities.Announcement_picture;
 import proj.cloud.ath.response.RestApiResponse;
 import proj.cloud.ath.services.AnnouncementService;
 import proj.cloud.ath.services.Announcement_pictureService;
+import proj.cloud.ath.services.CommissionService;
 import proj.cloud.ath.services.FileService;
 
 @RestController
 @RequestMapping("/api/v1/announcement")
 public class AnnouncementController {
+
+    @Autowired
+    private CommissionService commissionService;
 
     @Autowired
     private AnnouncementService service;
@@ -60,7 +64,7 @@ public class AnnouncementController {
     @PostMapping(consumes = { MediaType.MULTIPART_FORM_DATA_VALUE, MediaType.APPLICATION_OCTET_STREAM_VALUE })
     public RestApiResponse create(@RequestPart Payload py, @RequestPart MultipartFile[] files) throws IOException {
         RestApiResponse response = new RestApiResponse();
-        Announcement announcement = py.getAnnouncement();
+        Announcement announcement = py.getAnnouncement(commissionService);
         service.save(announcement);
         response.setPayload(announcement);
         List<String> downloadUrls = this.uploadFiles(files);
