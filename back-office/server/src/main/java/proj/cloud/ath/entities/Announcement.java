@@ -51,7 +51,8 @@ public class Announcement {
     @JoinColumn(name = "users_id", referencedColumnName = "id")
     private User users;
 
-    @OneToMany(mappedBy = "announcement")
+    @OneToMany()
+    @JoinColumn(name = "announcement_id")
     private List<Announcement_picture> announcement_picture;
 
 }
