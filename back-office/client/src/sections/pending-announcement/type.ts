@@ -27,7 +27,7 @@ export type Announcement = {
   description: string;
   years: number;
   phone_number: string;
-  carModel: CarModel;
+  car_model: CarModel;
   powertrain_type: PowertrainType;
   transmission_type: TransmissionType;
   commission: number;

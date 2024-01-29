@@ -11,9 +11,9 @@ const Announcement = ({ announcement }: AnnouncementProps) => {
     <article className="row">
       <header className="col-12 d-flex justify-content-between align-items-center mb-4">
         <h2>
-          `${announcement.carModel.category.name} $
-          {announcement.carModel.brand.name} ${announcement.carModel.name} $
-          {announcement.years}`
+          {announcement.car_model.category.name}{" "}
+          {announcement.car_model.brand.name} {announcement.car_model.name}{" "}
+          {announcement.years}
         </h2>
         <button className="btn btn-dark rounded">
           {formatNumberToCurrency(announcement.price)} Ar
@@ -44,15 +44,15 @@ const Announcement = ({ announcement }: AnnouncementProps) => {
           <tbody>
             <tr>
               <td>Catégorie</td>
-              <td>{announcement.carModel.category.name}</td>
+              <td>{announcement.car_model.category.name}</td>
             </tr>
             <tr>
               <td>Marque</td>
-              <td>{announcement.carModel.brand.name}</td>
+              <td>{announcement.car_model.brand.name}</td>
             </tr>
             <tr>
               <td>Modèle</td>
-              <td>{announcement.carModel.name}</td>
+              <td>{announcement.car_model.name}</td>
             </tr>
             <tr>
               <td>Carburant</td>
