@@ -15,12 +15,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import proj.cloud.ath.entities.User;
-import proj.cloud.ath.entities.UsersFavorite;
-import proj.cloud.ath.entities.Announcement;
 import proj.cloud.ath.response.RestApiResponse;
 import proj.cloud.ath.services.UserService;
 import proj.cloud.ath.services.UsersFavoriteService;
-import proj.cloud.ath.services.AnnouncementService;
 import proj.cloud.ath.utils.JwtUtil;
 
 @RestController
@@ -32,7 +29,6 @@ public class UserController {
 
     @Autowired
     private UsersFavoriteService usersFavoriteservice;
-
 
     @Autowired
     private JwtUtil jwtUtil;
