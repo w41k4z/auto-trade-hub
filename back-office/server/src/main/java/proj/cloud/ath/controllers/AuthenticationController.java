@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RestController;
 import proj.cloud.ath.entities.Admin;
 import proj.cloud.ath.entities.User;
 import proj.cloud.ath.response.RestApiResponse;
-import proj.cloud.ath.services.AdminService;
-import proj.cloud.ath.services.UserService;
+import proj.cloud.ath.services.postgres.AdminService;
+import proj.cloud.ath.services.postgres.UserService;
 import proj.cloud.ath.utils.JwtUtil;
 
 @RestController

@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import proj.cloud.ath.entities.Province;
 import proj.cloud.ath.response.RestApiResponse;
-import proj.cloud.ath.services.ProvinceService;
+import proj.cloud.ath.services.postgres.ProvinceService;
 import proj.cloud.ath.utils.JwtUtil;
 
 @RestController

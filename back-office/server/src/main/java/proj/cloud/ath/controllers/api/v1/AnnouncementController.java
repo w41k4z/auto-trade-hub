@@ -21,10 +21,10 @@ import jakarta.transaction.Transactional;
 import proj.cloud.ath.entities.Announcement;
 import proj.cloud.ath.entities.Announcement_picture;
 import proj.cloud.ath.response.RestApiResponse;
-import proj.cloud.ath.services.AnnouncementService;
-import proj.cloud.ath.services.Announcement_pictureService;
-import proj.cloud.ath.services.CommissionService;
-import proj.cloud.ath.services.FileService;
+import proj.cloud.ath.services.postgres.AnnouncementService;
+import proj.cloud.ath.services.postgres.Announcement_pictureService;
+import proj.cloud.ath.services.postgres.CommissionService;
+import proj.cloud.ath.services.postgres.FileService;
 
 @RestController
 @RequestMapping("/api/v1/announcement")

@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import proj.cloud.ath.dto.Ranking;
 import proj.cloud.ath.response.RestApiResponse;
-import proj.cloud.ath.services.StatService;
+import proj.cloud.ath.services.postgres.StatService;
 import proj.cloud.ath.utils.JwtUtil;
 
 @RestController

@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import proj.cloud.ath.entities.CarModel;
 import proj.cloud.ath.response.RestApiResponse;
-import proj.cloud.ath.services.CarModelService;
+import proj.cloud.ath.services.postgres.CarModelService;
 import proj.cloud.ath.utils.JwtUtil;
 
 @RestController
@@ -26,7 +26,7 @@ public class CarModelController {
     private JwtUtil jwtUtil;
 
     @GetMapping
-    public RestApiResponse findAll(@RequestHeader(value = "Authorization") String bearerToken ) {
+    public RestApiResponse findAll(@RequestHeader(value = "Authorization") String bearerToken) {
         String token = bearerToken.substring(7);
         RestApiResponse response = new RestApiResponse();
         if (jwtUtil.isValidToken(token)) {
@@ -52,7 +52,8 @@ public class CarModelController {
     }
 
     @PostMapping
-    public RestApiResponse create(@RequestHeader(value = "Authorization") String bearerToken,@RequestBody CarModel carModel) {
+    public RestApiResponse create(@RequestHeader(value = "Authorization") String bearerToken,
+            @RequestBody CarModel carModel) {
         String token = bearerToken.substring(7);
         RestApiResponse response = new RestApiResponse();
         if (jwtUtil.isValidToken(token)) {

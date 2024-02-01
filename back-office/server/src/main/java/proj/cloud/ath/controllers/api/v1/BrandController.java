@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import proj.cloud.ath.entities.Brand;
 import proj.cloud.ath.response.RestApiResponse;
-import proj.cloud.ath.services.BrandService;
+import proj.cloud.ath.services.postgres.BrandService;
 import proj.cloud.ath.utils.JwtUtil;
 
 @RestController

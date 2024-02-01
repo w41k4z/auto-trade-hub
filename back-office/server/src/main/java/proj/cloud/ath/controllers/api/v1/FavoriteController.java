@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import proj.cloud.ath.entities.Favorite;
 import proj.cloud.ath.response.RestApiResponse;
-import proj.cloud.ath.services.FavoriteService;
+import proj.cloud.ath.services.postgres.FavoriteService;
 import proj.cloud.ath.utils.JwtUtil;
 
 @RestController

@@ -11,10 +11,10 @@ import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import proj.cloud.ath.services.TransmissionTypeService;
 import proj.cloud.ath.utils.JwtUtil;
 import proj.cloud.ath.entities.TransmissionType;
 import proj.cloud.ath.response.RestApiResponse;
+import proj.cloud.ath.services.postgres.TransmissionTypeService;
 
 @RestController
 @RequestMapping("/api/v1/transmission-types")
@@ -22,12 +22,12 @@ public class TransmissionTypeController {
 
     @Autowired
     private TransmissionTypeService service;
-    
+
     @Autowired
     private JwtUtil jwtUtil;
 
     @GetMapping
-    public RestApiResponse findAll(@RequestHeader(value = "Authorization") String bearerToken ) {
+    public RestApiResponse findAll(@RequestHeader(value = "Authorization") String bearerToken) {
         String token = bearerToken.substring(7);
         RestApiResponse response = new RestApiResponse();
         if (jwtUtil.isValidToken(token)) {
@@ -54,7 +54,8 @@ public class TransmissionTypeController {
 
     @PostMapping
     public RestApiResponse create(
-            @RequestHeader(value = "Authorization") String bearerToken, @RequestBody TransmissionType transmissionType) {
+            @RequestHeader(value = "Authorization") String bearerToken,
+            @RequestBody TransmissionType transmissionType) {
         String token = bearerToken.substring(7);
         RestApiResponse response = new RestApiResponse();
         if (jwtUtil.isValidToken(token)) {
@@ -69,7 +70,8 @@ public class TransmissionTypeController {
     }
 
     @PutMapping
-    public RestApiResponse update(@RequestHeader(value = "Authorization") String bearerToken,@RequestBody TransmissionType transmissionType) {
+    public RestApiResponse update(@RequestHeader(value = "Authorization") String bearerToken,
+            @RequestBody TransmissionType transmissionType) {
         String token = bearerToken.substring(7);
         RestApiResponse response = new RestApiResponse();
         if (jwtUtil.isValidToken(token)) {

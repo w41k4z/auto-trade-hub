@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import proj.cloud.ath.entities.PowertrainType;
 import proj.cloud.ath.response.RestApiResponse;
-import proj.cloud.ath.services.PowertrainTypeService;
+import proj.cloud.ath.services.postgres.PowertrainTypeService;
 import proj.cloud.ath.utils.JwtUtil;
 
 @RestController
@@ -27,7 +27,7 @@ public class PowertrainTypeController {
     private JwtUtil jwtUtil;
 
     @GetMapping
-    public RestApiResponse findAll(@RequestHeader(value = "Authorization") String bearerToken ) {
+    public RestApiResponse findAll(@RequestHeader(value = "Authorization") String bearerToken) {
         String token = bearerToken.substring(7);
         RestApiResponse response = new RestApiResponse();
         if (jwtUtil.isValidToken(token)) {
@@ -53,7 +53,8 @@ public class PowertrainTypeController {
     }
 
     @PostMapping
-    public RestApiResponse create(@RequestHeader(value = "Authorization") String bearerToken,@RequestBody PowertrainType powertrainType) {
+    public RestApiResponse create(@RequestHeader(value = "Authorization") String bearerToken,
+            @RequestBody PowertrainType powertrainType) {
         String token = bearerToken.substring(7);
         RestApiResponse response = new RestApiResponse();
         if (jwtUtil.isValidToken(token)) {
@@ -68,7 +69,8 @@ public class PowertrainTypeController {
     }
 
     @PutMapping
-    public RestApiResponse update(@RequestHeader(value = "Authorization") String bearerToken, @RequestBody PowertrainType powertrainType) {
+    public RestApiResponse update(@RequestHeader(value = "Authorization") String bearerToken,
+            @RequestBody PowertrainType powertrainType) {
         String token = bearerToken.substring(7);
         RestApiResponse response = new RestApiResponse();
         if (jwtUtil.isValidToken(token)) {

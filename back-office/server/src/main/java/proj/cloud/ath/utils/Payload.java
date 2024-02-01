@@ -11,7 +11,7 @@ import proj.cloud.ath.entities.PowertrainType;
 import proj.cloud.ath.entities.Province;
 import proj.cloud.ath.entities.TransmissionType;
 import proj.cloud.ath.entities.User;
-import proj.cloud.ath.services.CommissionService;
+import proj.cloud.ath.services.postgres.CommissionService;
 
 @Data
 @Setter

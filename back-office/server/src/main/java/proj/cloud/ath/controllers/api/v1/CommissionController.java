@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import proj.cloud.ath.entities.commission.Commission;
 import proj.cloud.ath.entities.commission.GlobalCommission;
 import proj.cloud.ath.response.RestApiResponse;
-import proj.cloud.ath.services.CommissionService;
-import proj.cloud.ath.services.GlobalCommissionService;
+import proj.cloud.ath.services.postgres.CommissionService;
+import proj.cloud.ath.services.postgres.GlobalCommissionService;
 import proj.cloud.ath.utils.JwtUtil;
 
 @RestController
@@ -40,7 +40,8 @@ public class CommissionController {
     }
 
     @PostMapping
-    public RestApiResponse create(@RequestHeader(value = "Authorization") String bearerToken,@RequestBody Commission commission) {
+    public RestApiResponse create(@RequestHeader(value = "Authorization") String bearerToken,
+            @RequestBody Commission commission) {
         String token = bearerToken.substring(7);
         RestApiResponse response = new RestApiResponse();
         if (jwtUtil.isValidToken(token)) {
@@ -56,7 +57,8 @@ public class CommissionController {
     }
 
     @PostMapping("/global")
-    public RestApiResponse createGlobal(@RequestHeader(value = "Authorization") String bearerToken,@RequestBody GlobalCommission commission) {
+    public RestApiResponse createGlobal(@RequestHeader(value = "Authorization") String bearerToken,
+            @RequestBody GlobalCommission commission) {
         String token = bearerToken.substring(7);
         RestApiResponse response = new RestApiResponse();
         if (jwtUtil.isValidToken(token)) {

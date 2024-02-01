@@ -11,10 +11,10 @@ import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import proj.cloud.ath.services.CategoryService;
 import proj.cloud.ath.utils.JwtUtil;
 import proj.cloud.ath.entities.Category;
 import proj.cloud.ath.response.RestApiResponse;
+import proj.cloud.ath.services.postgres.CategoryService;
 
 @RestController
 @RequestMapping("/api/v1/category")
@@ -53,7 +53,8 @@ public class CategoryController {
     }
 
     @PostMapping
-    public RestApiResponse create(@RequestHeader(value = "Authorization") String bearerToken,@RequestBody Category category) {
+    public RestApiResponse create(@RequestHeader(value = "Authorization") String bearerToken,
+            @RequestBody Category category) {
         String token = bearerToken.substring(7);
         RestApiResponse response = new RestApiResponse();
         if (jwtUtil.isValidToken(token)) {
@@ -68,7 +69,8 @@ public class CategoryController {
     }
 
     @PutMapping
-    public RestApiResponse update(@RequestHeader(value = "Authorization") String bearerToken,@RequestBody Category category) {
+    public RestApiResponse update(@RequestHeader(value = "Authorization") String bearerToken,
+            @RequestBody Category category) {
         String token = bearerToken.substring(7);
         RestApiResponse response = new RestApiResponse();
         if (jwtUtil.isValidToken(token)) {
@@ -88,7 +90,7 @@ public class CategoryController {
     }
 
     @DeleteMapping("/{id}")
-    public RestApiResponse delete(@RequestHeader(value = "Authorization") String bearerToken,@PathVariable Long id) {
+    public RestApiResponse delete(@RequestHeader(value = "Authorization") String bearerToken, @PathVariable Long id) {
         String token = bearerToken.substring(7);
         RestApiResponse response = new RestApiResponse();
         if (jwtUtil.isValidToken(token)) {
