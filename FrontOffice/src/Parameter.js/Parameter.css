@@ -1,0 +1,96 @@
+/* Add this to your CSS file or use styled-components */
+
+/* User Profile styles */
+.user-profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px;
+    height: 600px;
+    /* background-color: aqua; */
+    /* margin-left: 600px; */
+  }
+  
+  .user-info {
+    display: flex;
+    align-items: center;
+  }
+  
+  .user-picture {
+    width: 100px; /* Adjust the size of the user picture */
+    height: 100px; /* Adjust the size of the user picture */
+    border-radius: 50%;
+    margin-right: 20px;
+  }
+  
+  .user-details {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .user-details p {
+    margin: 10px 0;
+  }
+  
+  .buttons {
+    margin-top: 20px;
+    display: flex;
+  }
+  
+  /* Button styles */
+  .p-button-rounded {
+    margin-right: 10px;
+  }
+  
+  .p-button-success {
+    background-color: rgb(77, 111, 173); /* Green color for Modify button */
+    border-color: rgb(77, 111, 173);
+    border-radius: 3px;
+    color: #fff;
+  }
+  
+  .p-button-danger {
+    background-color: rgb(77, 111, 173); /* Red color for Logout button */
+    border-color: rgb(77, 111, 173);
+    color: #fff;
+    border-radius: 3px;
+
+  }
+  
+  /* Logout Dialog styles */
+  .p-dialog-content {
+    text-align: center;
+    font-size: 16px;
+    border: 1px bold black;
+
+  }
+  
+  .p-dialog-footer {
+     display: flex;
+  justify-content: flex-end;
+  }
+
+
+/*  */
+  .warning{
+    background-color: #fff;
+    width: 200px;
+    height: 100px;
+  }
+
+  .p-button-text{
+    display: inline;
+    background-color: #fff;
+    border: none;
+    color: blue;
+    margin-left: 70px;
+  }
+
+.p-dialog-header-close{
+    background-color: #fff;
+    width: 20px;
+}
+
+
+  /* <div id="pr_id_3" class="p-dialog p-component warning p-dialog-default p-ripple-disabled p-dialog-enter-done" role="dialog" aria-labelledby="pr_id_3_header" aria-describedby="pr_id_3_content" aria-modal="true" data-pc-name="dialog" data-pc-section="root" pr_id_3="" style="width: 30vw;"><div class="p-dialog-header" data-pc-section="header"><div id="pr_id_3_header" class="p-dialog-title" data-pc-section="headertitle"></div><div class="p-dialog-header-icons" data-pc-section="headericons"><button type="button" class="p-dialog-header-icon p-dialog-header-close p-link" aria-label="Close" data-pc-section="closebutton"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg" class="p-icon p-dialog-header-close-icon" aria-hidden="true" data-pc-section="closebuttonicon"><path d="M8.01186 7.00933L12.27 2.75116C12.341 2.68501 12.398 2.60524 12.4375 2.51661C12.4769 2.42798 12.4982 2.3323 12.4999 2.23529C12.5016 2.13827 12.4838 2.0419 12.4474 1.95194C12.4111 1.86197 12.357 1.78024 12.2884 1.71163C12.2198 1.64302 12.138 1.58893 12.0481 1.55259C11.9581 1.51625 11.8617 1.4984 11.7647 1.50011C11.6677 1.50182 11.572 1.52306 11.4834 1.56255C11.3948 1.60204 11.315 1.65898 11.2488 1.72997L6.99067 5.98814L2.7325 1.72997C2.59553 1.60234 2.41437 1.53286 2.22718 1.53616C2.03999 1.53946 1.8614 1.61529 1.72901 1.74767C1.59663 1.88006 1.5208 2.05865 1.5175 2.24584C1.5142 2.43303 1.58368 2.61419 1.71131 2.75116L5.96948 7.00933L1.71131 11.2675C1.576 11.403 1.5 11.5866 1.5 11.7781C1.5 11.9696 1.576 12.1532 1.71131 12.2887C1.84679 12.424 2.03043 12.5 2.2219 12.5C2.41338 12.5 2.59702 12.424 2.7325 12.2887L6.99067 8.03052L11.2488 12.2887C11.3843 12.424 11.568 12.5 11.7594 12.5C11.9509 12.5 12.1346 12.424 12.27 12.2887C12.4053 12.1532 12.4813 11.9696 12.4813 11.7781C12.4813 11.5866 12.4053 11.403 12.27 11.2675L8.01186 7.00933Z" fill="currentColor"></path></svg></button></div></div><div id="pr_id_3_content" class="p-dialog-content" data-pc-section="content">Are you sure you want to quit?</div><div class="p-dialog-footer" data-pc-section="footer"><div><button aria-label="No" class="p-button-text p-button p-component" data-pc-name="button" data-pc-section="root"><span class="p-button-icon p-c p-button-icon-left pi pi-times" data-pc-section="icon"></span><span class="p-button-label p-c" data-pc-section="label">No</span></button><button aria-label="Yes" class="p-button-text p-button p-component" data-pc-name="button" data-pc-section="root"><span class="p-button-icon p-c p-button- */
+  

@@ -1,0 +1,63 @@
+/* body {
+    display: flex;
+    justify-content: space-around;
+    gap: 25px;
+    padding: 20px;
+} */
+
+.div1 {
+    width: 600px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    border-color: black;
+    float: left;
+    margin-right: 30px;
+    margin-top: 30px;
+}
+
+.div1 img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+}
+
+.div2 {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    border: 1px solid black;
+    margin-top: 30px;
+    
+}
+
+.div2 h2{
+    text-align: center;
+    font-size: 50px;
+}
+
+.annonce-info {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.annonce-info img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+button{
+    background-color: pink;
+    width: 200px;
+    height: auto;
+    color: black
+}
+
+/* Nouvelle classe pour envelopper chaque paragraphe dans un div */
+.annonce-info div {
+    margin-bottom: 10px;
+}
