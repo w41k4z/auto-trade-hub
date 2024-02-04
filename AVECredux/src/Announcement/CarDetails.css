@@ -1,0 +1,56 @@
+/* Add this to your CSS file or use styled-components */
+
+/* Car Details Container */
+.car-details-container {
+    /* display: flex; */
+    justify-content: space-between;
+    padding: 20px;
+    text-align: center;
+    height: 500px;
+    margin-left: 450px;
+    margin-right: 100px;
+    border: 1px solid black;
+
+  }
+  
+  /* Car Pictures */
+  .car-pictures {
+    display: flex;
+    flex-direction: column;
+    float: left;
+  }
+  
+  .car-pictures img {
+    width: 150px;
+    height: 100px;
+    margin-bottom: 10px;
+  }
+  
+  /* Car Information */
+  .car-info {
+    width: 60%; /* Adjust the width of the information div */
+    /* background-color: aqua; */
+    margin-bottom: 10px;
+    text-align: center;
+    height: 200px;
+  }
+  
+  /* Button styles */
+  .send-message-button {
+    background-color: rgb(77, 111, 173);
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    /* margin-left: 300px; */
+  }
+
+  p {
+    text-align: center;
+  }
+  
+  .send-message-button:hover {
+    background-color: #0056b3;
+  }
+  
