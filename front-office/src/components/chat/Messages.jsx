@@ -1,35 +1,42 @@
 import React from "react";
+import useChat from "./useChat";
 
 const Messages = () => {
-  return <section className="message-section">
-    <header className="py-1 px-2 d-flex align-items-center">
-      <p className="m-0 text-white">current_target_name</p>
-    </header>
-    <div className="messages pt-2">
-      <div className="message">
-         <div className="message-info">
-           <img src="" alt="" />
-           <span>just now</span>
-         </div>
-         <div className="message-content">
-            <p>Hello test message lava be aueiornj f hzeurhyeziurhejkhnruçezhyrezhy çazyhe_uazyçezyrç_ezyç_ryezç_è ruç_zeijçdshy_èdyeauchbehzugrèyezhgrfi uydbsfuergièèèèèèèèèèèèèèèèèèèè èèèèèèèèèèèèèèèèèèèèèèèè èèèèèèèèèèèèèèèè</p>
-         </div>
+  const sender = window.location.pathname.split("/")[1]
+  const receiver = window.location.pathname.split("/")[2]
+  const {
+    sendMessage,
+    message,
+    messages,
+    handleMessageChange,
+  } = useChat(sender);
+
+  return (
+    <section className="message-section">
+      <header className="py-1 px-2 d-flex align-items-center">
+        <p className="m-0 text-white">current_target_name</p>
+      </header>
+      <div className="messages pt-2">
+        {messages.map((message, index) => (
+          <div key={index} className={`message ${message.sender === sender ? "owner" : ""}`}>
+            <div className="message-info">
+              <img src="" alt="" />
+              <span>just now</span>
+            </div>
+            <div className="message-content">
+              <p>
+                {message.content}
+              </p>
+            </div>
+          </div>
+        ))}
       </div>
-      <div className="message owner">
-         <div className="message-info">
-           <img src="" alt="" />
-           <span>just now</span>
-         </div>
-         <div className="message-content">
-            <p>Hello test message azejkdhjkheça_r azehiuazh iueaçhurazaiue ahazueyazç_ehyçazeh azyçe_ yçazyeçazyçhaz iuazyeçèazyeç hzae y_çazey auhya_zè-yeèza heyazç_eyh uize_èazyet hazçe-y ç_zyç_ azye</p>
-         </div>
+      <div className="d-flex send">
+        <textarea type="text" value={message} placeholder="Type something..." onChange={e => handleMessageChange(e.target.value)} />
+        <button onClick={() => sendMessage(receiver, message)}>Send</button>
       </div>
-    </div>
-    <div className="d-flex send">
-      <textarea type="text" placeholder="Type something..." />
-      <button>Send</button>
-    </div>
-  </section>;
+    </section>
+  );
 };
 
 export default Messages;
