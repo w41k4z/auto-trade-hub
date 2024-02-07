@@ -1,4 +1,4 @@
-import {  IonRouterOutlet } from '@ionic/react';
+import {  IonContent, IonPage, IonRouterOutlet } from '@ionic/react';
 // import './Accueil.css';
 import Option from '../components/Option';
 import Routing from './Routing';
@@ -11,17 +11,12 @@ import Notification from './Notification';
 
 const Accueil: React.FC = () => {
     return (  
-        <>
-            <IonRouterOutlet>
-                <Route path="/annoucement" component={Annoucement} exact />
-                <Route path="/insertion" component={Insertion} exact />
-                <Route path="/status" component={Status} exact />
-                <Route path="/notification" component={Notification} exact />
-                <Redirect from="/option" to="/annoucement" exact />
-            </IonRouterOutlet>
-            <Annoucement/>
+        <IonPage>
+            <IonContent>
+                <Annoucement />
+            </IonContent>
             <Option />
-        </>
+        </IonPage>
     );
 };
 

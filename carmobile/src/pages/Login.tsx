@@ -2,14 +2,17 @@ import React from 'react';
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonInput, IonButton, IonText, IonRouterLink } from '@ionic/react';
 import './Login.css';
 import { useHistory } from 'react-router';
+import Option from '../components/Option';
 
 const Login: React.FC = () => {
     const history = useHistory();
 
     const detail = () =>{
+        localStorage.setItem("token" , "propla");
         history.push('/accueil');
     };
     return(
+
     <IonPage>
         <IonContent className="ion-content">
             <IonTitle>Connexion</IonTitle>

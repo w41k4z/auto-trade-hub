@@ -4,10 +4,12 @@ import Option from '../components/Option';
 
 const Status: React.FC = () => {
     return (
-        <IonContent>
-            <IonLabel>Statusss</IonLabel>
-            <Option />
-        </IonContent>
+        <IonPage>
+            <IonContent>
+                <IonLabel>Statusss</IonLabel>
+            </IonContent>
+                <Option />
+        </IonPage>
     );
 };
 

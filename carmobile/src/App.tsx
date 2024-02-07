@@ -36,11 +36,8 @@ const App: React.FC = () => (
   <IonApp>
     <IonReactRouter>
         <IonRouterOutlet>
-          <Route exact path="/login">
+          <Route path="/">
             <Login />
-          </Route>
-          <Route exact path="/inscription">
-            <Inscription />
           </Route>
           <Route exact path="/accueil">
             <Accueil />
@@ -48,24 +45,23 @@ const App: React.FC = () => (
           <Route exact path="/annoucement">
             <Annoucement />
           </Route>
-          <Route exact path="/insertion">
-            <Insertion />
-          </Route>
-          <Route exact path="/status">
-            <Status />
+          <Route exact path="/details">
+            <Details />
+          </Route> 
+          <Route exact path="/inscription">
+            <Inscription />
           </Route>
           <Route exact path="/notification">
             <Notification />
           </Route>
-        <Route exact path="/option">
-          <Option />
-        </Route>
-        <Route exact path="/details">
-          <Details />
-        </Route>
+          <Route exact path="/status">
+            <Status />
+          </Route>
+          <Route exact path="/insertion">
+            <Insertion />
+          </Route>
         </IonRouterOutlet>
     </IonReactRouter>
-    {/* <Option /> */}
   </IonApp>
 );
 

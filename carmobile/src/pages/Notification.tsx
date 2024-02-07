@@ -4,10 +4,12 @@ import Option from '../components/Option';
 
 const Notification: React.FC = () => {
     return (
-        <IonContent>
-            <IonLabel>Notif be</IonLabel>
-            <Option />
-        </IonContent>
+        <IonPage>
+            <IonContent>
+                <IonLabel>Notif be</IonLabel>
+            </IonContent>
+                <Option />
+        </IonPage>
     );
 };
 

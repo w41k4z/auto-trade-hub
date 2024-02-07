@@ -16,7 +16,7 @@ interface AppPage {
 
 const appPages :AppPage[] = [
     {
-        title: 'Annoucement', url: '/annoucement', iosIcon: mailOutline, mdIcon: mailSharp },
+        title: 'Annoucement', url: '/accueil', iosIcon: mailOutline, mdIcon: mailSharp },
     {
         title: 'Insertion', url: '/insertion', iosIcon: paperPlaneOutline, mdIcon: paperPlaneSharp},
     {
@@ -31,18 +31,17 @@ const Option: React.FC = () => {
     const click = (url: string) => {
         history.push(url);
     }
+
     return (
-        <IonTabs>
-            <IonRouterOutlet></IonRouterOutlet>
-            <IonTabBar slot="bottom">
-                {appPages.map((appPage) => (
+        // <IonTabs>
+            <IonTabBar slot="bottom">                {appPages.map((appPage) => (
                     <IonTabButton className={location.pathname === appPage.url ? 'selected' : ''} key={appPage.url} tab={appPage.title} onClick={() => click(appPage.url)}>
                         <IonIcon icon={appPage.iosIcon} />
                         <IonLabel>{appPage.title}</IonLabel>
                     </IonTabButton>
                 ))}
             </IonTabBar>
-        </IonTabs>
+        // </IonTabs>
     );
 };
 

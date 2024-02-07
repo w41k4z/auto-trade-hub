@@ -6,15 +6,15 @@ import { useHistory } from 'react-router';
 const Insertion: React.FC = () => {
     
     return (
-        <>
-        <IonContent>
-            <IonLabel>Veuillez inserer votre donnees pour l'annonce</IonLabel>
-                <IonSelect> <IonLabel>Automobile</IonLabel>
-                <IonSelectOption value='nissan'></IonSelectOption>
-            </IonSelect>
-        </IonContent>
+        <IonPage>
+            <IonContent>
+                <IonLabel>Veuillez inserer votre donnees pour l'annonce</IonLabel>
+                    <IonSelect> <IonLabel>Automobile</IonLabel>
+                    <IonSelectOption value='nissan'></IonSelectOption>
+                </IonSelect>
+            </IonContent>
             <Option />
-        </>
+        </IonPage>
     );
 };
 

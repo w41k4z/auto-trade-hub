@@ -11,41 +11,39 @@ const Details: React.FC = () => {
     const { id } = useParams<{ id: string }>();
     const [carDetails, setCarDetails] = useState(null);
 
-    useEffect(() => {
-        // Replace with your actual API call
-        const fetchCarDetails = async () => {
-            const response = await fetch(`your-api-endpoint/${id}`);
-            const data = await response.json();
-            setCarDetails(data);
-        };
+    // useEffect(() => {
+    //     // Replace with your actual API call
+    //     const fetchCarDetails = async () => {
+    //         const response = await fetch(`your-api-endpoint/${id}`);
+    //         const data = await response.json();
+    //         setCarDetails(data);
+    //     };
 
-        fetchCarDetails();
-    }, [id]);
+    //     fetchCarDetails();
+    // }, [id]);
 
-    if (!carDetails) {
-        return <IonContent>Loading...</IonContent>;
-    }
+    // if (!carDetails) {
+    //     return <IonContent>Loading...</IonContent>;
+    // }
+
     return (
-        <>
-        <IonLabel>details milay be</IonLabel>
+        <IonPage>
             <IonHeader>
-                <IonToolbar>
+                {/* <IonToolbar> */}
                     {/* <IonTitle>{carDetails.make} {carDetails.model}</IonTitle> */}
-                    <IonTitle>Nissan</IonTitle>
-                </IonToolbar>
+                    {/* <IonTitle>Nissan</IonTitle> */}
+                {/* </IonToolbar> */}
             </IonHeader>
             <IonContent>
                 {/* Render car details */}
                 {/* <h2>{carDetails.make} {carDetails.model}</h2> */}
                 <h2>Model automobile</h2>
-
                 <p>Year: 2015</p>
                 {/* ... other details */}
 
                 {/* Image gallery */}
                 <Virtuoso
-                    style={{ height: '100%', overflowY: 'auto' }}
-                    // totalCount={carDetails.images.length}
+                    style={{ height: '100%', overflowY: 'auto' }} 
                     totalCount={3}
                     itemContent={(index) => (
                         <IonImg
@@ -57,8 +55,8 @@ const Details: React.FC = () => {
                     )}
                 />
             </IonContent>
-            {/* <Option /> */}
-        </>
+            <Option />
+        </IonPage>
     );
 };
 
