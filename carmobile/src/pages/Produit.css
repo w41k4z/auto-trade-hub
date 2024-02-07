@@ -1,0 +1,38 @@
+/* Produit.css */
+
+/* Custom styles for Facebook-like post layout */
+
+.IonItemContainer {
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    border: 1px solid #ddd;
+    margin: 10px;
+    background-color: #fff;
+}
+
+.IonThumbnailContainer {
+    display: flex;
+    flex-wrap: wrap;
+    /* Allows images to wrap to the next line if needed */
+}
+
+.IonThumbnail {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    /* Add margin below each image */
+}
+
+.IonLabel {
+    margin-top: 10px;
+    flex-grow: 1;
+}
+
+.IonBadge {
+    margin-top: 5px;
+}
+
+/* Optional: Add more styles as needed */

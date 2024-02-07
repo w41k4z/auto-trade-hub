@@ -1,0 +1,7 @@
+{
+  "name": "carmobile",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react-vite"
+}
