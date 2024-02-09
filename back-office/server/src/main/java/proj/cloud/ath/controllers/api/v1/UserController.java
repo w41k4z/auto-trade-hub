@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import jakarta.transaction.Transactional;
 import proj.cloud.ath.entities.User;
-import proj.cloud.ath.repositories.mongo.UserRepository;
+import proj.cloud.ath.repositories.mongo.UsersRepository;
 import proj.cloud.ath.response.RestApiResponse;
 import proj.cloud.ath.services.postgres.UserService;
 import proj.cloud.ath.services.postgres.UsersFavoriteService;
@@ -30,7 +30,7 @@ public class UserController {
     private UserService service;
 
     @Autowired
-    private UserRepository userMongoRepository;
+    private UsersRepository userMongoRepository;
 
     @Autowired
     private UsersFavoriteService usersFavoriteservice;
