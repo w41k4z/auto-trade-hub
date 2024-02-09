@@ -7,7 +7,7 @@ import Accueil from './pages/Accueil';
 import Annoucement from './pages/Annoucement';
 import Insertion from './pages/Insertion';
 import Status from './pages/Status';
-import Notification from './pages/Notification';
+import Notification from './pages/Profile';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';

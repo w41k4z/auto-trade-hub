@@ -1,11 +1,7 @@
 import React from 'react';
-import { IonTabs, IonTabBar, IonTabButton, IonIcon, IonLabel, IonRouterOutlet, IonItem } from '@ionic/react';
-import { heartOutline, heartSharp, mailOutline, mailSharp, paperPlaneOutline, paperPlaneSharp, person, settings, warningOutline, warningSharp } from 'ionicons/icons';
+import { IonTabBar, IonTabButton, IonIcon, IonLabel } from '@ionic/react';
+import { heartOutline, heartSharp, mailOutline, mailSharp, paperPlaneOutline, paperPlaneSharp, warningOutline, warningSharp } from 'ionicons/icons';
 import { Redirect, Route, useHistory, useLocation } from 'react-router';
-import Annoucement from '../pages/Annoucement';
-import Insertion from '../pages/Insertion';
-import Status from '../pages/Status';
-import Notification from '../pages/Notification';
 
 interface AppPage {
     url: string;
@@ -22,7 +18,7 @@ const appPages :AppPage[] = [
     {
         title: 'Status', url: '/status', iosIcon: heartOutline, mdIcon: heartSharp },
     {
-        title: 'Notification', url: '/notification', iosIcon: warningOutline, mdIcon: warningSharp },
+        title: 'Profile', url: '/profile', iosIcon: warningOutline, mdIcon: warningSharp },
 ];
 
 const Option: React.FC = () => {

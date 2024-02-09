@@ -35,25 +35,25 @@ const Details: React.FC = () => {
                 {/* </IonToolbar> */}
             </IonHeader>
             <IonContent>
-                {/* Render car details */}
-                {/* <h2>{carDetails.make} {carDetails.model}</h2> */}
                 <h2>Model automobile</h2>
-                <p>Year: 2015</p>
-                {/* ... other details */}
-
-                {/* Image gallery */}
                 <Virtuoso
-                    style={{ height: '100%', overflowY: 'auto' }} 
+                    style={{ height: '100%', overflowY: 'auto' }}
                     totalCount={3}
                     itemContent={(index) => (
                         <IonImg
                             style={{ height: 'auto', maxHeight: '100vh', objectFit: 'cover' }}
                             // src={carDetails.images[index]}
                             src='https://th.bing.com/th/id/OIP.HLuY60jzx5puuKjbqmWRRwHaEK?w=321&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7'
-                            // alt={`Image ${index + 1}`}
+                        // alt={`Image ${index + 1}`}
                         />
                     )}
                 />
+                {/* Render car details */}
+                {/* <h2>{carDetails.make} {carDetails.model}</h2> */}
+                <p>Annee: 2015</p>
+                <p></p>
+                {/* ... other details */}
+                {/* Image gallery */}
             </IonContent>
             <Option />
         </IonPage>
