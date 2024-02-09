@@ -52,6 +52,27 @@ public class AnnouncementController {
         return new RestApiResponse(service.findAllPendingAnnouncements(), 200);
     }
 
+    @PostMapping("/accept/{id}")
+    public RestApiResponse validateAnnouncement(@PathVariable Long id) {
+        Announcement announcement = service.findById(id);
+        service.validateAnnouncement(announcement);
+        return new RestApiResponse(announcement, 200);
+    }
+
+    @PostMapping("/reject/{id}")
+    public RestApiResponse refuseAnnouncement(@PathVariable Long id) {
+        Announcement announcement = service.findById(id);
+        service.refuseAnnouncement(announcement);
+        return new RestApiResponse(announcement, 200);
+    }
+
+    @PostMapping("/purchase/{id}")
+    public RestApiResponse purchaseAnnouncement(@PathVariable Long id) {
+        Announcement announcement = service.findById(id);
+        service.validatePurchase(announcement);
+        return new RestApiResponse(announcement, 200);
+    }
+
     @GetMapping("/{id}")
     public RestApiResponse findById(@PathVariable Long id) {
         return new RestApiResponse(service.findById(id), 200);

@@ -45,7 +45,7 @@ public class AnnouncementService {
     }
 
     public void refuseAnnouncement(Announcement announcement) {
-        announcement.setStatus(-1);
+        announcement.setStatus(-10);
         announcementRepository.save(announcement);
     }
 
