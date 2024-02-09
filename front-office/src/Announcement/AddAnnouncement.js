@@ -27,7 +27,7 @@ useEffect(() => {
 
 const fetchProvinces = async () => {
     try {
-        const response = await fetch('http://localhost:8080/auto-trade-hub/api/v1/provinces');
+        const response = await fetch('https://auto-trade-hub.up.railway.app/back-office/api/v1/provinces');
         const data = await response.json();
         const datap = data.payload;
         // console.log(data.payload.name); // Ajoutez cette ligne pour voir ce que vous obtenez de l'API
@@ -45,7 +45,7 @@ useEffect(() => {
 
 const fetchCar_model = async () => {
   try {
-      const response = await fetch('http://localhost:8080/auto-trade-hub/api/v1/car-models');
+      const response = await fetch('https://auto-trade-hub.up.railway.app/back-office/api/v1/car-models');
       const data = await response.json();
       const datap = data.payload;
       setCar_models(datap);
@@ -61,7 +61,7 @@ useEffect(() => {
 
 const fetchpowerTrain = async () => {
   try {
-      const response = await fetch('http://localhost:8080/auto-trade-hub/api/v1/powertrain-types');
+      const response = await fetch('https://auto-trade-hub.up.railway.app/back-office/api/v1/powertrain-types');
       const data = await response.json();
       const datap = data.payload;
       setPowerTrains(datap);
@@ -95,7 +95,7 @@ const fetchpowerTrain = async () => {
       formData.append('files', fileInput.files[i]);
     }  
     try {
-      const response = await fetch('http://localhost:8080/auto-trade-hub/api/v1/announcement', {
+      const response = await fetch('https://auto-trade-hub.up.railway.app/back-office/api/v1/announcement', {
         method: 'POST',
         headers: {
           'Authorization': token, // Remplacez VOTRE_TOKEN par votre véritable token
