@@ -1,0 +1,46 @@
+/* CarListPage.css */
+
+.car-list {
+    --ion-background-color: #fafafa;
+    /* Light background color */
+}
+
+.car-item {
+    --ion-padding: 10px;
+    --ion-margin-bottom: 10px;
+    --ion-background-color: #fff;
+    --ion-border-radius: 5px;
+    --ion-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    /* Optional shadow for depth */
+}
+
+.car-img {
+    width: 100%;
+    height: auto;
+}
+
+.car-name {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.car-description {
+    font-size: 0.9em;
+    color: #666;
+}
+
+.details-button {
+    --ion-background-color: #007bff;
+    /* Button color */
+    --ion-color-step: 500;
+    /* Darker shade for hover */
+    --ion-padding-start: 8px;
+    --ion-padding-end: 8px;
+    --ion-border-radius: 50px;
+    margin-left: auto;
+}
+
+.details-button:hover {
+    --ion-background-color: #0056b3;
+    /* Darker shade on hover */
+}
