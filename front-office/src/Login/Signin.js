@@ -23,7 +23,7 @@ const Signin = (props) => {
 
     const fetchProvinces = async () => {
         try {
-            const response = await fetch('http://localhost:8080/auto-trade-hub/api/v1/provinces');
+            const response = await fetch('https://auto-trade-hub.up.railway.app/back-office/api/v1/provinces');
             const data = await response.json();
             const datap = data.payload;
             // console.log(data.payload.name); // Ajoutez cette ligne pour voir ce que vous obtenez de l'API
@@ -37,7 +37,7 @@ const Signin = (props) => {
     const onButtonClick = async () => {
         try {
             console.log("SEXE = "+ sexe);
-            const response = await fetch('http://localhost:8080/auto-trade-hub/api/v1/users', {
+            const response = await fetch('https://auto-trade-hub.up.railway.app/back-office/api/v1/users', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
