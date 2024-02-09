@@ -26,15 +26,9 @@ public class CarModelController {
     private JwtUtil jwtUtil;
 
     @GetMapping
-    public RestApiResponse findAll(@RequestHeader(value = "Authorization") String bearerToken) {
-        String token = bearerToken.substring(7);
+    public RestApiResponse findAll() {
         RestApiResponse response = new RestApiResponse();
-        if (jwtUtil.isValidToken(token)) {
             response = new RestApiResponse(service.findAll(), 200);
-        } else {
-            response.setMessage("Invalid token");
-            response.setStatus(403);
-        }
         return response;
     }
 
