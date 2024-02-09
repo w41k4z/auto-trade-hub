@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import SockJS from 'sockjs-client';
 import { Client } from '@stomp/stompjs';
 
-const SOCKET_URL = "http://localhost:8080/auto-trade-hub/secured/room";
+const SOCKET_URL = "https://auto-trade-hub-production.up.railway.app/back-office/secured/room";
 const TOPIC_PREFIX = "/private/queue/user/";
 
 const socket = new SockJS(SOCKET_URL);
