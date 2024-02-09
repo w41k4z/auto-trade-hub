@@ -35,7 +35,7 @@ const Login = (props) => {
         // props.setUser({ accessToken: 'your_token', role: 'user' }); // Remplacez par les données réelles
         // props.setLoading(true);
 
-        let url = "http://localhost:8080/auto-trade-hub/auth/v1/front-office";
+        let url = "https://auto-trade-hub.up.railway.app/back-office/auth/v1/front-office";
         const body = {
             email : email,
             password : password
