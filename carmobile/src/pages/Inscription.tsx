@@ -2,10 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonInput, IonButton, IonSelect, IonSelectOption } from '@ionic/react';
 import axios from 'axios';
 import { FieldValues, useForm } from 'react-hook-form';
+import { useHistory } from 'react-router';
 
 const Inscription: React.FC = () => {
 
-    // const history = useHistory();
+    const history = useHistory();
 
     // const accueil = () => {
     //     history.push('/accueil');
@@ -21,6 +22,7 @@ const Inscription: React.FC = () => {
             data.province = {id : data.provinceId}
             console.log(data);
             const response = await axios.post(url + '/users', data);
+            history.push('/accueil');
             console.log(response.data);
             reset()
         } catch (error) {

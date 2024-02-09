@@ -30,7 +30,8 @@ const Option: React.FC = () => {
 
     return (
         // <IonTabs>
-            <IonTabBar slot="bottom">                {appPages.map((appPage) => (
+            <IonTabBar slot="bottom">       
+            {appPages.map((appPage) => (
                     <IonTabButton className={location.pathname === appPage.url ? 'selected' : ''} key={appPage.url} tab={appPage.title} onClick={() => click(appPage.url)}>
                         <IonIcon icon={appPage.iosIcon} />
                         <IonLabel>{appPage.title}</IonLabel>
