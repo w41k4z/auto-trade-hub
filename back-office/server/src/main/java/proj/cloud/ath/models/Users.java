@@ -7,7 +7,7 @@ import lombok.Data;
 
 @Data
 @Document(collection = "users")
-public class User {
+public class Users {
 
     @Id
     private String _id;

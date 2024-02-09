@@ -46,8 +46,8 @@ public class User {
     @JoinColumn(name = "province_id", referencedColumnName = "id")
     private Province province;
 
-    public proj.cloud.ath.models.User toMongoModel() {
-        proj.cloud.ath.models.User user = new proj.cloud.ath.models.User();
+    public proj.cloud.ath.models.Users toMongoModel() {
+        proj.cloud.ath.models.Users user = new proj.cloud.ath.models.Users();
         user.setEmail(this.email);
         return user;
     }
