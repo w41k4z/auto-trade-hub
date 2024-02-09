@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import SockJS from 'sockjs-client';
 import { Client } from '@stomp/stompjs';
+import useSelector from "react-redux";
+import { selectUser } from "../redux/reducer/UserSlice";
 
 const SOCKET_URL = "http://localhost:8080/auto-trade-hub/secured/room";
 const TOPIC_PREFIX = "/private/queue/user/";
@@ -17,13 +19,14 @@ const client = new Client({
   });
 
 
-const useChat = (userId) => {
+const useChat = () => {
+  const user = useSelector(selectUser)
 
   useEffect(() => {
     let unsubscription = null;
     client.onConnect = (frame) => {
       console.log('Connection established successfully: ' + frame);
-      unsubscription = client.subscribe(TOPIC_PREFIX + userId, (receivedMessage) => {
+      unsubscription = client.subscribe(TOPIC_PREFIX + user.email, (receivedMessage) => {
         appendNewMessage(JSON.parse(receivedMessage.body));
       });
     };
@@ -43,7 +46,7 @@ const useChat = (userId) => {
   const sendMessage = (userDestinationId, message) => {
     const newMessage = {
       content: message,
-      sender: userId,
+      sender: user?.email,
       receiver: userDestinationId,
       timestamp: new Date()
     }
@@ -69,7 +72,7 @@ const useChat = (userId) => {
     };
   };
 
-  return { sendMessage, message, messages, handleMessageChange, disconnect };
+  return { user, sendMessage, message, messages, handleMessageChange, disconnect };
 };
 
 export default useChat;

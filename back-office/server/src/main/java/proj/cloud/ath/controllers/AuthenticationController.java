@@ -59,6 +59,7 @@ public class AuthenticationController {
             String token = jwtUtil.generateToken(claims, user.getEmail());
 
             payload.put("accessToken", token);
+            payload.put("user", user);
             restApiResponse.setStatus(200);
             restApiResponse.setPayload(payload);
         } catch (Exception e) {

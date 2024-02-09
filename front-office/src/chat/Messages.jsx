@@ -2,14 +2,14 @@ import React from "react";
 import useChat from "./useChat";
 
 const Messages = () => {
-  const sender = window.location.pathname.split("/")[1]
-  const receiver = window.location.pathname.split("/")[2]
+  const receiver = "test@gmail.com"
   const {
+    user,
     sendMessage,
     message,
     messages,
     handleMessageChange,
-  } = useChat(sender);
+  } = useChat();
 
   return (
     <section className="message-section">
@@ -18,10 +18,10 @@ const Messages = () => {
       </header>
       <div className="messages pt-2">
         {messages.map((message, index) => (
-          <div key={index} className={`message ${message.sender === sender ? "owner" : ""}`}>
+          <div key={index} className={`message ${message.sender === user.email ? "owner" : ""}`}>
             <div className="message-info">
               <img src="" alt="" />
-              <span>just now</span>
+              {/* <span>just now</span> */}
             </div>
             <div className="message-content">
               <p>

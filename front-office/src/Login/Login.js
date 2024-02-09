@@ -6,7 +6,12 @@ import axios from "axios";
 // import { connect } from 'react-redux';
 // import { setUser, setLoading } from './reducer'; 
 
+import { useDispatch } from "react-redux";
+import {login} from "../redux/reducer/UserSlice"
+
+
 const Login = (props) => {
+    const dispatch = useDispatch();
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [username, setUsername] = useState("")
@@ -39,19 +44,22 @@ const Login = (props) => {
 
 
         await axios.post(url, body).then(response =>{
-
             const data = response.data;
             console.log(response)
-        if(data.status == 200){
-            
-           if(data.payload.accessToken){
-            navigate('/announcement');
+            if(data.status === 200) {    
+                if (data.payload.accessToken) {
+                    dispatch(login({
+                        user: data.payload.user,
+                        accessToken: data.payload.accessToken,
+                        role: data.payload.role
+                    }))
+                    localStorage.setItem("token", data.payload.accessToken);
+                    localStorage.setItem("user", data.payload.user);
+                    navigate('/announcement');
+                }
+            } else{
+                alert(data.message)
             }
-        }
-        else{
-            alert(data.message)
-        }
-
         }).catch(error =>{
             alert(error);
         });
