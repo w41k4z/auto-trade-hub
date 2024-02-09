@@ -4,7 +4,7 @@ const userSlice = createSlice({
     name: "user",
     initialState: {
         user: localStorage.getItem("user") ? JSON.parse(localStorage.getItem("user")) : null,
-        role: "",
+        role: localStorage.getItem("role") || "",
         accessToken: localStorage.getItem("token") || "",
     },
     reducers: {
@@ -17,6 +17,9 @@ const userSlice = createSlice({
             state.user = null
             state.accessToken = ""
             state.role = ""
+            localStorage.removeItem("user");
+            localStorage.removeItem("token");
+            localStorage.removeItem("role");
         },
     }
 })

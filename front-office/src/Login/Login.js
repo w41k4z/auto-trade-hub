@@ -55,6 +55,7 @@ const Login = (props) => {
                     }))
                     localStorage.setItem("token", data.payload.accessToken);
                     localStorage.setItem("user", data.payload.user);
+                    localStorage.setItem("role", data.payload.role);
                     navigate('/announcement');
                 }
             } else{
