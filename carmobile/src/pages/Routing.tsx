@@ -5,7 +5,7 @@ import { Redirect, Route } from 'react-router';
 import Annoucement from './Annoucement';
 import Insertion from './Insertion';
 import Status from './Status';
-import Notification from './Notification';
+import Notification from './Profile';
 
 const Routing: React.FC = () => {
     return (

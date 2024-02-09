@@ -2,15 +2,15 @@ import { IonContent, IonHeader, IonLabel, IonPage, IonText, IonTitle, IonToolbar
 import Produit from './Produit';
 import Option from '../components/Option';
 
-const Notification: React.FC = () => {
+const Profile: React.FC = () => {
     return (
         <IonPage>
             <IonContent>
-                <IonLabel>Notif be</IonLabel>
+                <IonTitle>Votre Profile</IonTitle>
             </IonContent>
                 <Option />
         </IonPage>
     );
 };
 
-export default Notification;
+export default Profile;

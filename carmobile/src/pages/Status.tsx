@@ -6,7 +6,7 @@ const Status: React.FC = () => {
     return (
         <IonPage>
             <IonContent>
-                <IonLabel>Statusss</IonLabel>
+              
             </IonContent>
                 <Option />
         </IonPage>

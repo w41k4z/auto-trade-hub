@@ -1,0 +1,6 @@
+.ion-img {
+    display: flex;
+    flex: 0 0 auto;
+    scroll-snap-align: start;
+    object-fit: cover;
+}
