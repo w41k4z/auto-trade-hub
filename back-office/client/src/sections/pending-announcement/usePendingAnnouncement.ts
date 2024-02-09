@@ -18,7 +18,7 @@ const usePendingAnnouncement = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  return { loading, announcements };
+  return { loading, announcements, setAnnouncements, token };
 };
 
 export default usePendingAnnouncement;

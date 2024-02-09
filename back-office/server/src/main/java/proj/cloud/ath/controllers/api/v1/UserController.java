@@ -14,7 +14,9 @@ import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import jakarta.transaction.Transactional;
 import proj.cloud.ath.entities.User;
+import proj.cloud.ath.repositories.mongo.UserRepository;
 import proj.cloud.ath.response.RestApiResponse;
 import proj.cloud.ath.services.postgres.UserService;
 import proj.cloud.ath.services.postgres.UsersFavoriteService;
@@ -26,6 +28,9 @@ public class UserController {
 
     @Autowired
     private UserService service;
+
+    @Autowired
+    private UserRepository userMongoRepository;
 
     @Autowired
     private UsersFavoriteService usersFavoriteservice;
@@ -53,11 +58,13 @@ public class UserController {
         return new RestApiResponse(service.findById(id), 200);
     }
 
+    @Transactional
     @PostMapping
     public RestApiResponse create(@RequestBody User user) {
         RestApiResponse response = new RestApiResponse();
         user.setPassword(BCrypt.hashpw(user.getPassword(), BCrypt.gensalt()));
         service.save(user);
+        userMongoRepository.save(user.toMongoModel());
 
         HashMap<String, Object> payload = new HashMap<>();
         HashMap<String, Object> claims = new HashMap<>();

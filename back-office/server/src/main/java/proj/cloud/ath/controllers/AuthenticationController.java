@@ -53,6 +53,7 @@ public class AuthenticationController {
         try {
             User user = userService.authenticate(jsonData.get("email").toString(),
                     jsonData.get("password").toString());
+
             HashMap<String, Object> claims = new HashMap<>();
             claims.put("role", "USER");
             String token = jwtUtil.generateToken(claims, user.getEmail());

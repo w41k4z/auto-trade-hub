@@ -51,7 +51,8 @@ public class JwtUtil {
     }
 
     public String generateToken(Map<String, Object> claims, String subject) {
-        return Jwts.builder().claims(claims).subject(subject).signWith(key).compact();
+        long expiration = System.currentTimeMillis() + JWT_TOKEN_VALIDITY * 1000;
+        return Jwts.builder().expiration(new Date(expiration)).claims(claims).subject(subject).signWith(key).compact();
     }
 
     public Boolean isValidToken(String token) {
@@ -64,5 +65,9 @@ public class JwtUtil {
         } catch (Exception e) {
             return false;
         }
+    }
+
+    public boolean isTokenForUser(String token, String user1) {
+        return user1.equals(getSubjectFromToken(token));
     }
 }
