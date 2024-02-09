@@ -25,7 +25,7 @@ export const tableAction = (token: string) => {
         fields: [
           {
             name: "id",
-            type: "hidden",
+            type: "number",
             defaultValue: data.id,
             hidden: true,
           },

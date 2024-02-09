@@ -19,6 +19,7 @@ import proj.cloud.ath.services.postgres.CommissionService;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Payload {
+
     private Double mileage;
     private Double price;
     private Integer years;

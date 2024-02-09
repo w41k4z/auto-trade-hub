@@ -11,7 +11,7 @@
 	<groupId>proj.cloud</groupId>
 	<artifactId>auto-trade-hub</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 	<name>auto-trade-hub</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>

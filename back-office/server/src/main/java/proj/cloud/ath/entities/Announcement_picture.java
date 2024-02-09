@@ -25,4 +25,5 @@ public class Announcement_picture {
     private Integer state;
 
     private Long announcement_id;
+
 }

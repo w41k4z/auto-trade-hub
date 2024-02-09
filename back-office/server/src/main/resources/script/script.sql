@@ -9,7 +9,7 @@ CREATE TABLE brand (
 );
 
 --history table
-CREATE TABLE brand_history(
+CREATE TABLE brand_history (
     brand_id INTEGER NOT NULL REFERENCES brand (id),
     action VARCHAR(50),
     old_name VARCHAR(50) NOT NULL,
@@ -24,7 +24,7 @@ CREATE TABLE category (
 );
 
 -- history table
-CREATE TABLE category_history(
+CREATE TABLE category_history (
     category_id INTEGER NOT NULL REFERENCES category (id),
     action VARCHAR(50),
     old_name VARCHAR(50) NOT NULL,
@@ -40,7 +40,7 @@ CREATE TABLE transmission_type (
 
 
 -- history table
-CREATE TABLE transmission_type_history(
+CREATE TABLE transmission_type_history (
     transmission_type_id INTEGER NOT NULL REFERENCES transmission_type (id),
     action VARCHAR(50),
     old_name VARCHAR(50) NOT NULL,
@@ -55,7 +55,7 @@ CREATE TABLE powertrain_type (
 );
 
 -- history table
-CREATE TABLE powertrain_type_history(
+CREATE TABLE powertrain_type_history (
     powertrain_type_id INTEGER NOT NULL REFERENCES powertrain_type (id),
     action VARCHAR(50),
     old_name VARCHAR(50) NOT NULL,
@@ -91,7 +91,7 @@ CREATE TABLE province (
 
 
 -- history table
-CREATE TABLE province_history(
+CREATE TABLE province_history (
     powertrain_id INTEGER NOT NULL REFERENCES province (id),
     action VARCHAR(50),
     old_name VARCHAR(50) NOT NULL,
